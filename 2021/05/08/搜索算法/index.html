@@ -1,0 +1,287 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+  
+  
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <title>
+    搜索算法 |
+    
+    lvsss</title>
+  
+  <link rel="shortcut icon" href="/favicon.ico">
+  
+  
+<link rel="stylesheet" href="/css/style.css">
+
+  
+  
+<link rel="stylesheet" href="/fancybox/jquery.fancybox.min.css">
+
+  
+  
+<script src="/js/pace.min.js"></script>
+
+<meta name="generator" content="Hexo 5.4.0"></head>
+
+<body>
+  <main class="content">
+    <section class="outer">
+  <article id="post-搜索算法" class="article article-type-post" itemscope
+  itemprop="blogPost" data-scroll-reveal>
+
+  <div class="article-inner">
+    
+    <header class="article-header">
+      
+
+<h1 class="article-title" itemprop="name">
+  搜索算法
+</h1>
+
+
+
+    </header>
+    
+
+    
+    <div class="article-meta">
+      <a href="/2021/05/08/%E6%90%9C%E7%B4%A2%E7%AE%97%E6%B3%95/" class="article-date">
+  <time datetime="2021-05-08T07:18:40.000Z" itemprop="datePublished">2021-05-08</time>
+</a>
+      
+    </div>
+    
+
+    
+    
+<div class="tocbot"></div>
+
+    
+
+    <div class="article-entry" itemprop="articleBody">
+      
+      
+      
+      <h1 id="搜索算法"><a href="#搜索算法" class="headerlink" title="搜索算法"></a>搜索算法</h1><h2 id="深度优先搜索（DFS）"><a href="#深度优先搜索（DFS）" class="headerlink" title="深度优先搜索（DFS）"></a>深度优先搜索（DFS）</h2><span id="more"></span>
+
+<p>在搜索到一个新的节点时，立即对该新节点进行遍历，需要依靠先入后出的栈来实现，也可以通过与栈等价的递归来实现。也可以用来检测环路。拓扑排序可以判断是否有环路。</p>
+<h3 id="1、最大水洼求值"><a href="#1、最大水洼求值" class="headerlink" title="1、最大水洼求值"></a>1、最大水洼求值</h3><p>Input: [[1,0,1,1,0,1,0,1], </p>
+<p>​           [1,0,1,1,0,1,1,1],</p>
+<p>​           [0,0,0,0,0,0,0,1]]                    Output: 6</p>
+<h4 id="递归思路："><a href="#递归思路：" class="headerlink" title="递归思路："></a>递归思路：</h4><p>​           (1)  分为主函数( 用于遍历判断” 1 “ 的位置，开始递归搜索 )和辅函数( 用于递归搜索”1”的位置)</p>
+<p>​           (2) 辅函数中逢”1” 置 “0” ，临近水洼置”0” , 避免重复判断</p>
+<p>​           (3)递归搜索时，边界(矩阵越界)判断方法两种：先判断是否越界再开始搜索（即判断放在调用 递归函数前）；另一种是不管三七二十一先进行下一步搜索，待下一步搜索开始时再判断是否合 法（即判断放在辅函数第一行）。</p>
+<p>第一种判断边界的方法：</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br></pre></td><td class="code"><pre><span class="line">vector&lt;<span class="keyword">int</span>&gt; direction&#123;<span class="number">-1</span>, <span class="number">0</span>, <span class="number">1</span>, <span class="number">0</span>, <span class="number">-1</span>&#125;;  <span class="comment">//判断上下左右的位置</span></span><br><span class="line"><span class="comment">// 主函数</span></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">maxAreaOfIsland</span><span class="params">(vector&lt;vector&lt;<span class="keyword">int</span>&gt;&gt;&amp; grid)</span> </span>&#123;</span><br><span class="line">    <span class="keyword">if</span> (grid.<span class="built_in">empty</span>() || grid[<span class="number">0</span>].<span class="built_in">empty</span>()) <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">    <span class="keyword">int</span> max_area = <span class="number">0</span>;</span><br><span class="line">    <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; grid.<span class="built_in">size</span>(); ++i) &#123;   <span class="comment">//遍历二维数组得到陷入递归函数的调用</span></span><br><span class="line">        <span class="keyword">for</span> (<span class="keyword">int</span> j = <span class="number">0</span>; j &lt; grid[<span class="number">0</span>].<span class="built_in">size</span>(); ++j) &#123;</span><br><span class="line">            <span class="keyword">if</span> (grid[i][j] == <span class="number">1</span>) &#123;   <span class="comment">//判断水洼陷入递归函数调用</span></span><br><span class="line">                max_area = <span class="built_in">max</span>(max_area, <span class="built_in">dfs</span>(grid, i, j));  <span class="comment">//比较函数，得到最大数</span></span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> max_area;</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">// 辅函数</span></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">dfs</span><span class="params">(vector&lt;vector&lt;<span class="keyword">int</span>&gt;&gt;&amp; grid, <span class="keyword">int</span> r, <span class="keyword">int</span> c)</span> </span>&#123;</span><br><span class="line">    <span class="keyword">if</span> (grid[r][c] == <span class="number">0</span>) <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">    grid[r][c] = <span class="number">0</span>;</span><br><span class="line">    <span class="keyword">int</span> x, y, area = <span class="number">1</span>;   <span class="comment">//每一次递归(取到一个&quot;1&quot;)都会return 一个area,最后累加</span></span><br><span class="line">    <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; <span class="number">4</span>; ++i) &#123;</span><br><span class="line">        x = r + direction[i], y = c + direction[i+<span class="number">1</span>];   <span class="comment">//取四个方向的递归</span></span><br><span class="line">        <span class="keyword">if</span> (x &gt;= <span class="number">0</span> &amp;&amp; x &lt; grid.<span class="built_in">size</span>() &amp;&amp; y &gt;= <span class="number">0</span> &amp;&amp; y &lt; grid[<span class="number">0</span>].<span class="built_in">size</span>()) &#123;</span><br><span class="line">            area += <span class="built_in">dfs</span>(grid, x, y);   <span class="comment">//累计水洼数</span></span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> area;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>第二种判断边界的方法：</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">maxAreaOfIsland</span><span class="params">(vector&lt;vector&lt;<span class="keyword">int</span>&gt;&gt;&amp; grid)</span> </span>&#123;</span><br><span class="line">    <span class="keyword">if</span> (grid.<span class="built_in">empty</span>() || grid[<span class="number">0</span>].<span class="built_in">empty</span>()) <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">    <span class="keyword">int</span> max_area = <span class="number">0</span>;</span><br><span class="line">    <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; grid.<span class="built_in">size</span>(); ++i) &#123;</span><br><span class="line">        <span class="keyword">for</span> (<span class="keyword">int</span> j = <span class="number">0</span>; j &lt; grid[<span class="number">0</span>].<span class="built_in">size</span>(); ++j) &#123;</span><br><span class="line">            max_area = <span class="built_in">max</span>(max_area, <span class="built_in">dfs</span>(grid, i, j));</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> max_area;</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">// 辅函数</span></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">dfs</span><span class="params">(vector&lt;vector&lt;<span class="keyword">int</span>&gt;&gt;&amp; grid, <span class="keyword">int</span> r, <span class="keyword">int</span> c)</span> </span>&#123;</span><br><span class="line">    <span class="keyword">if</span> (r &lt; <span class="number">0</span> || r &gt;= grid.<span class="built_in">size</span>() ||c &lt; <span class="number">0</span> || c &gt;= grid[<span class="number">0</span>].<span class="built_in">size</span>() || grid[r][c] == <span class="number">0</span>) &#123;</span><br><span class="line">        <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">    &#125;</span><br><span class="line">    grid[r][c] = <span class="number">0</span>;</span><br><span class="line">    <span class="keyword">return</span> <span class="number">1</span> + <span class="built_in">dfs</span>(grid, r + <span class="number">1</span>, c) + <span class="built_in">dfs</span>(grid, r - <span class="number">1</span>, c) + <span class="built_in">dfs</span>(grid, r, c + <span class="number">1</span>) + <span class="built_in">dfs</span>(grid, r, c - <span class="number">1</span>);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h4 id="栈的写法："><a href="#栈的写法：" class="headerlink" title="栈的写法："></a>栈的写法：</h4><p><img src="https://raw.githubusercontent.com/Goku404/PicGo/main/img/%E6%B0%B4%E6%B4%BC.png" alt="水洼"></p>
+<p>思路：针对每一个入栈的元素 [r , c] 都进行4次的坐标入栈。 local_area 的累加都在判断中间。max 的 取值都在主循环</p>
+<h3 id="2、海流方向"><a href="#2、海流方向" class="headerlink" title="2、海流方向"></a>2、海流方向</h3><p><img src="https://raw.githubusercontent.com/Goku404/PicGo/main/img/%E6%B5%B7%E6%B5%81%E6%96%B9%E5%90%91.png"></p>
+<p>思路：因此我们可以反过来想，从两个大洋开始向上流，这样我们 只需要对矩形四条边进行搜索。搜索完成后，只需遍历一遍矩阵，满足条件的位置即为两个大洋 向上流都能到达的位置。</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br></pre></td><td class="code"><pre><span class="line">vector&lt;<span class="keyword">int</span>&gt; direction&#123;<span class="number">-1</span>, <span class="number">0</span>, <span class="number">1</span>, <span class="number">0</span>, <span class="number">-1</span>&#125;;</span><br><span class="line"><span class="comment">// 主函数</span></span><br><span class="line">vector&lt;vector&lt;<span class="keyword">int</span>&gt;&gt; <span class="built_in">pacificAtlantic</span>(vector&lt;vector&lt;<span class="keyword">int</span>&gt;&gt;&amp; matrix) &#123;</span><br><span class="line">    <span class="keyword">if</span> (matrix.<span class="built_in">empty</span>() || matrix[<span class="number">0</span>].<span class="built_in">empty</span>()) &#123;</span><br><span class="line">        <span class="keyword">return</span> &#123;&#125;;</span><br><span class="line">    &#125;</span><br><span class="line">    vector&lt;vector&lt;<span class="keyword">int</span>&gt;&gt; ans;</span><br><span class="line">    <span class="keyword">int</span> m = matrix.<span class="built_in">size</span>(), n = matrix[<span class="number">0</span>].<span class="built_in">size</span>();</span><br><span class="line">    vector&lt;vector&lt;<span class="keyword">bool</span>&gt;&gt; <span class="built_in">can_reach_p</span>(m, vector&lt;<span class="keyword">bool</span>&gt;(n, <span class="literal">false</span>));   <span class="comment">//是否能流到太平洋</span></span><br><span class="line">    vector&lt;vector&lt;<span class="keyword">bool</span>&gt;&gt; <span class="built_in">can_reach_a</span>(m, vector&lt;<span class="keyword">bool</span>&gt;(n, <span class="literal">false</span>));   <span class="comment">//是否能流到大西洋</span></span><br><span class="line">    <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; m; ++i) &#123;</span><br><span class="line">        <span class="built_in">dfs</span>(matrix, can_reach_p, i, <span class="number">0</span>);    <span class="comment">//左边开始搜索</span></span><br><span class="line">        <span class="built_in">dfs</span>(matrix, can_reach_a, i, n - <span class="number">1</span>);  <span class="comment">//从右边开始搜索</span></span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; n; ++i) &#123;</span><br><span class="line">        <span class="built_in">dfs</span>(matrix, can_reach_p, <span class="number">0</span>, i);    <span class="comment">//从上面开始搜索</span></span><br><span class="line">        <span class="built_in">dfs</span>(matrix, can_reach_a, m - <span class="number">1</span>, i);   <span class="comment">//从下面开始搜索</span></span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; m; i++) &#123;</span><br><span class="line">        <span class="keyword">for</span> (<span class="keyword">int</span> j = <span class="number">0</span>; j &lt; n; ++j) &#123;</span><br><span class="line">            <span class="keyword">if</span> (can_reach_p[i][j] &amp;&amp; can_reach_a[i][j]) &#123;</span><br><span class="line">                ans.<span class="built_in">push_back</span>(vector&lt;<span class="keyword">int</span>&gt;&#123;i, j&#125;);      <span class="comment">//两大洋都能流到，压栈</span></span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> ans;</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">// 辅函数</span></span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">dfs</span><span class="params">(<span class="keyword">const</span> vector&lt;vector&lt;<span class="keyword">int</span>&gt;&gt;&amp; matrix, vector&lt;vector&lt;<span class="keyword">bool</span>&gt;&gt;&amp; can_reach,<span class="keyword">int</span> r, <span class="keyword">int</span> c)</span> </span>&#123;</span><br><span class="line">    <span class="keyword">if</span> (can_reach[r][c]) &#123;</span><br><span class="line">        <span class="keyword">return</span>;</span><br><span class="line">    &#125;</span><br><span class="line">    can_reach[r][c] = <span class="literal">true</span>;   <span class="comment">//满足条件(找到最高点即退出循环，可以先置&quot;true&quot;);</span></span><br><span class="line">    <span class="keyword">int</span> x, y;</span><br><span class="line">    <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; <span class="number">4</span>; ++i) &#123;</span><br><span class="line">        x = r + direction[i], y = c + direction[i+<span class="number">1</span>];</span><br><span class="line">        <span class="keyword">if</span> (x &gt;= <span class="number">0</span> &amp;&amp; x &lt; matrix.<span class="built_in">size</span>()</span><br><span class="line">            &amp;&amp; y &gt;= <span class="number">0</span> &amp;&amp; y &lt; matrix[<span class="number">0</span>].<span class="built_in">size</span>() &amp;&amp;</span><br><span class="line">            matrix[r][c] &lt;= matrix[x][y]) &#123;</span><br><span class="line">            <span class="built_in">dfs</span>(matrix, can_reach, x, y);  <span class="comment">//判断条件为：边界判断以及最高点条件判断</span></span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h2 id="回溯法"><a href="#回溯法" class="headerlink" title="回溯法"></a>回溯法</h2><blockquote>
+<p>[修改当前节点状态]→[递归子节点]→[回改当前节点 状态]。         此路不通，修改之前一步的状态，回退一步，继续搜索。</p>
+</blockquote>
+<h3 id="1、全排列"><a href="#1、全排列" class="headerlink" title="1、全排列"></a>1、全排列</h3><p>[1,2,3]  的可能排列方式 ，题解可以采用树形结构：</p>
+<p><img src="https://raw.githubusercontent.com/Goku404/PicGo/main/img/%E5%85%A8%E6%8E%92%E5%88%97.png" alt="全排列"></p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 主函数</span></span><br><span class="line">vector&lt;vector&lt;<span class="keyword">int</span>&gt;&gt; <span class="built_in">permute</span>(vector&lt;<span class="keyword">int</span>&gt;&amp; nums) &#123;</span><br><span class="line">    vector&lt;vector&lt;<span class="keyword">int</span>&gt;&gt; ans;</span><br><span class="line">    <span class="built_in">backtracking</span>(nums, <span class="number">0</span>, ans);</span><br><span class="line">    <span class="keyword">return</span> ans;</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">// 辅函数</span></span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">backtracking</span><span class="params">(vector&lt;<span class="keyword">int</span>&gt; &amp;nums, <span class="keyword">int</span> level, vector&lt;vector&lt;<span class="keyword">int</span>&gt;&gt; &amp;ans)</span> </span>&#123;</span><br><span class="line">    <span class="keyword">if</span> (level == nums.<span class="built_in">size</span>() - <span class="number">1</span>) &#123;</span><br><span class="line">        ans.<span class="built_in">push_back</span>(nums);</span><br><span class="line">        <span class="keyword">return</span>;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">for</span> (<span class="keyword">int</span> i = level; i &lt; nums.<span class="built_in">size</span>(); i++) &#123;</span><br><span class="line">        <span class="built_in">swap</span>(nums[i], nums[level]); <span class="comment">// 修改当前节点状态</span></span><br><span class="line">        <span class="built_in">backtracking</span>(nums, level+<span class="number">1</span>, ans); <span class="comment">// 递归子节点</span></span><br><span class="line">        <span class="built_in">swap</span>(nums[i], nums[level]); <span class="comment">// 回改当前节点状态</span></span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>思路：</p>
+<p>1、level 为树的层次，递归的终止条件为：level == nums.size() -1,到树底部终结递归</p>
+<p>2、for循环中的 level 和 level+1 ，每次递归都会随着树的深度增加而发生变化，但是始终没有改变值。(栈空间的临时存储)。</p>
+<p>3、过程模拟:  第一棵树： i = 0,level=0 , 即[1,2,3],进行交换。子树里面,level增加，i又要从level到nums.size()-1来分配情况。第一个确定，依据 level 来交换情况</p>
+<p>4、i+1 的时候要回退一步(回到根节点来进行回溯)。在修改结点，递归后面回退根节点的状态，即swap(nums[i],nums[level]);</p>
+<h3 id="2、组合"><a href="#2、组合" class="headerlink" title="2、组合"></a>2、组合</h3><p>Input: n = 4, k = 2 </p>
+<p>Output: [[2,4], [3,4], [2,3], [1,2], [1,3], [1,4]]</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 主函数</span></span><br><span class="line">vector&lt;vector&lt;<span class="keyword">int</span>&gt;&gt; <span class="built_in">combine</span>(<span class="keyword">int</span> n, <span class="keyword">int</span> k) &#123;</span><br><span class="line">    vector&lt;vector&lt;<span class="keyword">int</span>&gt;&gt; ans;  <span class="comment">//最后输出数据</span></span><br><span class="line">    <span class="function">vector&lt;<span class="keyword">int</span>&gt; <span class="title">comb</span><span class="params">(k, <span class="number">0</span>)</span></span>;</span><br><span class="line">    <span class="keyword">int</span> count = <span class="number">0</span>;</span><br><span class="line">    <span class="built_in">backtracking</span>(ans, comb, count, <span class="number">1</span>, n, k);  <span class="comment">//count 计算深度,comb临时两个[a,b]数组，&quot;1&quot;为初始位置开始也可看做深度</span></span><br><span class="line">    <span class="comment">//count作为数组的编号取值</span></span><br><span class="line">    <span class="keyword">return</span> ans;</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">// 辅函数</span></span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">backtracking</span><span class="params">(vector&lt;vector&lt;<span class="keyword">int</span>&gt;&gt;&amp; ans, vector&lt;<span class="keyword">int</span>&gt;&amp; comb, <span class="keyword">int</span>&amp; count, <span class="keyword">int</span></span></span></span><br><span class="line"><span class="function"><span class="params">                  pos, <span class="keyword">int</span> n, <span class="keyword">int</span> k)</span> </span>&#123;</span><br><span class="line">    <span class="keyword">if</span> (count == k) &#123;</span><br><span class="line">        ans.<span class="built_in">push_back</span>(comb);</span><br><span class="line">        <span class="keyword">return</span>;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">for</span> (<span class="keyword">int</span> i = pos; i &lt;= n; ++i) &#123;</span><br><span class="line">        comb[count++] = i; <span class="comment">// 修改当前节点状态</span></span><br><span class="line">        <span class="built_in">backtracking</span>(ans, comb, count, i + <span class="number">1</span>, n, k); <span class="comment">// 递归子节点</span></span><br><span class="line">        --count; <span class="comment">// 回改当前节点状态</span></span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p><img src="https://raw.githubusercontent.com/Goku404/PicGo/main/img/%E7%BB%84%E5%90%88.png"></p>
+<h3 id="3、字符串搜索"><a href="#3、字符串搜索" class="headerlink" title="3、字符串搜索"></a>3、字符串搜索</h3><p>Input: word = “ABCCED”, board = [[’A’,’B’,’C’,’E’],</p>
+<p>​                                                        [’S’,’F’,’C’,’S’], </p>
+<p>​                                                        [’A’,’D’,’E’,’E’]] </p>
+<p>Output: true</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 主函数</span></span><br><span class="line"><span class="function"><span class="keyword">bool</span> <span class="title">exist</span><span class="params">(vector&lt;vector&lt;<span class="keyword">char</span>&gt;&gt;&amp; board, string word)</span> </span>&#123;</span><br><span class="line">    <span class="keyword">if</span> (board.<span class="built_in">empty</span>()) <span class="keyword">return</span> <span class="literal">false</span>;</span><br><span class="line">    <span class="keyword">int</span> m = board.<span class="built_in">size</span>(), n = board[<span class="number">0</span>].<span class="built_in">size</span>();</span><br><span class="line">    vector&lt;vector&lt;<span class="keyword">bool</span>&gt;&gt; <span class="built_in">visited</span>(m, vector&lt;<span class="keyword">bool</span>&gt;(n, <span class="literal">false</span>));</span><br><span class="line">    <span class="keyword">bool</span> find = <span class="literal">false</span>;</span><br><span class="line">    <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; m; ++i) &#123;</span><br><span class="line">        <span class="keyword">for</span> (<span class="keyword">int</span> j = <span class="number">0</span>; j &lt; n; ++j) &#123;</span><br><span class="line">            <span class="built_in">backtracking</span>(i, j, board, word, find, visited, <span class="number">0</span>);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> find;</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">// 辅函数</span></span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">backtracking</span><span class="params">(<span class="keyword">int</span> i, <span class="keyword">int</span> j, vector&lt;vector&lt;<span class="keyword">char</span>&gt;&gt;&amp; board, string&amp; word, <span class="keyword">bool</span></span></span></span><br><span class="line"><span class="function"><span class="params">                  &amp; find, vector&lt;vector&lt;<span class="keyword">bool</span>&gt;&gt;&amp; visited, <span class="keyword">int</span> pos)</span> </span>&#123;</span><br><span class="line">    <span class="keyword">if</span> (i &lt; <span class="number">0</span> || i &gt;= board.<span class="built_in">size</span>() || j &lt; <span class="number">0</span> || j &gt;= board[<span class="number">0</span>].<span class="built_in">size</span>()) &#123;</span><br><span class="line">        <span class="keyword">return</span>;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">if</span> (visited[i][j] || find || board[i][j] != word[pos]) &#123;</span><br><span class="line">        <span class="keyword">return</span>;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">if</span> (pos == word.<span class="built_in">size</span>() - <span class="number">1</span>) &#123;</span><br><span class="line">        find = <span class="literal">true</span>;</span><br><span class="line">        <span class="keyword">return</span>;</span><br><span class="line">    &#125;</span><br><span class="line">    visited[i][j] = <span class="literal">true</span>; <span class="comment">// 修改当前节点状态</span></span><br><span class="line">    <span class="comment">// 递归子节点</span></span><br><span class="line">    <span class="built_in">backtracking</span>(i + <span class="number">1</span>, j, board, word, find, visited, pos + <span class="number">1</span>);</span><br><span class="line">    <span class="built_in">backtracking</span>(i - <span class="number">1</span>, j, board, word, find, visited, pos + <span class="number">1</span>);</span><br><span class="line">    <span class="built_in">backtracking</span>(i, j + <span class="number">1</span>, board, word, find, visited, pos + <span class="number">1</span>);</span><br><span class="line">    <span class="built_in">backtracking</span>(i, j - <span class="number">1</span>, board, word, find, visited, pos + <span class="number">1</span>);</span><br><span class="line">    visited[i][j] = <span class="literal">false</span>; <span class="comment">// 回改当前节点状态</span></span><br><span class="line">&#125;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<h2 id="广度优先搜索-BFS"><a href="#广度优先搜索-BFS" class="headerlink" title="广度优先搜索(BFS)"></a>广度优先搜索(BFS)</h2><p>广度优先搜索(BFS)采用先进先出的队列结构，深度优先采用先进后出的栈结构</p>
+<h3 id="1、两个岛屿最小距离"><a href="#1、两个岛屿最小距离" class="headerlink" title="1、两个岛屿最小距离"></a>1、两个岛屿最小距离</h3><p>(深度优先查找一个岛屿的位置，全部置为”2” , 接着从岛屿的各个周围遍历，直到找到另一个岛屿，即是最短距离)</p>
+<p>Input: </p>
+<p>​          [[1,1,1,1,1], </p>
+<p>​            [1,0,0,0,1], </p>
+<p>​            [1,0,1,0,1], </p>
+<p>​            [1,0,0,0,1], </p>
+<p>​            [1,1,1,1,1]] </p>
+<p>Output: 1</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br></pre></td><td class="code"><pre><span class="line">vector&lt;<span class="keyword">int</span>&gt; direction&#123;<span class="number">-1</span>, <span class="number">0</span>, <span class="number">1</span>, <span class="number">0</span>, <span class="number">-1</span>&#125;;</span><br><span class="line"><span class="comment">// 主函数</span></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">shortestBridge</span><span class="params">(vector&lt;vector&lt;<span class="keyword">int</span>&gt;&gt;&amp; grid)</span> </span>&#123;</span><br><span class="line">    <span class="keyword">int</span> m = grid.<span class="built_in">size</span>(), n = grid[<span class="number">0</span>].<span class="built_in">size</span>();</span><br><span class="line">    queue&lt;pair&lt;<span class="keyword">int</span>, <span class="keyword">int</span>&gt;&gt; points;</span><br><span class="line">    <span class="comment">// dfs寻找第一个岛屿，并把1全部赋值为2</span></span><br><span class="line">    <span class="keyword">bool</span> flipped = <span class="literal">false</span>;</span><br><span class="line">    <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; m; ++i) &#123;</span><br><span class="line">        <span class="keyword">if</span> (flipped) <span class="keyword">break</span>;</span><br><span class="line">        <span class="keyword">for</span> (<span class="keyword">int</span> j = <span class="number">0</span>; j &lt; n; ++j) &#123;</span><br><span class="line">            <span class="keyword">if</span> (grid[i][j] == <span class="number">1</span>) &#123;</span><br><span class="line">                <span class="built_in">dfs</span>(points, grid, m, n, i, j);</span><br><span class="line">                flipped = <span class="literal">true</span>;</span><br><span class="line">                <span class="keyword">break</span>;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="comment">// bfs寻找第二个岛屿，并把过程中经过的0赋值为2</span></span><br><span class="line">    <span class="keyword">int</span> x, y;</span><br><span class="line">    <span class="keyword">int</span> level = <span class="number">0</span>;</span><br><span class="line">    <span class="keyword">while</span> (!points.<span class="built_in">empty</span>())&#123;</span><br><span class="line">        ++level;</span><br><span class="line">        <span class="keyword">int</span> n_points = points.<span class="built_in">size</span>();   <span class="comment">//n个临近海域搜索，完结后进入第二级海域</span></span><br><span class="line">        <span class="keyword">while</span> (n_points--) &#123;</span><br><span class="line">            <span class="keyword">auto</span> [r, c] = points.<span class="built_in">front</span>();</span><br><span class="line">            points.<span class="built_in">pop</span>();</span><br><span class="line">            <span class="keyword">for</span> (<span class="keyword">int</span> k = <span class="number">0</span>; k &lt; <span class="number">4</span>; ++k) &#123;</span><br><span class="line">                x = r + direction[k], y = c + direction[k+<span class="number">1</span>];</span><br><span class="line">                <span class="keyword">if</span> (x &gt;= <span class="number">0</span> &amp;&amp; y &gt;= <span class="number">0</span> &amp;&amp; x &lt; m &amp;&amp; y &lt; n) &#123;</span><br><span class="line">                    <span class="keyword">if</span> (grid[x][y] == <span class="number">2</span>) &#123;</span><br><span class="line">                        <span class="keyword">continue</span>;</span><br><span class="line">                    &#125;</span><br><span class="line">                    <span class="keyword">if</span> (grid[x][y] == <span class="number">1</span>) &#123;</span><br><span class="line">                        <span class="keyword">return</span> level;</span><br><span class="line">                    &#125;</span><br><span class="line">                    points.<span class="built_in">push</span>(&#123;x, y&#125;);</span><br><span class="line">                    grid[x][y] = <span class="number">2</span>;</span><br><span class="line">                &#125;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">// 辅函数</span></span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">dfs</span><span class="params">(queue&lt;pair&lt;<span class="keyword">int</span>, <span class="keyword">int</span>&gt;&gt;&amp; points, vector&lt;vector&lt;<span class="keyword">int</span>&gt;&gt;&amp; grid, <span class="keyword">int</span> m, <span class="keyword">int</span> n</span></span></span><br><span class="line"><span class="function"><span class="params">         , <span class="keyword">int</span> i, <span class="keyword">int</span> j)</span> </span>&#123;</span><br><span class="line">    <span class="keyword">if</span> (i &lt; <span class="number">0</span> || j &lt; <span class="number">0</span> || i == m || j == n || grid[i][j] == <span class="number">2</span>) &#123;</span><br><span class="line">        <span class="keyword">return</span>;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">if</span> (grid[i][j] == <span class="number">0</span>) &#123;</span><br><span class="line">        points.<span class="built_in">push</span>(&#123;i, j&#125;);</span><br><span class="line">        <span class="keyword">return</span>;</span><br><span class="line">    &#125;</span><br><span class="line">    grid[i][j] = <span class="number">2</span>;</span><br><span class="line">    <span class="built_in">dfs</span>(points, grid, m, n, i - <span class="number">1</span>, j);</span><br><span class="line">    <span class="built_in">dfs</span>(points, grid, m, n, i + <span class="number">1</span>, j);</span><br><span class="line">    <span class="built_in">dfs</span>(points, grid, m, n, i, j - <span class="number">1</span>);</span><br><span class="line">    <span class="built_in">dfs</span>(points, grid, m, n, i, j + <span class="number">1</span>);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<!--points队列里面存的是临近第一个小岛的海域-->
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://example.com/2021/05/08/%E6%90%9C%E7%B4%A2%E7%AE%97%E6%B3%95/" data-id="ckoff5mxn000020vo597o7p06" class="article-share-link">
+        Share
+      </a>
+      
+<ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E5%8A%9B%E6%89%A3%E7%AE%97%E6%B3%95-C/" rel="tag">力扣算法-C++</a></li></ul>
+
+    </footer>
+
+  </div>
+
+  
+  
+<nav class="article-nav">
+  
+  
+  <a href="/2021/05/08/%E4%BA%8C%E5%88%86%E6%9F%A5%E6%89%BE/" class="article-nav-link">
+    <strong class="article-nav-caption">Older</strong>
+    <div class="article-nav-title">二分查找</div>
+  </a>
+  
+</nav>
+
+  
+
+  
+  
+  
+  
+
+</article>
+</section>
+    <footer class="footer">
+  <div class="outer">
+    <div class="float-right">
+      <ul class="list-inline">
+  
+  <li><i class="fe fe-smile-alt"></i> <span id="busuanzi_value_site_uv"></span></li>
+  
+  <li><i class="fe fe-bookmark"></i> <span id="busuanzi_value_page_pv"></span></li>
+  
+</ul>
+    </div>
+    <ul class="list-inline">
+      <li>lvsss &copy; 2021</li>
+      
+        <li>京ICP备17054916号-2</li>
+      
+      <li>Powered by <a href="http://hexo.io/" target="_blank">Hexo</a></li>
+      <li>theme  <a target="_blank" rel="noopener" href="https://github.com/zhwangart/hexo-theme-ocean">Ocean</a></li>
+    </ul>
+  </div>
+</footer>
+  </main>
+  <aside class="sidebar">
+    <button class="navbar-toggle"></button>
+<nav class="navbar">
+  
+  <div class="logo">
+    <a href="/"><img src="/images/hexo.svg" alt="lvsss"></a>
+  </div>
+  
+  <ul class="nav nav-main">
+    
+    <li class="nav-item">
+      <a class="nav-item-link" href="/">Home</a>
+    </li>
+    
+    <li class="nav-item">
+      <a class="nav-item-link" href="/archives">Archives</a>
+    </li>
+    
+    <li class="nav-item">
+      <a class="nav-item-link" href="/gallery">Gallery</a>
+    </li>
+    
+    <li class="nav-item">
+      <a class="nav-item-link" href="/about">About</a>
+    </li>
+    
+    <li class="nav-item">
+      <a class="nav-item-link nav-item-search" title="Search">
+        <i class="fe fe-search"></i>
+        Search
+      </a>
+    </li>
+  </ul>
+</nav>
+<nav class="navbar navbar-bottom">
+  <ul class="nav">
+    <li class="nav-item">
+      <div class="totop" id="totop">
+  <i class="fe fe-rocket"></i>
+</div>
+    </li>
+    <li class="nav-item">
+      
+      <a class="nav-item-link" target="_blank" href="/atom.xml" title="RSS Feed">
+        <i class="fe fe-feed"></i>
+      </a>
+      
+    </li>
+  </ul>
+</nav>
+<div class="search-form-wrap">
+  <div class="local-search local-search-plugin">
+  <input type="search" id="local-search-input" class="local-search-input" placeholder="Search...">
+  <div id="local-search-result" class="local-search-result"></div>
+</div>
+</div>
+  </aside>
+  
+<script src="/js/jquery-2.0.3.min.js"></script>
+
+
+<script src="/js/jquery.justifiedGallery.min.js"></script>
+
+
+<script src="/js/lazyload.min.js"></script>
+
+
+<script src="/js/busuanzi-2.3.pure.min.js"></script>
+
+
+
+<script src="/fancybox/jquery.fancybox.min.js"></script>
+
+
+
+
+<script src="/js/copybtn.js"></script>
+
+
+
+
+
+<script src="/js/tocbot.min.js"></script>
+
+<script>
+  // Tocbot_v4.7.0  http://tscanlin.github.io/tocbot/
+  tocbot.init({
+    tocSelector: '.tocbot',
+    contentSelector: '.article-entry',
+    headingSelector: 'h1, h2, h3, h4, h5, h6',
+    hasInnerContainers: true,
+    scrollSmooth: true,
+    positionFixedSelector: '.tocbot',
+    positionFixedClass: 'is-position-fixed',
+    fixedSidebarOffset: 'auto',
+  });
+</script>
+
+
+
+<script src="/js/ocean.js"></script>
+
+
+
+</body>
+
+</html>

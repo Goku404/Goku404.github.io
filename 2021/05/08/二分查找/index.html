@@ -1,0 +1,260 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+  
+  
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <title>
+    二分查找 |
+    
+    lvsss</title>
+  
+  <link rel="shortcut icon" href="/favicon.ico">
+  
+  
+<link rel="stylesheet" href="/css/style.css">
+
+  
+  
+<link rel="stylesheet" href="/fancybox/jquery.fancybox.min.css">
+
+  
+  
+<script src="/js/pace.min.js"></script>
+
+<meta name="generator" content="Hexo 5.4.0"></head>
+
+<body>
+  <main class="content">
+    <section class="outer">
+  <article id="post-二分查找" class="article article-type-post" itemscope
+  itemprop="blogPost" data-scroll-reveal>
+
+  <div class="article-inner">
+    
+    <header class="article-header">
+      
+
+<h1 class="article-title" itemprop="name">
+  二分查找
+</h1>
+
+
+
+    </header>
+    
+
+    
+    <div class="article-meta">
+      <a href="/2021/05/08/%E4%BA%8C%E5%88%86%E6%9F%A5%E6%89%BE/" class="article-date">
+  <time datetime="2021-05-08T06:24:06.000Z" itemprop="datePublished">2021-05-08</time>
+</a>
+      
+    </div>
+    
+
+    
+    
+<div class="tocbot"></div>
+
+    
+
+    <div class="article-entry" itemprop="articleBody">
+      
+      
+      
+      <h2 id="二分查找"><a href="#二分查找" class="headerlink" title="二分查找"></a>二分查找</h2><p>1、有序数列的查找</p>
+<p>返回元素第一次出现的位置和最后一次出现的位置</p>
+<span id="more"></span>
+
+<h3 id=""><a href="#" class="headerlink" title=""></a></h3><figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">mylower_bound</span><span class="params">(vector&lt;<span class="keyword">int</span>&gt;&amp; nums, <span class="keyword">int</span> target)</span> </span>&#123;</span><br><span class="line">	<span class="keyword">int</span> l = <span class="number">0</span>, r = nums.<span class="built_in">size</span>(), mid;</span><br><span class="line">	<span class="keyword">while</span> (l &lt; r) &#123;</span><br><span class="line">		mid = l + (r - l) / <span class="number">2</span>;</span><br><span class="line">		<span class="keyword">if</span> (nums[mid] &gt;= target) &#123;</span><br><span class="line">			r = mid;</span><br><span class="line">		&#125;</span><br><span class="line">		<span class="keyword">else</span> &#123;</span><br><span class="line">			l = mid + <span class="number">1</span>;</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="keyword">return</span> l;</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">// 辅函数</span></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">myupper_bound</span><span class="params">(vector&lt;<span class="keyword">int</span>&gt;&amp; nums, <span class="keyword">int</span> target)</span> </span>&#123;</span><br><span class="line">	<span class="keyword">int</span> l = <span class="number">0</span>, r = nums.<span class="built_in">size</span>(), mid;</span><br><span class="line">	<span class="keyword">while</span> (l &lt; r) &#123;</span><br><span class="line">		mid = l + (r - l) / <span class="number">2</span>;</span><br><span class="line">		<span class="keyword">if</span> (nums[mid] &gt; target) &#123;</span><br><span class="line">			r = mid;</span><br><span class="line">		&#125;</span><br><span class="line">		<span class="keyword">else</span> &#123;</span><br><span class="line">			l = mid + <span class="number">1</span>;</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="keyword">return</span> l;</span><br><span class="line">&#125;</span><br><span class="line"><span class="function">vector&lt;<span class="keyword">int</span>&gt; <span class="title">searchRange</span><span class="params">(vector&lt;<span class="keyword">int</span>&gt;&amp; nums, <span class="keyword">int</span> target)</span> </span>&#123;</span><br><span class="line">	<span class="keyword">if</span> (nums.<span class="built_in">empty</span>()) <span class="keyword">return</span> vector&lt;<span class="keyword">int</span>&gt;&#123;<span class="number">-1</span>, <span class="number">-1</span>&#125;;</span><br><span class="line">	<span class="keyword">int</span> lower = <span class="built_in">mylower_bound</span>(nums, target);</span><br><span class="line">	<span class="keyword">int</span> upper = <span class="built_in">myupper_bound</span>(nums, target) - <span class="number">1</span>; <span class="comment">// 这里需要减1位</span></span><br><span class="line">	<span class="keyword">if</span> (lower == nums.<span class="built_in">size</span>() || nums[lower] != target) &#123;</span><br><span class="line">		<span class="keyword">return</span> vector&lt;<span class="keyword">int</span>&gt;&#123;<span class="number">-1</span>, <span class="number">-1</span>&#125;;</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="keyword">return</span> vector&lt;<span class="keyword">int</span>&gt;&#123;lower, upper&#125;;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">	<span class="keyword">int</span> j;</span><br><span class="line">	vector&lt;<span class="keyword">int</span>&gt; v1&#123;<span class="number">1</span>,<span class="number">2</span>,<span class="number">3</span>,<span class="number">4</span>,<span class="number">5</span>,<span class="number">6</span>,<span class="number">7</span>,<span class="number">8</span>,<span class="number">9</span>,<span class="number">10</span>&#125;;</span><br><span class="line">	<span class="keyword">int</span> i = <span class="number">7</span>;</span><br><span class="line">	vector&lt;<span class="keyword">int</span>&gt;v2 = <span class="built_in">searchRange</span>(v1,i);</span><br><span class="line">	cout &lt;&lt; <span class="string">&quot;含有 7 的区间为:&quot;</span> &lt;&lt; endl;</span><br><span class="line">	<span class="keyword">for</span> (j = <span class="number">0</span>; j &lt; v2.<span class="built_in">size</span>(); j++)</span><br><span class="line">	&#123;</span><br><span class="line">		cout &lt;&lt; v2[j]&lt;&lt;<span class="string">&quot; &quot;</span>;</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h3 id="2、二分查找的开区间和闭区间"><a href="#2、二分查找的开区间和闭区间" class="headerlink" title="2、二分查找的开区间和闭区间"></a>2、二分查找的开区间和闭区间</h3><p>一般查找分为 左闭右开 和 左闭右闭两种情况：</p>
+<p><a target="_blank" rel="noopener" href="https://blog.csdn.net/blue_coffeei/article/details/91476091">https://blog.csdn.net/blue_coffeei/article/details/91476091</a></p>
+<h3 id="3、牛顿迭代法（开平方）"><a href="#3、牛顿迭代法（开平方）" class="headerlink" title="3、牛顿迭代法（开平方）"></a>3、牛顿迭代法（开平方）</h3><p>其公式为 xn+1 = xn − f (xn)/ f ′ (xn)。给 定 f (x) = x 2 − a = 0，这里的迭代公式为 xn+1 = (xn + a/xn)/2，其代码如下。</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">mySqrt</span><span class="params">(<span class="keyword">int</span> a)</span> </span>&#123;</span><br><span class="line">		<span class="keyword">long</span> x = a;</span><br><span class="line">		<span class="keyword">while</span> (x * x &gt; a) &#123;</span><br><span class="line">			x = (x + a / x) / <span class="number">2</span>;</span><br><span class="line">		&#125;</span><br><span class="line">		<span class="keyword">return</span> x;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h3 id="4、旋转数组查找法"><a href="#4、旋转数组查找法" class="headerlink" title="4、旋转数组查找法"></a>4、旋转数组查找法</h3><p>1.查找旋转数组的最小值</p>
+<p>Input: nums = [2,5,6,0,0,1,2],</p>
+<p>思路：三种情况</p>
+<p>1、nums [mid] &lt; nums [r] =&gt; mid 位于右区间，右区间有序</p>
+<p>2、nums[mid] &gt; nums [r] =&gt; mid 位于左区间，左区间有序</p>
+<p>3、nums[mid] = nums[r] =&gt; 重复的值，r - -</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">left, right = <span class="number">0</span>,<span class="built_in">len</span>(numbers-<span class="number">1</span>)</span><br><span class="line"><span class="keyword">while</span> left&lt;right:</span><br><span class="line">     mid = (left+right) // <span class="number">2</span></span><br><span class="line">    <span class="keyword">if</span> numbers[mid] &gt; numbers[right]; <span class="string">&quot;&quot;&quot;位于左区间&quot;&quot;&quot;</span></span><br><span class="line">       left = mid+<span class="number">1</span>;</span><br><span class="line">    <span class="keyword">elif</span> numbers[mid] &lt; numbers[right]; <span class="string">&quot;&quot;&quot;位于右区间&quot;&quot;&quot;</span></span><br><span class="line">       right = mid;    </span><br><span class="line">    <span class="keyword">else</span>:</span><br><span class="line">        right -=<span class="number">1</span>;</span><br><span class="line">    <span class="keyword">return</span> numbers[left]</span><br></pre></td></tr></table></figure>
+
+<!--因为是查找最小值，区间的收缩会不一样-->
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://example.com/2021/05/08/%E4%BA%8C%E5%88%86%E6%9F%A5%E6%89%BE/" data-id="ckofery7e0008wsvo5qsxbdfb" class="article-share-link">
+        Share
+      </a>
+      
+<ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E5%8A%9B%E6%89%A3%E7%AE%97%E6%B3%95-C/" rel="tag">力扣算法-C++</a></li></ul>
+
+    </footer>
+
+  </div>
+
+  
+  
+<nav class="article-nav">
+  
+  <a href="/2021/05/08/%E6%90%9C%E7%B4%A2%E7%AE%97%E6%B3%95/" class="article-nav-link">
+    <strong class="article-nav-caption">Newer</strong>
+    <div class="article-nav-title">
+      
+      搜索算法
+      
+    </div>
+  </a>
+  
+  
+  <a href="/2021/04/05/hello-world/" class="article-nav-link">
+    <strong class="article-nav-caption">Older</strong>
+    <div class="article-nav-title">Hello World</div>
+  </a>
+  
+</nav>
+
+  
+
+  
+  
+  
+  
+
+</article>
+</section>
+    <footer class="footer">
+  <div class="outer">
+    <div class="float-right">
+      <ul class="list-inline">
+  
+  <li><i class="fe fe-smile-alt"></i> <span id="busuanzi_value_site_uv"></span></li>
+  
+  <li><i class="fe fe-bookmark"></i> <span id="busuanzi_value_page_pv"></span></li>
+  
+</ul>
+    </div>
+    <ul class="list-inline">
+      <li>lvsss &copy; 2021</li>
+      
+        <li>京ICP备17054916号-2</li>
+      
+      <li>Powered by <a href="http://hexo.io/" target="_blank">Hexo</a></li>
+      <li>theme  <a target="_blank" rel="noopener" href="https://github.com/zhwangart/hexo-theme-ocean">Ocean</a></li>
+    </ul>
+  </div>
+</footer>
+  </main>
+  <aside class="sidebar">
+    <button class="navbar-toggle"></button>
+<nav class="navbar">
+  
+  <div class="logo">
+    <a href="/"><img src="/images/hexo.svg" alt="lvsss"></a>
+  </div>
+  
+  <ul class="nav nav-main">
+    
+    <li class="nav-item">
+      <a class="nav-item-link" href="/">Home</a>
+    </li>
+    
+    <li class="nav-item">
+      <a class="nav-item-link" href="/archives">Archives</a>
+    </li>
+    
+    <li class="nav-item">
+      <a class="nav-item-link" href="/gallery">Gallery</a>
+    </li>
+    
+    <li class="nav-item">
+      <a class="nav-item-link" href="/about">About</a>
+    </li>
+    
+    <li class="nav-item">
+      <a class="nav-item-link nav-item-search" title="Search">
+        <i class="fe fe-search"></i>
+        Search
+      </a>
+    </li>
+  </ul>
+</nav>
+<nav class="navbar navbar-bottom">
+  <ul class="nav">
+    <li class="nav-item">
+      <div class="totop" id="totop">
+  <i class="fe fe-rocket"></i>
+</div>
+    </li>
+    <li class="nav-item">
+      
+      <a class="nav-item-link" target="_blank" href="/atom.xml" title="RSS Feed">
+        <i class="fe fe-feed"></i>
+      </a>
+      
+    </li>
+  </ul>
+</nav>
+<div class="search-form-wrap">
+  <div class="local-search local-search-plugin">
+  <input type="search" id="local-search-input" class="local-search-input" placeholder="Search...">
+  <div id="local-search-result" class="local-search-result"></div>
+</div>
+</div>
+  </aside>
+  
+<script src="/js/jquery-2.0.3.min.js"></script>
+
+
+<script src="/js/jquery.justifiedGallery.min.js"></script>
+
+
+<script src="/js/lazyload.min.js"></script>
+
+
+<script src="/js/busuanzi-2.3.pure.min.js"></script>
+
+
+
+<script src="/fancybox/jquery.fancybox.min.js"></script>
+
+
+
+
+<script src="/js/copybtn.js"></script>
+
+
+
+
+
+<script src="/js/tocbot.min.js"></script>
+
+<script>
+  // Tocbot_v4.7.0  http://tscanlin.github.io/tocbot/
+  tocbot.init({
+    tocSelector: '.tocbot',
+    contentSelector: '.article-entry',
+    headingSelector: 'h1, h2, h3, h4, h5, h6',
+    hasInnerContainers: true,
+    scrollSmooth: true,
+    positionFixedSelector: '.tocbot',
+    positionFixedClass: 'is-position-fixed',
+    fixedSidebarOffset: 'auto',
+  });
+</script>
+
+
+
+<script src="/js/ocean.js"></script>
+
+
+
+</body>
+
+</html>
