@@ -81,7 +81,8 @@
 <p>第二种判断边界的方法：</p>
 <figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">maxAreaOfIsland</span><span class="params">(vector&lt;vector&lt;<span class="keyword">int</span>&gt;&gt;&amp; grid)</span> </span>&#123;</span><br><span class="line">    <span class="keyword">if</span> (grid.<span class="built_in">empty</span>() || grid[<span class="number">0</span>].<span class="built_in">empty</span>()) <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">    <span class="keyword">int</span> max_area = <span class="number">0</span>;</span><br><span class="line">    <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; grid.<span class="built_in">size</span>(); ++i) &#123;</span><br><span class="line">        <span class="keyword">for</span> (<span class="keyword">int</span> j = <span class="number">0</span>; j &lt; grid[<span class="number">0</span>].<span class="built_in">size</span>(); ++j) &#123;</span><br><span class="line">            max_area = <span class="built_in">max</span>(max_area, <span class="built_in">dfs</span>(grid, i, j));</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> max_area;</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">// 辅函数</span></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">dfs</span><span class="params">(vector&lt;vector&lt;<span class="keyword">int</span>&gt;&gt;&amp; grid, <span class="keyword">int</span> r, <span class="keyword">int</span> c)</span> </span>&#123;</span><br><span class="line">    <span class="keyword">if</span> (r &lt; <span class="number">0</span> || r &gt;= grid.<span class="built_in">size</span>() ||c &lt; <span class="number">0</span> || c &gt;= grid[<span class="number">0</span>].<span class="built_in">size</span>() || grid[r][c] == <span class="number">0</span>) &#123;</span><br><span class="line">        <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">    &#125;</span><br><span class="line">    grid[r][c] = <span class="number">0</span>;</span><br><span class="line">    <span class="keyword">return</span> <span class="number">1</span> + <span class="built_in">dfs</span>(grid, r + <span class="number">1</span>, c) + <span class="built_in">dfs</span>(grid, r - <span class="number">1</span>, c) + <span class="built_in">dfs</span>(grid, r, c + <span class="number">1</span>) + <span class="built_in">dfs</span>(grid, r, c - <span class="number">1</span>);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
-<h4 id="栈的写法："><a href="#栈的写法：" class="headerlink" title="栈的写法："></a>栈的写法：</h4><p><img src="https://raw.githubusercontent.com/Goku404/PicGo/main/img/%E6%B0%B4%E6%B4%BC.png" alt="水洼"></p>
+<h4 id="栈的写法："><a href="#栈的写法：" class="headerlink" title="栈的写法："></a>栈的写法：</h4><p>关于图片加载的问题：上传到github ,下一篇开始采用聚合图床上传</p>
+<p><img src="https://raw.githubusercontent.com/Goku404/PicGo/main/img/%E6%B0%B4%E6%B4%BC.png" alt="水洼"></p>
 <p>思路：针对每一个入栈的元素 [r , c] 都进行4次的坐标入栈。 local_area 的累加都在判断中间。max 的 取值都在主循环</p>
 <h3 id="2、海流方向"><a href="#2、海流方向" class="headerlink" title="2、海流方向"></a>2、海流方向</h3><p><img src="https://raw.githubusercontent.com/Goku404/PicGo/main/img/%E6%B5%B7%E6%B5%81%E6%96%B9%E5%90%91.png"></p>
 <p>思路：因此我们可以反过来想，从两个大洋开始向上流，这样我们 只需要对矩形四条边进行搜索。搜索完成后，只需遍历一遍矩阵，满足条件的位置即为两个大洋 向上流都能到达的位置。</p>
@@ -138,6 +139,15 @@
   
   
 <nav class="article-nav">
+  
+  <a href="/2021/05/09/%E5%AD%A6%E4%B9%A0%E4%B9%8B%E6%97%85-1/" class="article-nav-link">
+    <strong class="article-nav-caption">Newer</strong>
+    <div class="article-nav-title">
+      
+      学习之旅(1)
+      
+    </div>
+  </a>
   
   
   <a href="/2021/05/08/%E4%BA%8C%E5%88%86%E6%9F%A5%E6%89%BE/" class="article-nav-link">
