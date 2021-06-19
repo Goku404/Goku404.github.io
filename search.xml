@@ -1,48 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
-    <title>我搬家了</title>
-    <url>/2021/05/30/%E6%88%91%E6%90%AC%E5%AE%B6%E4%BA%86/</url>
-    <content><![CDATA[<p>现在有两个博客，这个就拿来记录日常事，另外一个拿来当学习笔记用</p>
-]]></content>
-      <tags>
-        <tag>日常</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>日常事-实训(智能家居系统)</title>
-    <url>/2021/06/16/%E6%97%A5%E5%B8%B8%E4%BA%8B-2/</url>
-    <content><![CDATA[<p>为期三周的实训告一段落。</p>
-<span id="more"></span>
-
-<h1 id="完成智能家居系统"><a href="#完成智能家居系统" class="headerlink" title="完成智能家居系统"></a>完成智能家居系统</h1><h2 id="第一周"><a href="#第一周" class="headerlink" title="第一周"></a>第一周</h2><p>学习Zigbee 无线局域网 的组网技术。 </p>
-<p>开发工具包：Ztack 协议栈  软件：一个下载软件 ，一个编译软件。 以.hex文件烧录到Zigbee模块。外设有：LED灯，温度，湿度检测，按键。</p>
-<p>成品:1.一个模块作为适配器，适配器是局域网组网的原点。2、共有三种模式：适配器模式，路由器模式和终端模式  3、适配器和终端组网通信，通过串口打印信息。</p>
-<h2 id="第二周"><a href="#第二周" class="headerlink" title="第二周"></a>第二周</h2><p>学习C++基础知识。新知识点：构造函数的知识，编译器优化和不优化的区别以及指令。《Prime C++》看完，内容多而杂。后期提升多敲代码。对C++颇感兴趣</p>
-<h2 id="第三周"><a href="#第三周" class="headerlink" title="第三周"></a>第三周</h2><p>学习QT的知识。</p>
-<p>重中之重。。看完B站上的QT教程 <a href="https://www.bilibili.com/video/BV1g4411H78N?t=713&amp;p=14">https://www.bilibili.com/video/BV1g4411H78N?t=713&amp;p=14</a> </p>
-<p>如今，着重运用的技术有：信号和槽、各种组件类的运用，QT提供的服务(主要存放在.obj文件上)。-&gt;QT程序在Linux环境上的交叉编译，生成可执行文件。传输到GEC6818开发板上运行程序。</p>
-<p>总结:QT的基本概念清晰。但是，软肋就是不会折腾。室友夜以继日的卷，明显自己的基本了解完全不行&gt;__&lt; 。 外加美术功底的问题，界面设计实在不太理想。。</p>
-<h3 id="经验教训"><a href="#经验教训" class="headerlink" title="经验教训"></a>经验教训</h3><p>多多更新博客，多多上传项目到github，多多折腾</p>
-]]></content>
-      <tags>
-        <tag>日常</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>nginx那些事</title>
-    <url>/2021/06/04/nginx%E9%82%A3%E4%BA%9B%E4%BA%8B/</url>
-    <content><![CDATA[<h2 id="Nginx那些事儿"><a href="#Nginx那些事儿" class="headerlink" title="Nginx那些事儿"></a>Nginx那些事儿</h2><p>nginx简介：<strong>高性能的HTTP</strong>和<strong>反向代理Web服务器</strong>，提供各种服务 IMAP/POP3/SMTP 等等服务。</p>
-<span id="more"></span>
-
-<h3 id="反向代理"><a href="#反向代理" class="headerlink" title="反向代理"></a>反向代理</h3><p>(1)正向代理:在客户端需要配置代理服务器，通过代理服务器进行互联网访问</p>
-<p>(2)反向代理：客户端不需要配置 反向代理服务器 。 对外，反向代理服务器和目标是一个服务器</p>
-<h3 id="负载均衡"><a href="#负载均衡" class="headerlink" title="负载均衡"></a>负载均衡</h3><h3 id="动静分离"><a href="#动静分离" class="headerlink" title="动静分离"></a>动静分离</h3>]]></content>
-      <tags>
-        <tag>nginx</tag>
-      </tags>
-  </entry>
-  <entry>
     <title>QT那些事儿(1)</title>
     <url>/2021/05/15/QT%E9%82%A3%E4%BA%9B%E4%BA%8B%E5%84%BF-1/</url>
     <content><![CDATA[<h2 id="QT那些事儿（1）"><a href="#QT那些事儿（1）" class="headerlink" title="QT那些事儿（1）"></a>QT那些事儿（1）</h2><h3 id="1、QT是神马？"><a href="#1、QT是神马？" class="headerlink" title="1、QT是神马？"></a>1、QT是神马？</h3><span id="more"></span>
@@ -68,19 +26,52 @@
       </tags>
   </entry>
   <entry>
-    <title>日常事</title>
-    <url>/2021/05/11/%E6%97%A5%E5%B8%B8%E4%BA%8B/</url>
-    <content><![CDATA[<p>冲浪发现的博客</p>
+    <title>Hello World</title>
+    <url>/2021/04/05/hello-world/</url>
+    <content><![CDATA[<p>临阵磨枪一波，搞个博客。</p>
+<blockquote>
+<p>入坑教程：<a href="https://www.yunyoujun.cn/share/how-to-build-your-site/">https://www.yunyoujun.cn/share/how-to-build-your-site/</a></p>
+</blockquote>
+]]></content>
+  </entry>
+  <entry>
+    <title>nginx那些事</title>
+    <url>/2021/06/04/nginx%E9%82%A3%E4%BA%9B%E4%BA%8B/</url>
+    <content><![CDATA[<h2 id="Nginx那些事儿"><a href="#Nginx那些事儿" class="headerlink" title="Nginx那些事儿"></a>Nginx那些事儿</h2><p>nginx简介：<strong>高性能的HTTP</strong>和<strong>反向代理Web服务器</strong>，提供各种服务 IMAP/POP3/SMTP 等等服务。</p>
 <span id="more"></span>
 
-<p><img src="https://pic.imgdb.cn/item/609a400dd1a9ae528f35806c.png"></p>
-<blockquote>
-<p><a href="https://wujun234.github.io/">https://wujun234.github.io/</a></p>
-</blockquote>
-<p>有时候找些想要学的途径，杂七杂八的不好下手，非常好的知识梳理框架，康康大佬是怎么学习的</p>
-]]></content>
+<h3 id="反向代理"><a href="#反向代理" class="headerlink" title="反向代理"></a>反向代理</h3><p>(1)正向代理:在客户端需要配置代理服务器，通过代理服务器进行互联网访问</p>
+<p>(2)反向代理：客户端不需要配置 反向代理服务器 。 对外，反向代理服务器和目标是一个服务器</p>
+<h3 id="负载均衡"><a href="#负载均衡" class="headerlink" title="负载均衡"></a>负载均衡</h3><h3 id="动静分离"><a href="#动静分离" class="headerlink" title="动静分离"></a>动静分离</h3>]]></content>
       <tags>
-        <tag>日常</tag>
+        <tag>nginx</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>二分查找</title>
+    <url>/2021/05/08/%E4%BA%8C%E5%88%86%E6%9F%A5%E6%89%BE/</url>
+    <content><![CDATA[<h2 id="二分查找"><a href="#二分查找" class="headerlink" title="二分查找"></a>二分查找</h2><p>1、有序数列的查找</p>
+<p>返回元素第一次出现的位置和最后一次出现的位置</p>
+<span id="more"></span>
+
+<h3 id=""><a href="#" class="headerlink" title=""></a></h3><figure class="highlight c++"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">mylower_bound</span><span class="params">(vector&lt;<span class="keyword">int</span>&gt;&amp; nums, <span class="keyword">int</span> target)</span> </span>&#123;</span><br><span class="line">	<span class="keyword">int</span> l = <span class="number">0</span>, r = nums.<span class="built_in">size</span>(), mid;</span><br><span class="line">	<span class="keyword">while</span> (l &lt; r) &#123;</span><br><span class="line">		mid = l + (r - l) / <span class="number">2</span>;</span><br><span class="line">		<span class="keyword">if</span> (nums[mid] &gt;= target) &#123;</span><br><span class="line">			r = mid;</span><br><span class="line">		&#125;</span><br><span class="line">		<span class="keyword">else</span> &#123;</span><br><span class="line">			l = mid + <span class="number">1</span>;</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="keyword">return</span> l;</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">// 辅函数</span></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">myupper_bound</span><span class="params">(vector&lt;<span class="keyword">int</span>&gt;&amp; nums, <span class="keyword">int</span> target)</span> </span>&#123;</span><br><span class="line">	<span class="keyword">int</span> l = <span class="number">0</span>, r = nums.<span class="built_in">size</span>(), mid;</span><br><span class="line">	<span class="keyword">while</span> (l &lt; r) &#123;</span><br><span class="line">		mid = l + (r - l) / <span class="number">2</span>;</span><br><span class="line">		<span class="keyword">if</span> (nums[mid] &gt; target) &#123;</span><br><span class="line">			r = mid;</span><br><span class="line">		&#125;</span><br><span class="line">		<span class="keyword">else</span> &#123;</span><br><span class="line">			l = mid + <span class="number">1</span>;</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="keyword">return</span> l;</span><br><span class="line">&#125;</span><br><span class="line"><span class="function">vector&lt;<span class="keyword">int</span>&gt; <span class="title">searchRange</span><span class="params">(vector&lt;<span class="keyword">int</span>&gt;&amp; nums, <span class="keyword">int</span> target)</span> </span>&#123;</span><br><span class="line">	<span class="keyword">if</span> (nums.<span class="built_in">empty</span>()) <span class="keyword">return</span> vector&lt;<span class="keyword">int</span>&gt;&#123;<span class="number">-1</span>, <span class="number">-1</span>&#125;;</span><br><span class="line">	<span class="keyword">int</span> lower = <span class="built_in">mylower_bound</span>(nums, target);</span><br><span class="line">	<span class="keyword">int</span> upper = <span class="built_in">myupper_bound</span>(nums, target) - <span class="number">1</span>; <span class="comment">// 这里需要减1位</span></span><br><span class="line">	<span class="keyword">if</span> (lower == nums.<span class="built_in">size</span>() || nums[lower] != target) &#123;</span><br><span class="line">		<span class="keyword">return</span> vector&lt;<span class="keyword">int</span>&gt;&#123;<span class="number">-1</span>, <span class="number">-1</span>&#125;;</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="keyword">return</span> vector&lt;<span class="keyword">int</span>&gt;&#123;lower, upper&#125;;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">	<span class="keyword">int</span> j;</span><br><span class="line">	vector&lt;<span class="keyword">int</span>&gt; v1&#123;<span class="number">1</span>,<span class="number">2</span>,<span class="number">3</span>,<span class="number">4</span>,<span class="number">5</span>,<span class="number">6</span>,<span class="number">7</span>,<span class="number">8</span>,<span class="number">9</span>,<span class="number">10</span>&#125;;</span><br><span class="line">	<span class="keyword">int</span> i = <span class="number">7</span>;</span><br><span class="line">	vector&lt;<span class="keyword">int</span>&gt;v2 = <span class="built_in">searchRange</span>(v1,i);</span><br><span class="line">	cout &lt;&lt; <span class="string">&quot;含有 7 的区间为:&quot;</span> &lt;&lt; endl;</span><br><span class="line">	<span class="keyword">for</span> (j = <span class="number">0</span>; j &lt; v2.<span class="built_in">size</span>(); j++)</span><br><span class="line">	&#123;</span><br><span class="line">		cout &lt;&lt; v2[j]&lt;&lt;<span class="string">&quot; &quot;</span>;</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h3 id="2、二分查找的开区间和闭区间"><a href="#2、二分查找的开区间和闭区间" class="headerlink" title="2、二分查找的开区间和闭区间"></a>2、二分查找的开区间和闭区间</h3><p>一般查找分为 左闭右开 和 左闭右闭两种情况：</p>
+<p><a href="https://blog.csdn.net/blue_coffeei/article/details/91476091">https://blog.csdn.net/blue_coffeei/article/details/91476091</a></p>
+<h3 id="3、牛顿迭代法（开平方）"><a href="#3、牛顿迭代法（开平方）" class="headerlink" title="3、牛顿迭代法（开平方）"></a>3、牛顿迭代法（开平方）</h3><p>其公式为 xn+1 = xn − f (xn)/ f ′ (xn)。给 定 f (x) = x 2 − a = 0，这里的迭代公式为 xn+1 = (xn + a/xn)/2，其代码如下。</p>
+<figure class="highlight c++"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">mySqrt</span><span class="params">(<span class="keyword">int</span> a)</span> </span>&#123;</span><br><span class="line">		<span class="keyword">long</span> x = a;</span><br><span class="line">		<span class="keyword">while</span> (x * x &gt; a) &#123;</span><br><span class="line">			x = (x + a / x) / <span class="number">2</span>;</span><br><span class="line">		&#125;</span><br><span class="line">		<span class="keyword">return</span> x;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h3 id="4、旋转数组查找法"><a href="#4、旋转数组查找法" class="headerlink" title="4、旋转数组查找法"></a>4、旋转数组查找法</h3><p>1.查找旋转数组的最小值</p>
+<p>Input: nums = [2,5,6,0,0,1,2],</p>
+<p>思路：三种情况</p>
+<p>1、nums [mid] &lt; nums [r] =&gt; mid 位于右区间，右区间有序</p>
+<p>2、nums[mid] &gt; nums [r] =&gt; mid 位于左区间，左区间有序</p>
+<p>3、nums[mid] = nums[r] =&gt; 重复的值，r - -</p>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line">left, right = <span class="number">0</span>,<span class="built_in">len</span>(numbers-<span class="number">1</span>)</span><br><span class="line"><span class="keyword">while</span> left&lt;right:</span><br><span class="line">     mid = (left+right) // <span class="number">2</span></span><br><span class="line">    <span class="keyword">if</span> numbers[mid] &gt; numbers[right]; <span class="string">&quot;&quot;&quot;位于左区间&quot;&quot;&quot;</span></span><br><span class="line">       left = mid+<span class="number">1</span>;</span><br><span class="line">    <span class="keyword">elif</span> numbers[mid] &lt; numbers[right]; <span class="string">&quot;&quot;&quot;位于右区间&quot;&quot;&quot;</span></span><br><span class="line">       right = mid;    </span><br><span class="line">    <span class="keyword">else</span>:</span><br><span class="line">        right -=<span class="number">1</span>;</span><br><span class="line">    <span class="keyword">return</span> numbers[left]</span><br></pre></td></tr></table></figure>
+
+<!--因为是查找最小值，区间的收缩会不一样-->]]></content>
+      <tags>
+        <tag>力扣算法-C++</tag>
       </tags>
   </entry>
   <entry>
@@ -110,6 +101,15 @@
 ]]></content>
       <tags>
         <tag>学习之旅</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>我搬家了</title>
+    <url>/2021/05/30/%E6%88%91%E6%90%AC%E5%AE%B6%E4%BA%86/</url>
+    <content><![CDATA[<p>现在有两个博客，这个就拿来记录日常事，另外一个拿来当学习笔记用</p>
+]]></content>
+      <tags>
+        <tag>日常</tag>
       </tags>
   </entry>
   <entry>
@@ -177,39 +177,44 @@
       </tags>
   </entry>
   <entry>
-    <title>二分查找</title>
-    <url>/2021/05/08/%E4%BA%8C%E5%88%86%E6%9F%A5%E6%89%BE/</url>
-    <content><![CDATA[<h2 id="二分查找"><a href="#二分查找" class="headerlink" title="二分查找"></a>二分查找</h2><p>1、有序数列的查找</p>
-<p>返回元素第一次出现的位置和最后一次出现的位置</p>
+    <title>日常事-实训(智能家居系统)</title>
+    <url>/2021/06/16/%E6%97%A5%E5%B8%B8%E4%BA%8B-2/</url>
+    <content><![CDATA[<p>为期三周的实训告一段落。</p>
 <span id="more"></span>
 
-<h3 id=""><a href="#" class="headerlink" title=""></a></h3><figure class="highlight c++"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">mylower_bound</span><span class="params">(vector&lt;<span class="keyword">int</span>&gt;&amp; nums, <span class="keyword">int</span> target)</span> </span>&#123;</span><br><span class="line">	<span class="keyword">int</span> l = <span class="number">0</span>, r = nums.<span class="built_in">size</span>(), mid;</span><br><span class="line">	<span class="keyword">while</span> (l &lt; r) &#123;</span><br><span class="line">		mid = l + (r - l) / <span class="number">2</span>;</span><br><span class="line">		<span class="keyword">if</span> (nums[mid] &gt;= target) &#123;</span><br><span class="line">			r = mid;</span><br><span class="line">		&#125;</span><br><span class="line">		<span class="keyword">else</span> &#123;</span><br><span class="line">			l = mid + <span class="number">1</span>;</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="keyword">return</span> l;</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">// 辅函数</span></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">myupper_bound</span><span class="params">(vector&lt;<span class="keyword">int</span>&gt;&amp; nums, <span class="keyword">int</span> target)</span> </span>&#123;</span><br><span class="line">	<span class="keyword">int</span> l = <span class="number">0</span>, r = nums.<span class="built_in">size</span>(), mid;</span><br><span class="line">	<span class="keyword">while</span> (l &lt; r) &#123;</span><br><span class="line">		mid = l + (r - l) / <span class="number">2</span>;</span><br><span class="line">		<span class="keyword">if</span> (nums[mid] &gt; target) &#123;</span><br><span class="line">			r = mid;</span><br><span class="line">		&#125;</span><br><span class="line">		<span class="keyword">else</span> &#123;</span><br><span class="line">			l = mid + <span class="number">1</span>;</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="keyword">return</span> l;</span><br><span class="line">&#125;</span><br><span class="line"><span class="function">vector&lt;<span class="keyword">int</span>&gt; <span class="title">searchRange</span><span class="params">(vector&lt;<span class="keyword">int</span>&gt;&amp; nums, <span class="keyword">int</span> target)</span> </span>&#123;</span><br><span class="line">	<span class="keyword">if</span> (nums.<span class="built_in">empty</span>()) <span class="keyword">return</span> vector&lt;<span class="keyword">int</span>&gt;&#123;<span class="number">-1</span>, <span class="number">-1</span>&#125;;</span><br><span class="line">	<span class="keyword">int</span> lower = <span class="built_in">mylower_bound</span>(nums, target);</span><br><span class="line">	<span class="keyword">int</span> upper = <span class="built_in">myupper_bound</span>(nums, target) - <span class="number">1</span>; <span class="comment">// 这里需要减1位</span></span><br><span class="line">	<span class="keyword">if</span> (lower == nums.<span class="built_in">size</span>() || nums[lower] != target) &#123;</span><br><span class="line">		<span class="keyword">return</span> vector&lt;<span class="keyword">int</span>&gt;&#123;<span class="number">-1</span>, <span class="number">-1</span>&#125;;</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="keyword">return</span> vector&lt;<span class="keyword">int</span>&gt;&#123;lower, upper&#125;;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">	<span class="keyword">int</span> j;</span><br><span class="line">	vector&lt;<span class="keyword">int</span>&gt; v1&#123;<span class="number">1</span>,<span class="number">2</span>,<span class="number">3</span>,<span class="number">4</span>,<span class="number">5</span>,<span class="number">6</span>,<span class="number">7</span>,<span class="number">8</span>,<span class="number">9</span>,<span class="number">10</span>&#125;;</span><br><span class="line">	<span class="keyword">int</span> i = <span class="number">7</span>;</span><br><span class="line">	vector&lt;<span class="keyword">int</span>&gt;v2 = <span class="built_in">searchRange</span>(v1,i);</span><br><span class="line">	cout &lt;&lt; <span class="string">&quot;含有 7 的区间为:&quot;</span> &lt;&lt; endl;</span><br><span class="line">	<span class="keyword">for</span> (j = <span class="number">0</span>; j &lt; v2.<span class="built_in">size</span>(); j++)</span><br><span class="line">	&#123;</span><br><span class="line">		cout &lt;&lt; v2[j]&lt;&lt;<span class="string">&quot; &quot;</span>;</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<h3 id="2、二分查找的开区间和闭区间"><a href="#2、二分查找的开区间和闭区间" class="headerlink" title="2、二分查找的开区间和闭区间"></a>2、二分查找的开区间和闭区间</h3><p>一般查找分为 左闭右开 和 左闭右闭两种情况：</p>
-<p><a href="https://blog.csdn.net/blue_coffeei/article/details/91476091">https://blog.csdn.net/blue_coffeei/article/details/91476091</a></p>
-<h3 id="3、牛顿迭代法（开平方）"><a href="#3、牛顿迭代法（开平方）" class="headerlink" title="3、牛顿迭代法（开平方）"></a>3、牛顿迭代法（开平方）</h3><p>其公式为 xn+1 = xn − f (xn)/ f ′ (xn)。给 定 f (x) = x 2 − a = 0，这里的迭代公式为 xn+1 = (xn + a/xn)/2，其代码如下。</p>
-<figure class="highlight c++"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">mySqrt</span><span class="params">(<span class="keyword">int</span> a)</span> </span>&#123;</span><br><span class="line">		<span class="keyword">long</span> x = a;</span><br><span class="line">		<span class="keyword">while</span> (x * x &gt; a) &#123;</span><br><span class="line">			x = (x + a / x) / <span class="number">2</span>;</span><br><span class="line">		&#125;</span><br><span class="line">		<span class="keyword">return</span> x;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<h3 id="4、旋转数组查找法"><a href="#4、旋转数组查找法" class="headerlink" title="4、旋转数组查找法"></a>4、旋转数组查找法</h3><p>1.查找旋转数组的最小值</p>
-<p>Input: nums = [2,5,6,0,0,1,2],</p>
-<p>思路：三种情况</p>
-<p>1、nums [mid] &lt; nums [r] =&gt; mid 位于右区间，右区间有序</p>
-<p>2、nums[mid] &gt; nums [r] =&gt; mid 位于左区间，左区间有序</p>
-<p>3、nums[mid] = nums[r] =&gt; 重复的值，r - -</p>
-<figure class="highlight python"><table><tr><td class="code"><pre><span class="line">left, right = <span class="number">0</span>,<span class="built_in">len</span>(numbers-<span class="number">1</span>)</span><br><span class="line"><span class="keyword">while</span> left&lt;right:</span><br><span class="line">     mid = (left+right) // <span class="number">2</span></span><br><span class="line">    <span class="keyword">if</span> numbers[mid] &gt; numbers[right]; <span class="string">&quot;&quot;&quot;位于左区间&quot;&quot;&quot;</span></span><br><span class="line">       left = mid+<span class="number">1</span>;</span><br><span class="line">    <span class="keyword">elif</span> numbers[mid] &lt; numbers[right]; <span class="string">&quot;&quot;&quot;位于右区间&quot;&quot;&quot;</span></span><br><span class="line">       right = mid;    </span><br><span class="line">    <span class="keyword">else</span>:</span><br><span class="line">        right -=<span class="number">1</span>;</span><br><span class="line">    <span class="keyword">return</span> numbers[left]</span><br></pre></td></tr></table></figure>
-
-<!--因为是查找最小值，区间的收缩会不一样-->]]></content>
+<h1 id="完成智能家居系统"><a href="#完成智能家居系统" class="headerlink" title="完成智能家居系统"></a>完成智能家居系统</h1><h2 id="第一周"><a href="#第一周" class="headerlink" title="第一周"></a>第一周</h2><p>学习Zigbee 无线局域网 的组网技术。 </p>
+<p>开发工具包：Ztack 协议栈  软件：一个下载软件 ，一个编译软件。 以.hex文件烧录到Zigbee模块。外设有：LED灯，温度，湿度检测，按键。</p>
+<p>成品:1.一个模块作为适配器，适配器是局域网组网的原点。2、共有三种模式：适配器模式，路由器模式和终端模式  3、适配器和终端组网通信，通过串口打印信息。</p>
+<h2 id="第二周"><a href="#第二周" class="headerlink" title="第二周"></a>第二周</h2><p>学习C++基础知识。新知识点：构造函数的知识，编译器优化和不优化的区别以及指令。《Prime C++》看完，内容多而杂。后期提升多敲代码。对C++颇感兴趣</p>
+<h2 id="第三周"><a href="#第三周" class="headerlink" title="第三周"></a>第三周</h2><p>学习QT的知识。</p>
+<p>重中之重。。看完B站上的QT教程 <a href="https://www.bilibili.com/video/BV1g4411H78N?t=713&amp;p=14">https://www.bilibili.com/video/BV1g4411H78N?t=713&amp;p=14</a> </p>
+<p>如今，着重运用的技术有：信号和槽、各种组件类的运用，QT提供的服务(主要存放在.obj文件上)。-&gt;QT程序在Linux环境上的交叉编译，生成可执行文件。传输到GEC6818开发板上运行程序。</p>
+<p>总结:QT的基本概念清晰。但是，软肋就是不会折腾。室友夜以继日的卷，明显自己的基本了解完全不行&gt;__&lt; 。 外加美术功底的问题，界面设计实在不太理想。。</p>
+<h3 id="经验教训"><a href="#经验教训" class="headerlink" title="经验教训"></a>经验教训</h3><p>多多更新博客，多多上传项目到github，多多折腾</p>
+]]></content>
       <tags>
-        <tag>力扣算法-C++</tag>
+        <tag>日常</tag>
       </tags>
   </entry>
   <entry>
-    <title>Hello World</title>
-    <url>/2021/04/05/hello-world/</url>
-    <content><![CDATA[<p>临阵磨枪一波，搞个博客。</p>
+    <title>日常事</title>
+    <url>/2021/05/11/%E6%97%A5%E5%B8%B8%E4%BA%8B/</url>
+    <content><![CDATA[<p>冲浪发现的博客</p>
+<span id="more"></span>
+
+<p><img src="https://pic.imgdb.cn/item/609a400dd1a9ae528f35806c.png"></p>
 <blockquote>
-<p>入坑教程：<a href="https://www.yunyoujun.cn/share/how-to-build-your-site/">https://www.yunyoujun.cn/share/how-to-build-your-site/</a></p>
+<p><a href="https://wujun234.github.io/">https://wujun234.github.io/</a></p>
 </blockquote>
+<p>有时候找些想要学的途径，杂七杂八的不好下手，非常好的知识梳理框架，康康大佬是怎么学习的</p>
 ]]></content>
+      <tags>
+        <tag>日常</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>假期</title>
+    <url>/2021/06/19/%E5%81%87%E6%9C%9F/</url>
+    <content><![CDATA[]]></content>
   </entry>
 </search>
