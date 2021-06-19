@@ -1,0 +1,199 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+  <title>lvsss</title>
+  
+  
+  <link href="http://example.com/atom.xml" rel="self"/>
+  
+  <link href="http://example.com/"/>
+  <updated>2021-06-19T12:16:23.751Z</updated>
+  <id>http://example.com/</id>
+  
+  <author>
+    <name>John Doe</name>
+    
+  </author>
+  
+  <generator uri="https://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>假期</title>
+    <link href="http://example.com/2021/06/19/%E5%81%87%E6%9C%9F/"/>
+    <id>http://example.com/2021/06/19/%E5%81%87%E6%9C%9F/</id>
+    <published>2021-06-19T12:16:23.000Z</published>
+    <updated>2021-06-19T12:16:23.751Z</updated>
+    
+    
+    
+    
+    
+  </entry>
+  
+  <entry>
+    <title>日常事-实训(智能家居系统)</title>
+    <link href="http://example.com/2021/06/16/%E6%97%A5%E5%B8%B8%E4%BA%8B-2/"/>
+    <id>http://example.com/2021/06/16/%E6%97%A5%E5%B8%B8%E4%BA%8B-2/</id>
+    <published>2021-06-16T11:20:28.000Z</published>
+    <updated>2021-06-16T11:58:25.015Z</updated>
+    
+    
+    <summary type="html">&lt;p&gt;为期三周的实训告一段落。&lt;/p&gt;</summary>
+    
+    
+    
+    
+    <category term="日常" scheme="http://example.com/tags/%E6%97%A5%E5%B8%B8/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>nginx那些事</title>
+    <link href="http://example.com/2021/06/04/nginx%E9%82%A3%E4%BA%9B%E4%BA%8B/"/>
+    <id>http://example.com/2021/06/04/nginx%E9%82%A3%E4%BA%9B%E4%BA%8B/</id>
+    <published>2021-06-04T10:33:07.000Z</published>
+    <updated>2021-06-04T12:55:41.373Z</updated>
+    
+    
+    <summary type="html">&lt;h2 id=&quot;Nginx那些事儿&quot;&gt;&lt;a href=&quot;#Nginx那些事儿&quot; class=&quot;headerlink&quot; title=&quot;Nginx那些事儿&quot;&gt;&lt;/a&gt;Nginx那些事儿&lt;/h2&gt;&lt;p&gt;nginx简介：&lt;strong&gt;高性能的HTTP&lt;/strong&gt;和&lt;strong&gt;反向代理Web服务器&lt;/strong&gt;，提供各种服务 IMAP/POP3/SMTP 等等服务。&lt;/p&gt;</summary>
+    
+    
+    
+    
+    <category term="nginx" scheme="http://example.com/tags/nginx/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>我搬家了</title>
+    <link href="http://example.com/2021/05/30/%E6%88%91%E6%90%AC%E5%AE%B6%E4%BA%86/"/>
+    <id>http://example.com/2021/05/30/%E6%88%91%E6%90%AC%E5%AE%B6%E4%BA%86/</id>
+    <published>2021-05-30T08:14:08.000Z</published>
+    <updated>2021-06-19T11:25:36.730Z</updated>
+    
+    
+      
+      
+        
+        
+    <summary type="html">&lt;p&gt;现在有两个博客，这个就拿来记录日常事，另外一个拿来当学习笔记用&lt;/p&gt;
+</summary>
+        
+      
+    
+    
+    
+    
+    <category term="日常" scheme="http://example.com/tags/%E6%97%A5%E5%B8%B8/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>QT那些事儿(1)</title>
+    <link href="http://example.com/2021/05/15/QT%E9%82%A3%E4%BA%9B%E4%BA%8B%E5%84%BF-1/"/>
+    <id>http://example.com/2021/05/15/QT%E9%82%A3%E4%BA%9B%E4%BA%8B%E5%84%BF-1/</id>
+    <published>2021-05-15T06:36:11.000Z</published>
+    <updated>2021-05-15T07:39:14.269Z</updated>
+    
+    
+    <summary type="html">&lt;h2 id=&quot;QT那些事儿（1）&quot;&gt;&lt;a href=&quot;#QT那些事儿（1）&quot; class=&quot;headerlink&quot; title=&quot;QT那些事儿（1）&quot;&gt;&lt;/a&gt;QT那些事儿（1）&lt;/h2&gt;&lt;h3 id=&quot;1、QT是神马？&quot;&gt;&lt;a href=&quot;#1、QT是神马？&quot; class=&quot;headerlink&quot; title=&quot;1、QT是神马？&quot;&gt;&lt;/a&gt;1、QT是神马？&lt;/h3&gt;</summary>
+    
+    
+    
+    
+    <category term="QT那些事儿" scheme="http://example.com/tags/QT%E9%82%A3%E4%BA%9B%E4%BA%8B%E5%84%BF/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>日常事</title>
+    <link href="http://example.com/2021/05/11/%E6%97%A5%E5%B8%B8%E4%BA%8B/"/>
+    <id>http://example.com/2021/05/11/%E6%97%A5%E5%B8%B8%E4%BA%8B/</id>
+    <published>2021-05-11T08:29:09.000Z</published>
+    <updated>2021-05-11T08:32:14.522Z</updated>
+    
+    
+    <summary type="html">&lt;p&gt;冲浪发现的博客&lt;/p&gt;</summary>
+    
+    
+    
+    
+    <category term="日常" scheme="http://example.com/tags/%E6%97%A5%E5%B8%B8/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>学习之旅(1)</title>
+    <link href="http://example.com/2021/05/09/%E5%AD%A6%E4%B9%A0%E4%B9%8B%E6%97%85-1/"/>
+    <id>http://example.com/2021/05/09/%E5%AD%A6%E4%B9%A0%E4%B9%8B%E6%97%85-1/</id>
+    <published>2021-05-09T06:39:41.000Z</published>
+    <updated>2021-05-09T07:41:47.293Z</updated>
+    
+    
+    <summary type="html">&lt;h1 id=&quot;学习之旅-1&quot;&gt;&lt;a href=&quot;#学习之旅-1&quot; class=&quot;headerlink&quot; title=&quot;学习之旅(1)&quot;&gt;&lt;/a&gt;学习之旅(1)&lt;/h1&gt;&lt;p&gt;本篇章记录自己的学习生活。至于有多少后序呢，，，，，，&lt;/p&gt;</summary>
+    
+    
+    
+    
+    <category term="学习之旅" scheme="http://example.com/tags/%E5%AD%A6%E4%B9%A0%E4%B9%8B%E6%97%85/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>搜索算法</title>
+    <link href="http://example.com/2021/05/08/%E6%90%9C%E7%B4%A2%E7%AE%97%E6%B3%95/"/>
+    <id>http://example.com/2021/05/08/%E6%90%9C%E7%B4%A2%E7%AE%97%E6%B3%95/</id>
+    <published>2021-05-08T07:18:40.000Z</published>
+    <updated>2021-05-09T06:37:24.945Z</updated>
+    
+    
+    <summary type="html">&lt;h1 id=&quot;搜索算法&quot;&gt;&lt;a href=&quot;#搜索算法&quot; class=&quot;headerlink&quot; title=&quot;搜索算法&quot;&gt;&lt;/a&gt;搜索算法&lt;/h1&gt;&lt;h2 id=&quot;深度优先搜索（DFS）&quot;&gt;&lt;a href=&quot;#深度优先搜索（DFS）&quot; class=&quot;headerlink&quot; title=&quot;深度优先搜索（DFS）&quot;&gt;&lt;/a&gt;深度优先搜索（DFS）&lt;/h2&gt;</summary>
+    
+    
+    
+    
+    <category term="力扣算法-C++" scheme="http://example.com/tags/%E5%8A%9B%E6%89%A3%E7%AE%97%E6%B3%95-C/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>二分查找</title>
+    <link href="http://example.com/2021/05/08/%E4%BA%8C%E5%88%86%E6%9F%A5%E6%89%BE/"/>
+    <id>http://example.com/2021/05/08/%E4%BA%8C%E5%88%86%E6%9F%A5%E6%89%BE/</id>
+    <published>2021-05-08T06:24:06.000Z</published>
+    <updated>2021-05-08T07:08:52.339Z</updated>
+    
+    
+    <summary type="html">&lt;h2 id=&quot;二分查找&quot;&gt;&lt;a href=&quot;#二分查找&quot; class=&quot;headerlink&quot; title=&quot;二分查找&quot;&gt;&lt;/a&gt;二分查找&lt;/h2&gt;&lt;p&gt;1、有序数列的查找&lt;/p&gt;
+&lt;p&gt;返回元素第一次出现的位置和最后一次出现的位置&lt;/p&gt;</summary>
+    
+    
+    
+    
+    <category term="力扣算法-C++" scheme="http://example.com/tags/%E5%8A%9B%E6%89%A3%E7%AE%97%E6%B3%95-C/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>Hello World</title>
+    <link href="http://example.com/2021/04/05/hello-world/"/>
+    <id>http://example.com/2021/04/05/hello-world/</id>
+    <published>2021-04-05T14:09:04.833Z</published>
+    <updated>2021-05-15T07:07:07.876Z</updated>
+    
+    
+      
+      
+        
+        
+    <summary type="html">&lt;p&gt;临阵磨枪一波，搞个博客。&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;入坑教程：&lt;a</summary>
+        
+      
+    
+    
+    
+    
+  </entry>
+  
+</feed>

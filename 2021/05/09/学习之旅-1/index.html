@@ -25,7 +25,8 @@
   
 <script src="/js/pace.min.js"></script>
 
-<meta name="generator" content="Hexo 5.4.0"></head>
+<meta name="generator" content="Hexo 5.4.0"><link rel="alternate" href="/atom.xml" title="lvsss" type="application/atom+xml">
+</head>
 
 <body>
   <main class="content">
@@ -91,7 +92,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://example.com/2021/05/09/%E5%AD%A6%E4%B9%A0%E4%B9%8B%E6%97%85-1/" data-id="ckq3q4qj60009rgvoakz8gd2k" class="article-share-link">
+      <a data-url="http://example.com/2021/05/09/%E5%AD%A6%E4%B9%A0%E4%B9%8B%E6%97%85-1/" data-id="ckq3ty83u000cl4vo3mivft3v" class="article-share-link">
         分享
       </a>
       
@@ -150,6 +151,25 @@
       <li>Powered by <a href="http://hexo.io/" target="_blank">Hexo</a></li>
       <li>theme  <a target="_blank" rel="noopener" href="https://github.com/zhwangart/hexo-theme-ocean">Ocean</a></li>
     </ul>
+    <div class="float-right">
+      <span id="timeDate">载入天数...</span><span id="times">载入时分秒...</span>
+<script>
+    var now = new Date(); 
+    function createtime() { 
+        var grt= new Date("05/1/2021 15:49:00");//此处修改你的建站时间或者网站上线时间 
+        now.setTime(now.getTime()+250); 
+        days = (now - grt ) / 1000 / 60 / 60 / 24; dnum = Math.floor(days); 
+        hours = (now - grt ) / 1000 / 60 / 60 - (24 * dnum); hnum = Math.floor(hours); 
+        if(String(hnum).length ==1 ){hnum = "0" + hnum;} minutes = (now - grt ) / 1000 /60 - (24 * 60 * dnum) - (60 * hnum); 
+        mnum = Math.floor(minutes); if(String(mnum).length ==1 ){mnum = "0" + mnum;} 
+        seconds = (now - grt ) / 1000 - (24 * 60 * 60 * dnum) - (60 * 60 * hnum) - (60 * mnum); 
+        snum = Math.round(seconds); if(String(snum).length ==1 ){snum = "0" + snum;} 
+        document.getElementById("timeDate").innerHTML = "本站已安全运行 "+dnum+" 天 "; 
+        document.getElementById("times").innerHTML = hnum + " 小时 " + mnum + " 分 " + snum + " 秒"; 
+    } 
+	setInterval("createtime()",250);
+</script>
+    </div>
   </div>
 </footer>
   </main>
@@ -257,6 +277,6 @@
 
 
 
-</body>
+<script src="/live2dw/lib/L2Dwidget.min.js?094cbace49a39548bed64abff5988b05"></script><script>L2Dwidget.init({"pluginRootPath":"live2dw/","pluginJsPath":"lib/","pluginModelPath":"assets/","tagMode":false,"debug":false,"model":{"jsonPath":"live2d-widget-model-wanko"},"display":{"position":"right","width":150,"height":300},"mobile":{"show":true},"react":{"opacity":0.7},"log":false});</script></body>
 
 </html>
