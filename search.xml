@@ -1,23 +1,77 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
-    <title>我搬家了</title>
-    <url>/2021/05/30/%E6%88%91%E6%90%AC%E5%AE%B6%E4%BA%86/</url>
-    <content><![CDATA[<p>现在有两个博客，这个就拿来记录日常事，另外一个拿来当学习笔记用</p>
+    <title>关于博客</title>
+    <url>/2021/05/30/%E5%85%B3%E4%BA%8E%E5%8D%9A%E5%AE%A2/</url>
+    <content><![CDATA[<p>博客的更新是很有必要的，有两个博客。</p>
+<span id="more"></span>
+
+<p>本博客基于 hexo 主题和 github静态页面。入坑教程:<a href="https://www.yunyoujun.cn/share/how-to-build-your-site/">https://www.yunyoujun.cn/share/how-to-build-your-site/</a>  </p>
+<p>另一个博客基于腾讯云的轻量服务器的wordpress应用，为动态博客。域名还未申请。</p>
 ]]></content>
       <tags>
         <tag>日常</tag>
       </tags>
   </entry>
   <entry>
+    <title>假期(2)</title>
+    <url>/2021/07/02/%E5%81%87%E6%9C%9F(2)/</url>
+    <content><![CDATA[<h2 id="Second-–-02"><a href="#Second-–-02" class="headerlink" title="Second – 02"></a>Second – 02</h2><p>9.24  AM</p>
+<span id="more"></span>
+
+<h3 id="小题"><a href="#小题" class="headerlink" title="小题"></a>小题</h3><h3 id="（1）"><a href="#（1）" class="headerlink" title="（1）"></a>（1）</h3><p><img src="https://pic.imgdb.cn/item/60de6b3e5132923bf85b2a6e.png"></p>
+<h3 id="2-单链表：写一个函数合并两个升序单链表"><a href="#2-单链表：写一个函数合并两个升序单链表" class="headerlink" title="(2)单链表：写一个函数合并两个升序单链表"></a>(2)单链表：写一个函数合并两个升序单链表</h3><p>要求：不能额外申请空间，合并的链表仍然有序</p>
+<p>两种方法:  一种直接一个一个插入</p>
+<p>二种:两两pk，谁小往后面挪 </p>
+<figure class="highlight c"><table><tr><td class="code"><pre><span class="line"><span class="function">Node* <span class="title">Merge</span><span class="params">(Node* ha, Node* hb)</span></span></span><br><span class="line"><span class="function">  </span>&#123;</span><br><span class="line"></span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  <span class="comment">/*算法一:</span></span><br><span class="line"><span class="comment">      把ha的结点一个一个摘下来，然后按“插入排序”</span></span><br><span class="line"><span class="comment">      插入到hb的链表中去。*/</span></span><br><span class="line"></span><br><span class="line">  <span class="comment">/*算法二:</span></span><br><span class="line"><span class="comment">      “两两PK,谁小谁往后挪，挪之前先链接起来”</span></span><br><span class="line"><span class="comment"></span></span><br><span class="line"><span class="comment">      ph 指向合并后的链表的第一个结点</span></span><br><span class="line"><span class="comment">      pt 指向合并后的链表的最后一个结点*/</span></span><br><span class="line"></span><br><span class="line">      <span class="keyword">if</span> (ha-&gt;data &lt;= hb-&gt;data)</span><br><span class="line">      &#123;</span><br><span class="line">          pt = ph = ha;</span><br><span class="line">          ha = ha-&gt;next;</span><br><span class="line">      &#125;</span><br><span class="line">      <span class="keyword">else</span></span><br><span class="line">      &#123;</span><br><span class="line">          pt = ph = hb;</span><br><span class="line">          hb = hb-&gt;next;</span><br><span class="line">      &#125;</span><br><span class="line"></span><br><span class="line">      <span class="keyword">while</span> (ha &amp;&amp; hb)</span><br><span class="line">      &#123;</span><br><span class="line">          <span class="keyword">if</span> (ha-&gt;data &lt;= hb-&gt;data)</span><br><span class="line">          &#123;</span><br><span class="line">              pt-&gt;next = ha;</span><br><span class="line">              pt = ha;</span><br><span class="line">              ha = ha-&gt;next;</span><br><span class="line">          &#125;</span><br><span class="line">          <span class="keyword">else</span></span><br><span class="line">          &#123;</span><br><span class="line">              pt-&gt;next = hb;</span><br><span class="line">              pt = hb;</span><br><span class="line">              hb = hb-&gt;next;</span><br><span class="line">          &#125;</span><br><span class="line"></span><br><span class="line">      &#125;</span><br><span class="line">      <span class="keyword">if</span> (ha)</span><br><span class="line">      &#123;</span><br><span class="line">          pt-&gt;next = ha;</span><br><span class="line">      &#125;</span><br><span class="line">      <span class="keyword">if</span> (hb)</span><br><span class="line">      &#123;</span><br><span class="line">          pt-&gt;next = hb;</span><br><span class="line">      &#125;</span><br><span class="line"></span><br><span class="line">      <span class="keyword">return</span> ph;</span><br></pre></td></tr></table></figure>
+
+<h3 id="3-对一个单链表进行排序"><a href="#3-对一个单链表进行排序" class="headerlink" title="(3)对一个单链表进行排序"></a>(3)对一个单链表进行排序</h3>]]></content>
+      <tags>
+        <tag>假期</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>Leetcode</title>
+    <url>/2021/07/01/Leetcode/</url>
+    <content><![CDATA[<h2 id="复习-day01"><a href="#复习-day01" class="headerlink" title="复习(day01)"></a>复习(day01)</h2><span id="more"></span>
+
+<h2 id="1、双指针"><a href="#1、双指针" class="headerlink" title="1、双指针"></a>1、双指针</h2><h3 id="（1）、合并两个有序数组"><a href="#（1）、合并两个有序数组" class="headerlink" title="（1）、合并两个有序数组"></a>（1）、合并两个有序数组</h3><p><img src="https://pic.imgdb.cn/item/60dda26d5132923bf8e4a2ad.png"></p>
+<blockquote>
+<p>将num1 扩容到两个数组合并大小三个指针，一个指向待操作的位置，一个指向num1,一个指向num2</p>
+</blockquote>
+<figure class="highlight c++"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">merge</span><span class="params">(vector&lt;<span class="keyword">int</span>&gt;&amp; nums1,<span class="keyword">int</span> m,vector&lt;<span class="keyword">int</span>&gt;&amp; nums2,<span class="keyword">int</span> n)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="keyword">int</span> pos = m-- +n-- <span class="number">-1</span>; <span class="comment">//指向操作的位置</span></span><br><span class="line">    <span class="keyword">while</span>(m &gt;= <span class="number">0</span> &amp;&amp; n&gt;=<span class="number">0</span>)</span><br><span class="line">    &#123;</span><br><span class="line">        nums1[pos--] = nums1[m] &gt; nums[n] ? nums1[m--]:nums2[n--]; <span class="comment">//两边开始走</span></span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">while</span>(n&gt;=<span class="number">0</span>)</span><br><span class="line">    &#123;</span><br><span class="line">        nums1[pos--] = nums2[n--]; <span class="comment">//n1走完表示直接添加 n2要继续走完</span></span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h3 id="（2）快慢指针（判断链表是否有环"><a href="#（2）快慢指针（判断链表是否有环" class="headerlink" title="（2）快慢指针（判断链表是否有环)"></a>（2）快慢指针（判断链表是否有环)</h3><p>判断链表是否有环，可以采用快慢指针，判断入环的位置，需要将快指针调到头结点，然后两个结点再走，碰到一起说明环的初始位置</p>
+<h3 id="3-滑动窗口"><a href="#3-滑动窗口" class="headerlink" title="(3)滑动窗口"></a>(3)滑动窗口</h3><p>给定两个字符串 S 和 T，求 S 中包含 T 所有字符的最短连续子字符串的长度，同时要求时间 复杂度不得超过 O(n)。</p>
+<p><img src="https://pic.imgdb.cn/item/60dda6535132923bf8f5a171.png"></p>
+<figure class="highlight c++"><table><tr><td class="code"><pre><span class="line"><span class="function">string <span class="title">minWindow</span><span class="params">(string S, string T)</span> </span>&#123;</span><br><span class="line">    <span class="function">vector&lt;<span class="keyword">int</span>&gt; <span class="title">chars</span><span class="params">(<span class="number">128</span>, <span class="number">0</span>)</span></span>;       <span class="comment">//记录T中的字符情况个数</span></span><br><span class="line">    <span class="function">vector&lt;<span class="keyword">bool</span>&gt; <span class="title">flag</span><span class="params">(<span class="number">128</span>, <span class="literal">false</span>)</span></span>;  <span class="comment">//记录T中的字符情况</span></span><br><span class="line">    <span class="comment">// 先统计T中的字符情况</span></span><br><span class="line">    <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; T.<span class="built_in">size</span>(); ++i) &#123;</span><br><span class="line">        flag[T[i]] = <span class="literal">true</span>;  <span class="comment">//对应字符情况</span></span><br><span class="line">        ++chars[T[i]];    <span class="comment">//对应字符的个数分布</span></span><br><span class="line">    &#125;</span><br><span class="line">    <span class="comment">// 移动滑动窗口，不断更改统计数据</span></span><br><span class="line">    <span class="keyword">int</span> cnt = <span class="number">0</span>, l = <span class="number">0</span>, min_l = <span class="number">0</span>, min_size = S.<span class="built_in">size</span>() + <span class="number">1</span>;</span><br><span class="line">    <span class="keyword">for</span> (<span class="keyword">int</span> r = <span class="number">0</span>; r &lt; S.<span class="built_in">size</span>(); ++r) &#123;</span><br><span class="line">        <span class="keyword">if</span> (flag[S[r]]) &#123;</span><br><span class="line">            <span class="keyword">if</span> (--chars[S[r]] &gt;= <span class="number">0</span>) &#123;</span><br><span class="line">                ++cnt;</span><br><span class="line">            &#125;</span><br><span class="line">            <span class="comment">// 若目前滑动窗口已包含T中全部字符，</span></span><br><span class="line">            <span class="comment">// 则尝试将l右移，在不影响结果的情况下获得最短子字符串</span></span><br><span class="line">            <span class="keyword">while</span> (cnt == T.<span class="built_in">size</span>()) &#123;</span><br><span class="line">                <span class="keyword">if</span> (r - l + <span class="number">1</span> &lt; min_size) &#123;</span><br><span class="line">                    min_l = l;</span><br><span class="line">                    min_size = r - l + <span class="number">1</span>;</span><br><span class="line">                &#125;</span><br><span class="line">                <span class="keyword">if</span> (flag[S[l]] &amp;&amp; ++chars[S[l]] &gt; <span class="number">0</span>) &#123;  </span><br><span class="line">                    <span class="comment">//如果l缩小时，遇到待选字符，退还一个剩余量，并且cnt--,同时l++,r开始向右移动</span></span><br><span class="line">                    --cnt;</span><br><span class="line">                &#125;</span><br><span class="line">                ++l;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> min_size &gt; S.<span class="built_in">size</span>()? <span class="string">&quot;&quot;</span>: S.<span class="built_in">substr</span>(min_l, min_size);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h2 id="2、二分查找"><a href="#2、二分查找" class="headerlink" title="2、二分查找"></a>2、二分查找</h2><h3 id="（1）求开方"><a href="#（1）求开方" class="headerlink" title="（1）求开方"></a>（1）求开方</h3><p>设置一个非负整数，求它的开方，向下取整</p>
+<p>例如： 8  -&gt;  2</p>
+<figure class="highlight c++"><table><tr><td class="code"><pre><span class="line"></span><br></pre></td></tr></table></figure>
+
+
+
+]]></content>
+      <tags>
+        <tag>力扣算法-C++</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>假期</title>
-    <url>/2021/06/19/%E5%81%87%E6%9C%9F/</url>
+    <url>/2021/06/19/%E5%81%87%E6%9C%9F(1)/</url>
     <content><![CDATA[<h2 id="First-–-01-链表操作"><a href="#First-–-01-链表操作" class="headerlink" title="First – 01    (链表操作)"></a>First – 01    (链表操作)</h2><span id="more"></span>
 
-<h3 id="1、vscode-连接ubuntu-连接虚拟机上的Ubuntu"><a href="#1、vscode-连接ubuntu-连接虚拟机上的Ubuntu" class="headerlink" title="1、vscode 连接ubuntu  (连接虚拟机上的Ubuntu) :"></a>1、vscode 连接ubuntu  (连接虚拟机上的Ubuntu) :</h3><p>1、ubuntu 安装ssh :  sudo apt-get install ssh</p>
-<p>2、 vscode 终端命令 :  ssh  (用户名)@ IP     //连接  （vscode安装ssh   client  插件）</p>
+<h3 id="1、vscode-连接ubuntu-连接虚拟机上的Ubuntu"><a href="#1、vscode-连接ubuntu-连接虚拟机上的Ubuntu" class="headerlink" title="1、vscode 连接ubuntu  (连接虚拟机上的Ubuntu) :"></a>1、vscode 连接ubuntu  (连接虚拟机上的Ubuntu) :</h3><ul>
+<li><p><input checked="" disabled="" type="checkbox">  1、ubuntu 安装ssh :  sudo apt-get install ssh</p>
+</li>
+<li><p><input checked="" disabled="" type="checkbox">  2、 vscode 终端命令 :  ssh  (用户名)@ IP     //连接  （vscode安装ssh   client  插件）</p>
+</li>
+</ul>
 <p><img src="https://pic.imgdb.cn/item/60dbd5795132923bf8015adc.png"></p>
-<p>3、虚拟机上网：网络桥接模式</p>
+<ul>
+<li><input checked="" disabled="" type="checkbox"> 3、虚拟机上网：网络桥接模式</li>
+</ul>
 <h3 id="2、递归版本的有序链表插入"><a href="#2、递归版本的有序链表插入" class="headerlink" title="2、递归版本的有序链表插入"></a>2、递归版本的有序链表插入</h3><figure class="highlight c"><table><tr><td class="code"><pre><span class="line"><span class="function">Node *<span class="title">Insert</span><span class="params">(Node *h,Node *p)</span>  <span class="comment">//递归方式插入有序链表  返回头结点</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="keyword">if</span>(h == <span class="literal">NULL</span>)</span><br><span class="line">    &#123;</span><br><span class="line">        <span class="keyword">return</span> p;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">if</span>(p == <span class="literal">NULL</span>)</span><br><span class="line">    &#123;</span><br><span class="line">        <span class="keyword">return</span> h;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">if</span>(p-&gt;data &lt;= h-&gt;data)</span><br><span class="line">    &#123;</span><br><span class="line">        p-&gt;next = h;</span><br><span class="line">        <span class="keyword">return</span> p;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">if</span>(p-&gt;data &gt; h-&gt;data)</span><br><span class="line">    &#123;</span><br><span class="line">        h-&gt;next = Insert(h-&gt;next,p); <span class="comment">//递归  最后吐出来的是头结点后面的位置</span></span><br><span class="line">        <span class="keyword">return</span> h;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
 <h3 id="3、非递归的插入方法"><a href="#3、非递归的插入方法" class="headerlink" title="3、非递归的插入方法"></a>3、非递归的插入方法</h3><figure class="highlight c"><table><tr><td class="code"><pre><span class="line"><span class="comment">//找到插入位置</span></span><br><span class="line"><span class="comment">//分情况讨论  找到和没找到</span></span><br><span class="line"></span><br><span class="line">Node *pk = h;  <span class="comment">//pk指向</span></span><br><span class="line">Node *pr = <span class="literal">NULL</span>;  <span class="comment">//pr指向pk的前驱点</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">while</span> (pk)</span><br><span class="line">&#123;</span><br><span class="line">    <span class="keyword">if</span> (pk-&gt;data &gt;= p-&gt;data)</span><br><span class="line">    &#123;</span><br><span class="line">    	<span class="keyword">break</span>;</span><br><span class="line">    &#125;</span><br><span class="line">    pr = pk;</span><br><span class="line">    pk = pk-&gt;next;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">if</span>(pk == <span class="literal">NULL</span>)   <span class="comment">//最后一个</span></span><br><span class="line">&#123;</span><br><span class="line">    <span class="comment">//尾插法</span></span><br><span class="line">    pr-&gt;next = p;</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">else</span></span><br><span class="line">&#123;</span><br><span class="line">    <span class="keyword">if</span>(pk == h)</span><br><span class="line">    &#123;</span><br><span class="line">        <span class="comment">//头插法</span></span><br><span class="line">        p-&gt;next = pk;</span><br><span class="line">        h = p;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">else</span></span><br><span class="line">    &#123;</span><br><span class="line">        <span class="comment">//中间插入</span></span><br><span class="line">        p-&gt;next = pk;</span><br><span class="line">        pr-&gt;next =p;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
@@ -39,7 +93,7 @@
 </code></pre>
 </li>
 </ol>
-<p>​    算法一:<br>        1. 把原链表上的结点一一(从第一个到最后一个)摘除下来<br>                2. 把摘除下来的结点，按“头插法”加入到新链表中</p>
+<p>​    算法一:<br>​        1. 把原链表上的结点一一(从第一个到最后一个)摘除下来<br>​                2. 把摘除下来的结点，按“头插法”加入到新链表中</p>
 <p>​        p 指向新摘除的结点<br>​        </p>
 <figure class="highlight c"><table><tr><td class="code"><pre><span class="line">first =<span class="literal">NULL</span>; <span class="comment">//指向新链表的第一个结点</span></span><br><span class="line"></span><br><span class="line">​        <span class="keyword">while</span> (h)</span><br><span class="line">​        &#123;</span><br><span class="line">​            p = h;</span><br><span class="line">​            h = h-&gt;next;</span><br><span class="line">​            p-&gt;next = <span class="literal">NULL</span>;</span><br><span class="line"></span><br><span class="line">​            <span class="keyword">if</span> (first == <span class="literal">NULL</span>)</span><br><span class="line">​            &#123;</span><br><span class="line">​                first = p;</span><br><span class="line">​            &#125;</span><br><span class="line">​            <span class="keyword">else</span></span><br><span class="line">​            &#123;</span><br><span class="line">​                p-&gt;next = first;</span><br><span class="line">​                first = p;</span><br><span class="line">​            &#125;</span><br><span class="line"></span><br><span class="line">​        &#125;</span><br></pre></td></tr></table></figure>
 
@@ -51,6 +105,10 @@
 <p>​            }</p>
 <figure class="highlight c"><table><tr><td class="code"><pre><span class="line">	Node*</span><br><span class="line">​	reverse(Node* h)</span><br><span class="line">​	&#123;</span><br><span class="line">​	         h1 = h;</span><br><span class="line">​            h2 = h-&gt;next ;</span><br><span class="line">​            h-&gt;next = <span class="literal">NULL</span>;</span><br><span class="line"></span><br><span class="line">​            <span class="keyword">while</span> (h2)</span><br><span class="line">​            &#123;</span><br><span class="line">​                p = h2-&gt;next; <span class="comment">//先保存后面那个链表的第二个结点</span></span><br><span class="line">​                h2-&gt;next = h1;</span><br><span class="line">​                h1 = h2; </span><br><span class="line">​                h2 = p;</span><br><span class="line"></span><br><span class="line">​            &#125;</span><br><span class="line">​	</span><br><span class="line">​	&#125;</span><br></pre></td></tr></table></figure>
 
+<hr>
+<blockquote>
+<p>双链表的打印方式可以用递归的方法实现 先递归打印 p-&gt;next，然后打印本身</p>
+</blockquote>
 ]]></content>
       <tags>
         <tag>假期</tag>
