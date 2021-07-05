@@ -67,10 +67,10 @@
       
       
       
-      <h2 id="Second-–-02"><a href="#Second-–-02" class="headerlink" title="Second – 02"></a>Second – 02</h2><p>9.24  AM</p>
+      <h2 id="Second-–-02（栈）"><a href="#Second-–-02（栈）" class="headerlink" title="Second – 02（栈）"></a>Second – 02（栈）</h2><p>9.24  AM</p>
 <span id="more"></span>
 
-<h3 id="小题"><a href="#小题" class="headerlink" title="小题"></a>小题</h3><h3 id="（1）"><a href="#（1）" class="headerlink" title="（1）"></a>（1）</h3><p><img src="https://pic.imgdb.cn/item/60de6b3e5132923bf85b2a6e.png"></p>
+<h2 id="一、小题"><a href="#一、小题" class="headerlink" title="一、小题"></a>一、小题</h2><h3 id="（1）"><a href="#（1）" class="headerlink" title="（1）"></a>（1）</h3><p><img src="https://pic.imgdb.cn/item/60de6b3e5132923bf85b2a6e.png"></p>
 <h3 id="2-单链表：写一个函数合并两个升序单链表"><a href="#2-单链表：写一个函数合并两个升序单链表" class="headerlink" title="(2)单链表：写一个函数合并两个升序单链表"></a>(2)单链表：写一个函数合并两个升序单链表</h3><p>要求：不能额外申请空间，合并的链表仍然有序</p>
 <p>两种方法:  一种直接一个一个插入</p>
 <p>二种:两两pk，谁小往后面挪 </p>
@@ -80,10 +80,21 @@
 
 
 
-<h2 id="栈"><a href="#栈" class="headerlink" title="栈"></a>栈</h2><p><img src="https://pic.imgdb.cn/item/60debb855132923bf8261c96.png"></p>
+<h2 id="二、栈"><a href="#二、栈" class="headerlink" title="二、栈"></a>二、栈</h2><p><img src="https://pic.imgdb.cn/item/60debb855132923bf8261c96.png"></p>
 <p><img src="https://pic.imgdb.cn/item/60dfc8735132923bf8964303.png"></p>
 <p><img src="https://pic.imgdb.cn/item/60dfcb965132923bf8ac9a02.png"></p>
-<p>​                                                            //  fgets函数的应用  ，其不能识别换行符(回车键),所以进行替换操作   </p>
+<p>​                                                            //  fgets函数的应用  ，其不能识别换行符(回车键),所以进行代替操作   </p>
+<h3 id="链式栈"><a href="#链式栈" class="headerlink" title="链式栈"></a>链式栈</h3><p>栈顶和栈底倒转，头部删除（不需要引入另一个指针）</p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">typedef</span> <span class="keyword">int</span> SElemType;</span><br><span class="line"><span class="comment">//&quot;数据结点&quot;存放栈元素</span></span><br><span class="line"><span class="keyword">typedef</span> <span class="class"><span class="keyword">struct</span> <span class="title">node</span></span></span><br><span class="line"><span class="class">&#123;</span></span><br><span class="line">    SELemType data;</span><br><span class="line">    <span class="class"><span class="keyword">struct</span> <span class="title">node</span> *<span class="title">next</span>;</span></span><br><span class="line">&#125;SNode;</span><br><span class="line"></span><br><span class="line">typedf <span class="class"><span class="keyword">struct</span> <span class="title">LinkedStack</span></span></span><br><span class="line"><span class="class">&#123;</span></span><br><span class="line">    SNode *Bottom; <span class="comment">//指向栈底元素</span></span><br><span class="line">    SNode *Top;  <span class="comment">//指向栈顶的元素</span></span><br><span class="line">    <span class="keyword">int</span> length;  <span class="comment">//链式栈的长度</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+
+
+<p>链式栈的清空和销毁：清空表示干掉所有数据结点</p>
+<p>销毁表示还要干掉头结点</p>
+<h2 id="三、队列"><a href="#三、队列" class="headerlink" title="三、队列"></a>三、队列</h2><h3 id="1-顺序队列"><a href="#1-顺序队列" class="headerlink" title="(1)顺序队列"></a>(1)顺序队列</h3><figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/*实现理念：数组，队尾，队首指针，数组的最大长度。</span></span><br><span class="line"><span class="comment">  入队从队尾入，出队从队首出。队尾队首的表示方法都是下标表示</span></span><br><span class="line"><span class="comment">  能够实现空间循环使用的效果：出队或者入队。如果队尾/队首指针达到最大长度时，自动转到下标为零(数组空间开头)</span></span><br><span class="line"><span class="comment">  实现空间的循环利用。实现队列存储操作</span></span><br><span class="line"><span class="comment">*/</span></span><br></pre></td></tr></table></figure>
+
+<h3 id="（2）链式队列"><a href="#（2）链式队列" class="headerlink" title="（2）链式队列"></a>（2）链式队列</h3><figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//数据结点类型描述：数据域，前指针和后指针</span></span><br><span class="line"><span class="comment">//队列类型头指针:队首元素的指针 队尾元素的指针 队列元素的个数</span></span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
 
       
     </div>
