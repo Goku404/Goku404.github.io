@@ -14,12 +14,67 @@
       </tags>
   </entry>
   <entry>
+    <title>假期(3)</title>
+    <url>/2021/07/05/%E5%81%87%E6%9C%9F(3)/</url>
+    <content><![CDATA[<h1 id="Third-03-树"><a href="#Third-03-树" class="headerlink" title="Third 03  树"></a>Third 03  树</h1><p>10.40</p>
+<span id="more"></span>
+
+<p>详细教程:<a href="https://wujun234.github.io/01%20%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E4%B8%8E%E7%AE%97%E6%B3%95/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/01%20%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/5%20%E6%A0%91%E4%B8%8E%E4%BA%8C%E5%8F%89%E6%A0%91/">https://wujun234.github.io/01%20%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E4%B8%8E%E7%AE%97%E6%B3%95/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/01%20%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/5%20%E6%A0%91%E4%B8%8E%E4%BA%8C%E5%8F%89%E6%A0%91/</a></p>
+<h2 id="1、树和二叉树的基本概念"><a href="#1、树和二叉树的基本概念" class="headerlink" title="1、树和二叉树的基本概念"></a>1、树和二叉树的基本概念</h2><p>度为零的结点称之为叶子结点，度不为零的称之为非终端结点。最大层次为树的高度或深度</p>
+<h2 id="2、二叉树-Binary-Tree"><a href="#2、二叉树-Binary-Tree" class="headerlink" title="2、二叉树(Binary Tree)"></a>2、二叉树(Binary Tree)</h2><p>每个结点最多只有两棵子树(不存在 度大于2 的结点) </p>
+<p>满二叉树:在不增加树的高度下，没法在树中添加结点</p>
+<p>完全二叉树:  (1) 除去最后一层，这棵树是满二叉树 (2)最后一层靠左边</p>
+<p>二叉树性质:    </p>
+<p>遍历方法：前序遍历，中序遍历，后序遍历都可以用递归来实现  层序遍历需要用到队列的方法</p>
+<h3 id="1、tip-层序遍历-二叉树的层序遍历运用到队列操作"><a href="#1、tip-层序遍历-二叉树的层序遍历运用到队列操作" class="headerlink" title="1、tip:层序遍历:  二叉树的层序遍历运用到队列操作"></a>1、tip:层序遍历:  二叉树的层序遍历运用到队列操作</h3><ul>
+<li><p>首先，根结点 1 入队；</p>
+</li>
+<li><p>根结点 1 出队，出队的同时，将左孩子 2 和右孩子 3 分别入队；</p>
+</li>
+<li><p>队头结点 2 出队，出队的同时，将结点 2 的左孩子 4 和右孩子 5 依次入队；</p>
+</li>
+<li><p>队头结点 3 出队，出队的同时，将结点 3 的左孩子 6 和右孩子 7 依次入队；</p>
+</li>
+<li><p>不断地循环，直至队列内为空。</p>
+<figure class="highlight c"><table><tr><td class="code"><pre><span class="line"><span class="comment">//层序遍历</span></span><br><span class="line"><span class="comment">//根节点入队 Queue, 队列存储的类型应该是结点类型的</span></span><br><span class="line">Enqueue(q,p); </span><br><span class="line"><span class="keyword">while</span>(队列不为空)   <span class="comment">//层序遍历</span></span><br><span class="line">&#123;</span><br><span class="line">    p = Dequeue(q,p);  <span class="comment">//出队</span></span><br><span class="line">    <span class="keyword">if</span>(p-&gt;lchild != <span class="literal">NULL</span>)</span><br><span class="line">    &#123;</span><br><span class="line">        Enqueue(q,p-&gt;lchild);</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">if</span>(p-&gt;rchild != <span class="literal">NULL</span>)</span><br><span class="line">    &#123;</span><br><span class="line">        Enqueue(q,p-&gt;rchild);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h3 id="2、迭代方式实现遍历"><a href="#2、迭代方式实现遍历" class="headerlink" title="2、迭代方式实现遍历"></a>2、迭代方式实现遍历</h3><p>详细教程:</p>
+<p><a href="https://blog.csdn.net/char_m/article/details/105648703?utm_source=app&amp;app_version=4.10.0&amp;code=app_1562916241&amp;uLinkId=usr1mkqgl919blen">https://blog.csdn.net/char_m/article/details/105648703?utm_source=app&amp;app_version=4.10.0&amp;code=app_1562916241&amp;uLinkId=usr1mkqgl919blen</a></p>
+<h4 id="先序遍历"><a href="#先序遍历" class="headerlink" title="先序遍历"></a>先序遍历</h4><p>1、首先创建一个栈，初始情况下，把根节点入栈</p>
+</li>
+</ul>
+<p>​       2、进入循环<br>​       a）取栈顶元素（出栈）<br>​       b）访问该元素<br>​       c）如果该元素的右子树不为空，就入栈；如果左子树不为空也入栈，当栈为空时，遍历完成。</p>
+<pre><code>   ####          中序遍历
+</code></pre>
+<p>​        1、需要创建一个栈，设定一个cur引用从根节点出发</p>
+<p>​        2、只要cur不为空就把cur入栈，同时cur向左移直到cur为空。<br>​        3、当cur为空，（此时栈顶元素是目前的最左侧元素），出栈并访问<br>​        4、让cur指向刚刚被访问的节点的右子树，循环2、3、4步骤</p>
+<pre><code>   ####          后序遍历
+</code></pre>
+<p>​       1、需要创建一个栈，设定一个cur引用从根节点出发</p>
+<p>​       2、只要cur不为空就把cur入栈，同时cur向左移直到cur为空。<br>​       3、当cur为空，取栈顶元素（如果栈顶元素被访问即被打印才可出栈，否则依然在栈里面），判断是否能够访问：<br>​       a）可以访问：<br>​       如果栈顶元素右子树为null，则可以访问<br>​       栈顶元素已经被访问过了，则可以访问，定义一个prev变量记录上一个被访问过的元素<br>​       b）不能访问：<br>​       让cur从栈顶元素的右子树出发继续进行1、2、3步骤</p>
+<h2 id=""><a href="#" class="headerlink" title=""></a></h2><h2 id="3、树，二叉树。森林的转换"><a href="#3、树，二叉树。森林的转换" class="headerlink" title="3、树，二叉树。森林的转换"></a>3、树，二叉树。森林的转换</h2><p>树 &lt;-&gt; 二叉树 :   </p>
+<ol>
+<li><img src="https://pic.imgdb.cn/item/60e43c5c5132923bf8ce7b96.jpg"></li>
+</ol>
+<p>（注意第一个孩子是结点的左孩子，兄弟转换过来的孩子是结点的右孩子）</p>
+<p>2、森林转换成二叉树</p>
+<ol>
+<li>把每棵树转换为二叉树。</li>
+<li>第一棵二叉树不动，从第二棵二叉树开始，依次把后一棵二叉树的根结点作为前一棵二叉树的根结点的右孩子，用线连接起来。</li>
+<li><img src="https://pic.imgdb.cn/item/60e43e475132923bf8d67d22.jpg"></li>
+</ol>
+]]></content>
+      <tags>
+        <tag>假期</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>假期(2)</title>
     <url>/2021/07/02/%E5%81%87%E6%9C%9F(2)/</url>
     <content><![CDATA[<h2 id="Second-–-02（栈）"><a href="#Second-–-02（栈）" class="headerlink" title="Second – 02（栈）"></a>Second – 02（栈）</h2><p>9.24  AM</p>
 <span id="more"></span>
 
-<h2 id="一、小题"><a href="#一、小题" class="headerlink" title="一、小题"></a>一、小题</h2><h3 id="（1）"><a href="#（1）" class="headerlink" title="（1）"></a>（1）</h3><p><img src="https://pic.imgdb.cn/item/60de6b3e5132923bf85b2a6e.png"></p>
+<h2 id="一、小题"><a href="#一、小题" class="headerlink" title="一、小题"></a>一、小题</h2><h3 id="（1）删除结点问题"><a href="#（1）删除结点问题" class="headerlink" title="（1）删除结点问题"></a>（1）删除结点问题</h3><p><img src="https://pic.imgdb.cn/item/60de6b3e5132923bf85b2a6e.png"></p>
 <h3 id="2-单链表：写一个函数合并两个升序单链表"><a href="#2-单链表：写一个函数合并两个升序单链表" class="headerlink" title="(2)单链表：写一个函数合并两个升序单链表"></a>(2)单链表：写一个函数合并两个升序单链表</h3><p>要求：不能额外申请空间，合并的链表仍然有序</p>
 <p>两种方法:  一种直接一个一个插入</p>
 <p>二种:两两pk，谁小往后面挪 </p>
@@ -40,9 +95,15 @@
 
 <p>链式栈的清空和销毁：清空表示干掉所有数据结点</p>
 <p>销毁表示还要干掉头结点</p>
-<h2 id="三、队列"><a href="#三、队列" class="headerlink" title="三、队列"></a>三、队列</h2><h3 id="1-顺序队列"><a href="#1-顺序队列" class="headerlink" title="(1)顺序队列"></a>(1)顺序队列</h3><figure class="highlight c"><table><tr><td class="code"><pre><span class="line"><span class="comment">/*实现理念：数组，队尾，队首指针，数组的最大长度。</span></span><br><span class="line"><span class="comment">  入队从队尾入，出队从队首出。队尾队首的表示方法都是下标表示</span></span><br><span class="line"><span class="comment">  能够实现空间循环使用的效果：出队或者入队。如果队尾/队首指针达到最大长度时，自动转到下标为零(数组空间开头)</span></span><br><span class="line"><span class="comment">  实现空间的循环利用。实现队列存储操作</span></span><br><span class="line"><span class="comment">*/</span></span><br></pre></td></tr></table></figure>
+<h2 id="三、队列"><a href="#三、队列" class="headerlink" title="三、队列"></a>三、队列</h2><p>队尾(rear):允许插入元素的一端</p>
+<p>队头(front):允许删除元素的一端</p>
+<p>实现：顺序结构和链式结构，操作：InitQueue  DestroyQueue ClearQueue   QueueIsEmpty  QueueLength</p>
+<p>“排队论”</p>
+<h3 id="1-顺序队列"><a href="#1-顺序队列" class="headerlink" title="(1)顺序队列"></a>(1)顺序队列</h3><figure class="highlight c"><table><tr><td class="code"><pre><span class="line"><span class="comment">/*实现理念：数组，队尾，队首指针，数组的最大长度。</span></span><br><span class="line"><span class="comment">  入队从队尾入，出队从队首出。队尾队首的表示方法都是下标表示</span></span><br><span class="line"><span class="comment">  能够实现空间循环使用的效果：出队或者入队。如果队尾/队首指针达到最大长度时，自动转到下标为零(数组空间开头)</span></span><br><span class="line"><span class="comment">  实现空间的循环利用。实现队列存储操作</span></span><br><span class="line"><span class="comment">*/</span></span><br></pre></td></tr></table></figure>
 
-<h3 id="（2）链式队列"><a href="#（2）链式队列" class="headerlink" title="（2）链式队列"></a>（2）链式队列</h3><figure class="highlight c"><table><tr><td class="code"><pre><span class="line"><span class="comment">//数据结点类型描述：数据域，前指针和后指针</span></span><br><span class="line"><span class="comment">//队列类型头指针:队首元素的指针 队尾元素的指针 队列元素的个数</span></span><br><span class="line"></span><br></pre></td></tr></table></figure>
+<h3 id="（2）链式队列"><a href="#（2）链式队列" class="headerlink" title="（2）链式队列"></a>（2）链式队列</h3><figure class="highlight c"><table><tr><td class="code"><pre><span class="line"><span class="comment">//数据结点类型描述：数据域，前指针和后指针</span></span><br><span class="line"><span class="keyword">typedef</span> <span class="keyword">int</span> QElemType;</span><br><span class="line"></span><br><span class="line"><span class="comment">//存队元素的结点</span></span><br><span class="line"><span class="keyword">typedef</span> <span class="class"><span class="keyword">struct</span> <span class="title">Node</span></span></span><br><span class="line"><span class="class">&#123;</span></span><br><span class="line">    QElemType data;</span><br><span class="line">    <span class="class"><span class="keyword">struct</span> <span class="title">NOde</span> *<span class="title">next</span>;</span></span><br><span class="line">&#125;Node;</span><br><span class="line"></span><br><span class="line"><span class="comment">//队列头结点</span></span><br><span class="line"><span class="keyword">typedef</span> <span class="class"><span class="keyword">struct</span> <span class="title">LinkedQueue</span></span></span><br><span class="line"><span class="class">&#123;</span></span><br><span class="line">    Node *Front; <span class="comment">//指向队头结点</span></span><br><span class="line">    Node *Rear;  <span class="comment">//指向队尾结点</span></span><br><span class="line">    <span class="keyword">int</span> Length;  <span class="comment">//队列中元素的个数</span></span><br><span class="line">&#125;LinkedQueue;</span><br><span class="line"></span><br><span class="line"><span class="comment">//队列类型头指针:队首元素的指针 队尾元素的指针 队列元素的个数</span></span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<h3 id="（3）不采用长度标志位-availuble-标志长度"><a href="#（3）不采用长度标志位-availuble-标志长度" class="headerlink" title="（3）不采用长度标志位   availuble 标志长度"></a>（3）不采用长度标志位   availuble 标志长度</h3><figure class="highlight c"><table><tr><td class="code"><pre><span class="line"><span class="comment">//牺牲一个空间，rear 指向最后一个空位表示满</span></span><br><span class="line">(rear + <span class="number">1</span>) % capacity == front  <span class="comment">//队列满</span></span><br><span class="line">front == rear    <span class="comment">//队列为空</span></span><br><span class="line">(rear-front+capacity)%capacity   <span class="comment">//计算元素个数</span></span><br></pre></td></tr></table></figure>
 
 ]]></content>
       <tags>

@@ -1,0 +1,299 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+  
+  
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <title>
+    假期(3) |
+    
+    lvsss</title>
+  
+  <link rel="shortcut icon" href="/favicon.ico">
+  
+  
+<link rel="stylesheet" href="/css/style.css">
+
+  
+  
+<link rel="stylesheet" href="/fancybox/jquery.fancybox.min.css">
+
+  
+  
+<script src="/js/pace.min.js"></script>
+
+<meta name="generator" content="Hexo 5.4.0"><link rel="alternate" href="/atom.xml" title="lvsss" type="application/atom+xml">
+</head>
+
+<body>
+  <main class="content">
+    <section class="outer">
+  <article id="post-假期(3)" class="article article-type-post" itemscope
+  itemprop="blogPost" data-scroll-reveal>
+
+  <div class="article-inner">
+    
+    <header class="article-header">
+      
+
+<h1 class="article-title" itemprop="name">
+  假期(3)
+</h1>
+
+
+
+    </header>
+    
+
+    
+    <div class="article-meta">
+      <a href="/2021/07/05/%E5%81%87%E6%9C%9F(3)/" class="article-date">
+  <time datetime="2021-07-05T01:17:51.000Z" itemprop="datePublished">2021-07-05</time>
+</a>
+      
+    </div>
+    
+
+    
+    
+<div class="tocbot"></div>
+
+    
+
+    <div class="article-entry" itemprop="articleBody">
+      
+      
+      
+      <h1 id="Third-03-树"><a href="#Third-03-树" class="headerlink" title="Third 03  树"></a>Third 03  树</h1><p>10.40</p>
+<span id="more"></span>
+
+<p>详细教程:<a target="_blank" rel="noopener" href="https://wujun234.github.io/01%20%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E4%B8%8E%E7%AE%97%E6%B3%95/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/01%20%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/5%20%E6%A0%91%E4%B8%8E%E4%BA%8C%E5%8F%89%E6%A0%91/">https://wujun234.github.io/01%20%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E4%B8%8E%E7%AE%97%E6%B3%95/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/01%20%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/5%20%E6%A0%91%E4%B8%8E%E4%BA%8C%E5%8F%89%E6%A0%91/</a></p>
+<h2 id="1、树和二叉树的基本概念"><a href="#1、树和二叉树的基本概念" class="headerlink" title="1、树和二叉树的基本概念"></a>1、树和二叉树的基本概念</h2><p>度为零的结点称之为叶子结点，度不为零的称之为非终端结点。最大层次为树的高度或深度</p>
+<h2 id="2、二叉树-Binary-Tree"><a href="#2、二叉树-Binary-Tree" class="headerlink" title="2、二叉树(Binary Tree)"></a>2、二叉树(Binary Tree)</h2><p>每个结点最多只有两棵子树(不存在 度大于2 的结点) </p>
+<p>满二叉树:在不增加树的高度下，没法在树中添加结点</p>
+<p>完全二叉树:  (1) 除去最后一层，这棵树是满二叉树 (2)最后一层靠左边</p>
+<p>二叉树性质:    </p>
+<p>遍历方法：前序遍历，中序遍历，后序遍历都可以用递归来实现  层序遍历需要用到队列的方法</p>
+<h3 id="1、tip-层序遍历-二叉树的层序遍历运用到队列操作"><a href="#1、tip-层序遍历-二叉树的层序遍历运用到队列操作" class="headerlink" title="1、tip:层序遍历:  二叉树的层序遍历运用到队列操作"></a>1、tip:层序遍历:  二叉树的层序遍历运用到队列操作</h3><ul>
+<li><p>首先，根结点 1 入队；</p>
+</li>
+<li><p>根结点 1 出队，出队的同时，将左孩子 2 和右孩子 3 分别入队；</p>
+</li>
+<li><p>队头结点 2 出队，出队的同时，将结点 2 的左孩子 4 和右孩子 5 依次入队；</p>
+</li>
+<li><p>队头结点 3 出队，出队的同时，将结点 3 的左孩子 6 和右孩子 7 依次入队；</p>
+</li>
+<li><p>不断地循环，直至队列内为空。</p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//层序遍历</span></span><br><span class="line"><span class="comment">//根节点入队 Queue, 队列存储的类型应该是结点类型的</span></span><br><span class="line">Enqueue(q,p); </span><br><span class="line"><span class="keyword">while</span>(队列不为空)   <span class="comment">//层序遍历</span></span><br><span class="line">&#123;</span><br><span class="line">    p = Dequeue(q,p);  <span class="comment">//出队</span></span><br><span class="line">    <span class="keyword">if</span>(p-&gt;lchild != <span class="literal">NULL</span>)</span><br><span class="line">    &#123;</span><br><span class="line">        Enqueue(q,p-&gt;lchild);</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">if</span>(p-&gt;rchild != <span class="literal">NULL</span>)</span><br><span class="line">    &#123;</span><br><span class="line">        Enqueue(q,p-&gt;rchild);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h3 id="2、迭代方式实现遍历"><a href="#2、迭代方式实现遍历" class="headerlink" title="2、迭代方式实现遍历"></a>2、迭代方式实现遍历</h3><p>详细教程:</p>
+<p><a target="_blank" rel="noopener" href="https://blog.csdn.net/char_m/article/details/105648703?utm_source=app&amp;app_version=4.10.0&amp;code=app_1562916241&amp;uLinkId=usr1mkqgl919blen">https://blog.csdn.net/char_m/article/details/105648703?utm_source=app&amp;app_version=4.10.0&amp;code=app_1562916241&amp;uLinkId=usr1mkqgl919blen</a></p>
+<h4 id="先序遍历"><a href="#先序遍历" class="headerlink" title="先序遍历"></a>先序遍历</h4><p>1、首先创建一个栈，初始情况下，把根节点入栈</p>
+</li>
+</ul>
+<p>​       2、进入循环<br>​       a）取栈顶元素（出栈）<br>​       b）访问该元素<br>​       c）如果该元素的右子树不为空，就入栈；如果左子树不为空也入栈，当栈为空时，遍历完成。</p>
+<pre><code>   ####          中序遍历
+</code></pre>
+<p>​        1、需要创建一个栈，设定一个cur引用从根节点出发</p>
+<p>​        2、只要cur不为空就把cur入栈，同时cur向左移直到cur为空。<br>​        3、当cur为空，（此时栈顶元素是目前的最左侧元素），出栈并访问<br>​        4、让cur指向刚刚被访问的节点的右子树，循环2、3、4步骤</p>
+<pre><code>   ####          后序遍历
+</code></pre>
+<p>​       1、需要创建一个栈，设定一个cur引用从根节点出发</p>
+<p>​       2、只要cur不为空就把cur入栈，同时cur向左移直到cur为空。<br>​       3、当cur为空，取栈顶元素（如果栈顶元素被访问即被打印才可出栈，否则依然在栈里面），判断是否能够访问：<br>​       a）可以访问：<br>​       如果栈顶元素右子树为null，则可以访问<br>​       栈顶元素已经被访问过了，则可以访问，定义一个prev变量记录上一个被访问过的元素<br>​       b）不能访问：<br>​       让cur从栈顶元素的右子树出发继续进行1、2、3步骤</p>
+<h2 id=""><a href="#" class="headerlink" title=""></a></h2><h2 id="3、树，二叉树。森林的转换"><a href="#3、树，二叉树。森林的转换" class="headerlink" title="3、树，二叉树。森林的转换"></a>3、树，二叉树。森林的转换</h2><p>树 &lt;-&gt; 二叉树 :   </p>
+<ol>
+<li><img src="https://pic.imgdb.cn/item/60e43c5c5132923bf8ce7b96.jpg"></li>
+</ol>
+<p>（注意第一个孩子是结点的左孩子，兄弟转换过来的孩子是结点的右孩子）</p>
+<p>2、森林转换成二叉树</p>
+<ol>
+<li>把每棵树转换为二叉树。</li>
+<li>第一棵二叉树不动，从第二棵二叉树开始，依次把后一棵二叉树的根结点作为前一棵二叉树的根结点的右孩子，用线连接起来。</li>
+<li><img src="https://pic.imgdb.cn/item/60e43e475132923bf8d67d22.jpg"></li>
+</ol>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://example.com/2021/07/05/%E5%81%87%E6%9C%9F(3)/" data-id="ckqs236640000mkvo09co7szu" class="article-share-link">
+        分享
+      </a>
+      
+<ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E5%81%87%E6%9C%9F/" rel="tag">假期</a></li></ul>
+
+    </footer>
+
+  </div>
+
+  
+  
+<nav class="article-nav">
+  
+  
+  <a href="/2021/07/02/%E5%81%87%E6%9C%9F(2)/" class="article-nav-link">
+    <strong class="article-nav-caption">后一篇</strong>
+    <div class="article-nav-title">假期(2)</div>
+  </a>
+  
+</nav>
+
+  
+
+  
+  
+  
+  
+
+</article>
+</section>
+    <footer class="footer">
+  <div class="outer">
+    <div class="float-right">
+      <ul class="list-inline">
+  
+  <li><i class="fe fe-smile-alt"></i> <span id="busuanzi_value_site_uv"></span></li>
+  
+  <li><i class="fe fe-bookmark"></i> <span id="busuanzi_value_page_pv"></span></li>
+  
+</ul>
+    </div>
+    <ul class="list-inline">
+      <li>lvsss &copy; 2021</li>
+      
+        <li>7</li>
+      
+      <li>Powered by <a href="http://hexo.io/" target="_blank">Hexo</a></li>
+      <li>theme  <a target="_blank" rel="noopener" href="https://github.com/zhwangart/hexo-theme-ocean">Ocean</a></li>
+    </ul>
+    <div class="float-right">
+      <span id="timeDate">载入天数...</span><span id="times">载入时分秒...</span>
+<script>
+    var now = new Date(); 
+    function createtime() { 
+        var grt= new Date("05/1/2021 15:49:00");//此处修改你的建站时间或者网站上线时间 
+        now.setTime(now.getTime()+250); 
+        days = (now - grt ) / 1000 / 60 / 60 / 24; dnum = Math.floor(days); 
+        hours = (now - grt ) / 1000 / 60 / 60 - (24 * dnum); hnum = Math.floor(hours); 
+        if(String(hnum).length ==1 ){hnum = "0" + hnum;} minutes = (now - grt ) / 1000 /60 - (24 * 60 * dnum) - (60 * hnum); 
+        mnum = Math.floor(minutes); if(String(mnum).length ==1 ){mnum = "0" + mnum;} 
+        seconds = (now - grt ) / 1000 - (24 * 60 * 60 * dnum) - (60 * 60 * hnum) - (60 * mnum); 
+        snum = Math.round(seconds); if(String(snum).length ==1 ){snum = "0" + snum;} 
+        document.getElementById("timeDate").innerHTML = "本站已安全运行 "+dnum+" 天 "; 
+        document.getElementById("times").innerHTML = hnum + " 小时 " + mnum + " 分 " + snum + " 秒"; 
+    } 
+	setInterval("createtime()",250);
+</script>
+    </div>
+  </div>
+</footer>
+  </main>
+  <aside class="sidebar">
+    <button class="navbar-toggle"></button>
+<nav class="navbar">
+  
+  <div class="logo">
+    <a href="/"><img src="/images/hexo.svg" alt="lvsss"></a>
+  </div>
+  
+  <ul class="nav nav-main">
+    
+    <li class="nav-item">
+      <a class="nav-item-link" href="/">Home</a>
+    </li>
+    
+    <li class="nav-item">
+      <a class="nav-item-link" href="/archives">Archives</a>
+    </li>
+    
+    <li class="nav-item">
+      <a class="nav-item-link" href="/gallery">Gallery</a>
+    </li>
+    
+    <li class="nav-item">
+      <a class="nav-item-link" href="/about">About</a>
+    </li>
+    
+    <li class="nav-item">
+      <a class="nav-item-link nav-item-search" title="搜索">
+        <i class="fe fe-search"></i>
+        搜索
+      </a>
+    </li>
+  </ul>
+</nav>
+<nav class="navbar navbar-bottom">
+  <ul class="nav">
+    <li class="nav-item">
+      <div class="totop" id="totop">
+  <i class="fe fe-rocket"></i>
+</div>
+    </li>
+    <li class="nav-item">
+      
+      <a class="nav-item-link" target="_blank" href="/atom.xml" title="RSS Feed">
+        <i class="fe fe-feed"></i>
+      </a>
+      
+    </li>
+  </ul>
+</nav>
+<div class="search-form-wrap">
+  <div class="local-search local-search-plugin">
+  <input type="search" id="local-search-input" class="local-search-input" placeholder="Search...">
+  <div id="local-search-result" class="local-search-result"></div>
+</div>
+</div>
+  </aside>
+  
+<script src="/js/jquery-2.0.3.min.js"></script>
+
+
+<script src="/js/jquery.justifiedGallery.min.js"></script>
+
+
+<script src="/js/lazyload.min.js"></script>
+
+
+<script src="/js/busuanzi-2.3.pure.min.js"></script>
+
+
+
+<script src="/fancybox/jquery.fancybox.min.js"></script>
+
+
+
+
+<script src="/js/copybtn.js"></script>
+
+
+
+
+
+<script src="/js/tocbot.min.js"></script>
+
+<script>
+  // Tocbot_v4.7.0  http://tscanlin.github.io/tocbot/
+  tocbot.init({
+    tocSelector: '.tocbot',
+    contentSelector: '.article-entry',
+    headingSelector: 'h1, h2, h3, h4, h5, h6',
+    hasInnerContainers: true,
+    scrollSmooth: true,
+    positionFixedSelector: '.tocbot',
+    positionFixedClass: 'is-position-fixed',
+    fixedSidebarOffset: 'auto',
+  });
+</script>
+
+
+
+<script src="/js/ocean.js"></script>
+
+
+
+<script src="/live2dw/lib/L2Dwidget.min.js?094cbace49a39548bed64abff5988b05"></script><script>L2Dwidget.init({"model":{"scale":1,"hHeadPos":0.5,"vHeadPos":0.618,"jsonPath":"/live2dw/assets/haruto.model.json"},"display":{"superSample":2,"width":150,"height":300,"position":"left","hOffset":0,"vOffset":-20},"mobile":{"show":true},"react":{"opacityDefault":0.5,"opacityOnHover":0.2},"log":false,"pluginJsPath":"lib/","pluginModelPath":"assets/","pluginRootPath":"live2dw/","tagMode":false});</script></body>
+
+</html>
