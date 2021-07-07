@@ -14,6 +14,26 @@
       </tags>
   </entry>
   <entry>
+    <title>假期4</title>
+    <url>/2021/07/07/%E5%81%87%E6%9C%9F(4)/</url>
+    <content><![CDATA[<h2 id="这孩子打小就聪明"><a href="#这孩子打小就聪明" class="headerlink" title="这孩子打小就聪明"></a>这孩子打小就聪明</h2><span id="more"></span>
+
+<p>关于二叉树的递归问题</p>
+<h3 id="1、求出二叉树的高度"><a href="#1、求出二叉树的高度" class="headerlink" title="1、求出二叉树的高度"></a>1、求出二叉树的高度</h3><p>递归思路：设置一个宏，比较两个数的最大值   返回左子树函数调用和右子树函数调用加1</p>
+<figure class="highlight c"><table><tr><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">define</span> MAX(a,b) ((a)&gt;(b) ?(a):(b))</span></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">level</span><span class="params">(Bitree *t)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="keyword">if</span>(t == <span class="literal">NULL</span>)</span><br><span class="line">    &#123;</span><br><span class="line">        <span class="keyword">return</span> <span class="literal">NULL</span>;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> MAX(level(t-&gt;lchild),level(t-&gt;rchild))+<span class="number">1</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h3 id="2、求出数的最大结点"><a href="#2、求出数的最大结点" class="headerlink" title="2、求出数的最大结点"></a>2、求出数的最大结点</h3><p>递归思路:如果右子树存在，返回右子树的函数调用</p>
+<figure class="highlight c"><table><tr><td class="code"><pre><span class="line"><span class="function">Bitree *<span class="title">max</span><span class="params">(Bitree *t)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="keyword">if</span>(t == <span class="literal">NULL</span>)</span><br><span class="line">    &#123;</span><br><span class="line">        <span class="keyword">return</span> <span class="literal">NULL</span>;</span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">    <span class="keyword">if</span>(t-&gt;rchild)</span><br><span class="line">    &#123;</span><br><span class="line">        <span class="keyword">return</span> max(t-&gt;rchild);</span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">    <span class="keyword">else</span></span><br><span class="line">    &#123;</span><br><span class="line">        <span class="keyword">return</span> t;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h3 id="3、删除整个二叉树"><a href="#3、删除整个二叉树" class="headerlink" title="3、删除整个二叉树"></a>3、删除整个二叉树</h3><p>递归思路：删除左子树，删除右子树，删除本身结点</p>
+<figure class="highlight c"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">delete</span><span class="params">(Bitree *t)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="keyword">if</span>(t == <span class="literal">NULL</span>)</span><br><span class="line">    &#123;</span><br><span class="line">        <span class="keyword">return</span> <span class="literal">NULL</span>;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">if</span>(t-&gt;lchild)</span><br><span class="line">    &#123;</span><br><span class="line">        <span class="keyword">delete</span>(t-&gt;lchild);</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">if</span>(t-&gt;rchild)</span><br><span class="line">    &#123;</span><br><span class="line">        <span class="keyword">delete</span>(t-&gt;rchild);</span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">    t-&gt;lchild = <span class="literal">NULL</span>;</span><br><span class="line">    t-&gt;rchild = <span class="literal">NULL</span>;</span><br><span class="line">    <span class="built_in">free</span>(t);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+]]></content>
+      <tags>
+        <tag>假期</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>假期(3)</title>
     <url>/2021/07/05/%E5%81%87%E6%9C%9F(3)/</url>
     <content><![CDATA[<h1 id="Third-03-树"><a href="#Third-03-树" class="headerlink" title="Third 03  树"></a>Third 03  树</h1><p>10.40</p>
