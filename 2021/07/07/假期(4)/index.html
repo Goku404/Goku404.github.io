@@ -89,6 +89,12 @@
 <h3 id="3、删除整个二叉树"><a href="#3、删除整个二叉树" class="headerlink" title="3、删除整个二叉树"></a>3、删除整个二叉树</h3><p>递归思路：删除左子树，删除右子树，删除本身结点</p>
 <figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">delete</span><span class="params">(Bitree *t)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="keyword">if</span>(t == <span class="literal">NULL</span>)</span><br><span class="line">    &#123;</span><br><span class="line">        <span class="keyword">return</span> <span class="literal">NULL</span>;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">if</span>(t-&gt;lchild)</span><br><span class="line">    &#123;</span><br><span class="line">        <span class="keyword">delete</span>(t-&gt;lchild);</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">if</span>(t-&gt;rchild)</span><br><span class="line">    &#123;</span><br><span class="line">        <span class="keyword">delete</span>(t-&gt;rchild);</span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">    t-&gt;lchild = <span class="literal">NULL</span>;</span><br><span class="line">    t-&gt;rchild = <span class="literal">NULL</span>;</span><br><span class="line">    <span class="built_in">free</span>(t);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
+<h3 id="4、判断一棵二叉树是否为排序二叉树"><a href="#4、判断一棵二叉树是否为排序二叉树" class="headerlink" title="4、判断一棵二叉树是否为排序二叉树"></a>4、判断一棵二叉树是否为排序二叉树</h3><p>思路:1、中序遍历二叉树，如果得出的数组为升序序列，为二叉排序树</p>
+<p>2、左子树是排序树 &amp;&amp; 右子树是排序树 &amp;&amp; 左子树最大值&lt;根&lt;右子树</p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"></span><br></pre></td></tr></table></figure>
+
+<h3 id="5、递归构造一棵二叉树"><a href="#5、递归构造一棵二叉树" class="headerlink" title="5、递归构造一棵二叉树"></a>5、递归构造一棵二叉树</h3><figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//前序创造二叉树</span></span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">CreateBiTree</span><span class="params">(BiTree *T)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="keyword">int</span> c;</span><br><span class="line">    <span class="built_in">scanf</span>(<span class="string">&quot;%d&quot;</span>,&amp;c);</span><br><span class="line">    <span class="keyword">if</span>(c==<span class="number">0</span>)</span><br><span class="line">    &#123;</span><br><span class="line">        *T = <span class="literal">NULL</span>;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">else</span></span><br><span class="line">    &#123;</span><br><span class="line">        *T = (BiTNode *)<span class="built_in">malloc</span>(<span class="keyword">sizeof</span>(BiTNode));</span><br><span class="line">        (*T)-&gt;data = c;</span><br><span class="line">        CreateBiTree(&amp;(*T)-&gt;lchild);  <span class="comment">//递归方法创建左子树</span></span><br><span class="line">        CreateBiTree(&amp;(*T)-&gt;rchild);  <span class="comment">//递归方法创建右子树  </span></span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">//构造方法: 为空的地方要用 &quot;0&quot; 填充</span></span><br></pre></td></tr></table></figure>
+
 
       
     </div>
@@ -106,6 +112,15 @@
   
   
 <nav class="article-nav">
+  
+  <a href="/2021/07/08/Yu/" class="article-nav-link">
+    <strong class="article-nav-caption">前一篇</strong>
+    <div class="article-nav-title">
+      
+      Yu
+      
+    </div>
+  </a>
   
   
   <a href="/2021/07/05/%E5%81%87%E6%9C%9F(3)/" class="article-nav-link">

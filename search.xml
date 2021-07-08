@@ -14,6 +14,111 @@
       </tags>
   </entry>
   <entry>
+    <title>Yu</title>
+    <url>/2021/07/08/Yu/</url>
+    <content><![CDATA[<h1 id="数据类型"><a href="#数据类型" class="headerlink" title="数据类型"></a>数据类型</h1><h2 id="1、c语言数据类型"><a href="#1、c语言数据类型" class="headerlink" title="1、c语言数据类型"></a><em><strong>1、c语言数据类型</strong></em></h2><ol>
+<li><p>数据类型 </p>
+<ul>
+<li><p>整形  </p>
+<blockquote>
+<p>(signed) char/ unsigned char  —&gt;<strong>字符型</strong><br>char 占 1byte(字节) = 8 bits  </p>
+</blockquote>
+<blockquote>
+<p>(signed) short/ unsigned short  —&gt;<strong>短整型</strong><br>short 占 2byte(字节) = 16 bits</p>
+</blockquote>
+<blockquote>
+<p>(signed) int/ unsigned int  —&gt;<strong>整型</strong><br>int 占 4byte(字节) = 32 bits</p>
+</blockquote>
+<blockquote>
+<p>(signed) long/ unsigned long  —&gt;<strong>长整型</strong><br>在32位机器值 long 占 4byte(字节) = 32 bits<br>在64位机器值 long 占 8byte(字节) = 64 bits</p>
+</blockquote>
+</li>
+<li><p>浮点型  </p>
+<blockquote>
+<p>单精度 float 4byte<br>双精度 double 8byte<br>长精度 long double 12byte  </p>
+</blockquote>
+</li>
+</ul>
+</li>
+</ol>
+<h2 id="2、常量与变量"><a href="#2、常量与变量" class="headerlink" title="2、常量与变量"></a><em><strong>2、常量与变量</strong></em></h2><h3 id="2-1-常量"><a href="#2-1-常量" class="headerlink" title="2.1 常量"></a><em><strong>2.1 常量</strong></em></h3><ul>
+<li><p>整型常量  </p>
+<pre><code>二进制(8421)     
+    八进制(以0开头的都是八进制) 136   ----&gt; 001 011 110  
+    16进制(以0x/0X开头的)  
+    10进制(没有特殊说明都是10进制)
+</code></pre>
+</li>
+<li><p>浮点型常量</p>
+<pre><code>带小数的  
+    1.2  
+    1.2e-3 ----&gt;0.0012  
+</code></pre>
+</li>
+<li><p>字符型常量  </p>
+<pre><code>保存的不是形状,是ASCII码.  
+    字符&lt;------&gt;整数
+</code></pre>
+</li>
+<li><p>枚举常量</p>
+</li>
+</ul>
+<h3 id="2-2-变量"><a href="#2-2-变量" class="headerlink" title="2.2 变量"></a><em><strong>2.2 变量</strong></em></h3><p><strong>2.2.1.变量的定义</strong>  </p>
+<blockquote>
+<p>变量类型 变量名;<br>变量的属性(占用多大的空间,取值范围—-&gt;类型)    </p>
+</blockquote>
+<p><strong>2.2.2.signed/unsigned</strong> </p>
+<blockquote>
+<p>signed:最高位是符号位,其他都是数值位<br>unsigned:都是数值位  </p>
+</blockquote>
+<p><strong>2.2.3.变量的保存</strong>      </p>
+<blockquote>
+<p>存储的是二进制补码<br>原码&lt;—–&gt;补码<br>正数:原码本身<br>负数:原码的绝对值,取反+1(二进制)  </p>
+</blockquote>
+<h2 id="3、整形数据的存储"><a href="#3、整形数据的存储" class="headerlink" title="3、整形数据的存储"></a><em><strong>3、整形数据的存储</strong></em></h2><ul>
+<li><em><strong>3.1 整形数据的存储方法</strong></em></li>
+</ul>
+<ol>
+<li>整形的存储方法<ul>
+<li>正数<br>正数的补码就是本身的二进制 <strong>补码=原码</strong></li>
+<li>负数<br><strong>原码变补码</strong><br><strong>符号位不变，数据位取反</strong>  原码的绝对值 取反 加一 比如：<br>-13<br>绝对值：13 0000 1101<br>取反：1111 0011<br>加一：1111 0100<br>在计算机中存储的就是 1111 0100<br><strong>补码变原码</strong><br>short a = 32767;<br>short b = a+2;<br>printf(“%d\n”,b);<br>0111 1111 1111 1111 + 0000 0000 0000 0010 = 1000 0000 0000 0001 存储码<br>补码转原码：<strong>符号位不变，数据位取反</strong><br>补码减一 取反 1111 1111 1111 1111 = -32767<br><font color=red size=3><strong>总结：在进行运算的时候，都是补码在进行运算，正数的补码等于原码，故不必再进行转码；当补码为负数或数据溢出时，需将补码转化为原码。</strong></font></li>
+</ul>
+</li>
+</ol>
+<ul>
+<li><p><em><strong>3.2 signed/unsigned</strong></em></p>
+</li>
+<li><p><em><strong>3.3 关于整型数据的赋值问题,C语言的标准建议</strong></em>    </p>
+<h3 id="3-3-1"><a href="#3-3-1" class="headerlink" title="3.3.1"></a>3.3.1</h3><ul>
+<li><p><font color = red size =3><strong>长的赋值给短的（不管有没有符号）</strong> </font></p>
+<blockquote>
+<p>低字节直接拷贝，高字节直接丢弃</p>
+</blockquote>
+</li>
+</ul>
+<h3 id="3-3-2"><a href="#3-3-2" class="headerlink" title="3.3.2"></a>3.3.2</h3><ul>
+<li><p><font color = red size=3><strong>短的赋值给长的</strong> </font> </p>
+<blockquote>
+<p>有符号（signed）那么低字节直接拷贝,高字节全部补符号位<br>无符号（unsigned）那么低字节直接拷贝,高字节全部补0       </p>
+</blockquote>
+</li>
+</ul>
+</li>
+</ul>
+<pre><code>&lt;font color=red size=3&gt;**特例:** **当表达式中存在有符号类型和无符号类型时所有的操作数都自动转换为无符号类型**&lt;/font&gt;
+</code></pre>
+<ul>
+<li><em><strong>3.4 溢出问题</strong></em>  <pre><code>溢出其实就是一个计算值
+长----&gt;短
+</code></pre>
+</li>
+</ul>
+]]></content>
+      <tags>
+        <tag>Yu</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>假期4</title>
     <url>/2021/07/07/%E5%81%87%E6%9C%9F(4)/</url>
     <content><![CDATA[<h2 id="这孩子打小就聪明"><a href="#这孩子打小就聪明" class="headerlink" title="这孩子打小就聪明"></a>这孩子打小就聪明</h2><span id="more"></span>
@@ -27,6 +132,12 @@
 
 <h3 id="3、删除整个二叉树"><a href="#3、删除整个二叉树" class="headerlink" title="3、删除整个二叉树"></a>3、删除整个二叉树</h3><p>递归思路：删除左子树，删除右子树，删除本身结点</p>
 <figure class="highlight c"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">delete</span><span class="params">(Bitree *t)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="keyword">if</span>(t == <span class="literal">NULL</span>)</span><br><span class="line">    &#123;</span><br><span class="line">        <span class="keyword">return</span> <span class="literal">NULL</span>;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">if</span>(t-&gt;lchild)</span><br><span class="line">    &#123;</span><br><span class="line">        <span class="keyword">delete</span>(t-&gt;lchild);</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">if</span>(t-&gt;rchild)</span><br><span class="line">    &#123;</span><br><span class="line">        <span class="keyword">delete</span>(t-&gt;rchild);</span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">    t-&gt;lchild = <span class="literal">NULL</span>;</span><br><span class="line">    t-&gt;rchild = <span class="literal">NULL</span>;</span><br><span class="line">    <span class="built_in">free</span>(t);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h3 id="4、判断一棵二叉树是否为排序二叉树"><a href="#4、判断一棵二叉树是否为排序二叉树" class="headerlink" title="4、判断一棵二叉树是否为排序二叉树"></a>4、判断一棵二叉树是否为排序二叉树</h3><p>思路:1、中序遍历二叉树，如果得出的数组为升序序列，为二叉排序树</p>
+<p>2、左子树是排序树 &amp;&amp; 右子树是排序树 &amp;&amp; 左子树最大值&lt;根&lt;右子树</p>
+<figure class="highlight c"><table><tr><td class="code"><pre><span class="line"></span><br></pre></td></tr></table></figure>
+
+<h3 id="5、递归构造一棵二叉树"><a href="#5、递归构造一棵二叉树" class="headerlink" title="5、递归构造一棵二叉树"></a>5、递归构造一棵二叉树</h3><figure class="highlight c"><table><tr><td class="code"><pre><span class="line"><span class="comment">//前序创造二叉树</span></span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">CreateBiTree</span><span class="params">(BiTree *T)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="keyword">int</span> c;</span><br><span class="line">    <span class="built_in">scanf</span>(<span class="string">&quot;%d&quot;</span>,&amp;c);</span><br><span class="line">    <span class="keyword">if</span>(c==<span class="number">0</span>)</span><br><span class="line">    &#123;</span><br><span class="line">        *T = <span class="literal">NULL</span>;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">else</span></span><br><span class="line">    &#123;</span><br><span class="line">        *T = (BiTNode *)<span class="built_in">malloc</span>(<span class="keyword">sizeof</span>(BiTNode));</span><br><span class="line">        (*T)-&gt;data = c;</span><br><span class="line">        CreateBiTree(&amp;(*T)-&gt;lchild);  <span class="comment">//递归方法创建左子树</span></span><br><span class="line">        CreateBiTree(&amp;(*T)-&gt;rchild);  <span class="comment">//递归方法创建右子树  </span></span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">//构造方法: 为空的地方要用 &quot;0&quot; 填充</span></span><br></pre></td></tr></table></figure>
 
 ]]></content>
       <tags>
