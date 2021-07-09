@@ -1,0 +1,277 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+  
+  
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <title>
+    搜索算法2 |
+    
+    lvsss</title>
+  
+  <link rel="shortcut icon" href="/favicon.ico">
+  
+  
+<link rel="stylesheet" href="/css/style.css">
+
+  
+  
+<link rel="stylesheet" href="/fancybox/jquery.fancybox.min.css">
+
+  
+  
+<script src="/js/pace.min.js"></script>
+
+<meta name="generator" content="Hexo 5.4.0"><link rel="alternate" href="/atom.xml" title="lvsss" type="application/atom+xml">
+</head>
+
+<body>
+  <main class="content">
+    <section class="outer">
+  <article id="post-搜索算法2" class="article article-type-post" itemscope
+  itemprop="blogPost" data-scroll-reveal>
+
+  <div class="article-inner">
+    
+    <header class="article-header">
+      
+
+<h1 class="article-title" itemprop="name">
+  搜索算法2
+</h1>
+
+
+
+    </header>
+    
+
+    
+    <div class="article-meta">
+      <a href="/2021/07/09/%E6%90%9C%E7%B4%A2%E7%AE%97%E6%B3%952/" class="article-date">
+  <time datetime="2021-07-09T07:58:38.000Z" itemprop="datePublished">2021-07-09</time>
+</a>
+      
+    </div>
+    
+
+    
+    
+<div class="tocbot"></div>
+
+    
+
+    <div class="article-entry" itemprop="articleBody">
+      
+      
+      
+      <h2 id="一、有关图的深度优先搜索和广度优先搜索"><a href="#一、有关图的深度优先搜索和广度优先搜索" class="headerlink" title="一、有关图的深度优先搜索和广度优先搜索"></a>一、有关图的深度优先搜索和广度优先搜索</h2><span id="more"></span>
+
+<h3 id="1、图的表达方式以及图的建立"><a href="#1、图的表达方式以及图的建立" class="headerlink" title="1、图的表达方式以及图的建立"></a>1、图的表达方式以及图的建立</h3><p>邻接矩阵的表示方法：设置顶点数组和邻接矩阵二维数组</p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">define</span> MAXN      100   <span class="comment">//图中顶点的最大个数</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">define</span> VERY_BIG  65535    <span class="comment">//无穷大</span></span></span><br><span class="line"><span class="keyword">typedef</span> <span class="class"><span class="keyword">struct</span></span></span><br><span class="line"><span class="class">&#123;</span></span><br><span class="line">    VType V[MAXN] ; <span class="comment">//一维数组用来存储顶点的数据</span></span><br><span class="line"></span><br><span class="line">    WType A[MAXN][MAXN] ; <span class="comment">//存储边上的权w,&quot;邻接矩阵&quot;</span></span><br><span class="line"></span><br><span class="line">    <span class="keyword">int</span> VexNum;<span class="comment">//图中实际顶点的个数</span></span><br><span class="line">    <span class="comment">// ...</span></span><br><span class="line">&#125;Graph;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<pre><code>                                                                             ![](https://pic.imgdb.cn/item/60e803285132923bf8386a12.png)
+</code></pre>
+<p>例如：数字表示边的权值横向表示起始点方向，没有边的情况表示无穷大，在代码中，无穷大为65535</p>
+<p>图的建立过程：先输入顶点集例如：ABCDEFG   然后输入边格式:AB8 (起点 终点 权值) ,当起点输入为’#’ 时退出循环</p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">scanf</span>(<span class="string">&quot;%s&quot;</span>,g-&gt;V); <span class="comment">//输入顶点集</span></span><br><span class="line">getchar();     <span class="comment">//清空输入缓冲区</span></span><br><span class="line">g-&gt;VexNum = <span class="built_in">strlen</span>(g-&gt;V);   <span class="comment">//获取顶点数组的有效长度</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">for</span>()</span><br><span class="line">&#123;</span><br><span class="line">           <span class="comment">//邻接二维矩阵初始化为无穷大</span></span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">while</span>(<span class="number">1</span>)</span><br><span class="line">&#123;</span><br><span class="line">    <span class="keyword">char</span> Start;</span><br><span class="line">    <span class="keyword">char</span> Stop;</span><br><span class="line">    <span class="keyword">int</span> w;  <span class="comment">//权值</span></span><br><span class="line">    <span class="built_in">scanf</span>(<span class="string">&quot;%c%c%d&quot;</span>,&amp;Start,&amp;Stop,&amp;w);   <span class="comment">//输入格式</span></span><br><span class="line">    <span class="keyword">int</span> Startindex = getindex(V,g-&gt;VexNum,Start);  <span class="comment">//输入的字符返回下标</span></span><br><span class="line">    <span class="keyword">int</span> Stopindex = getindex(V,g-&gt;VexNum,STop);    <span class="comment">//输入的字符返回下标</span></span><br><span class="line">    g-&gt;A[Startindex][Stopindex] = w;   <span class="comment">//赋值二维数组以权值</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h3 id="2、图的深度优先遍历"><a href="#2、图的深度优先遍历" class="headerlink" title="2、图的深度优先遍历"></a>2、图的深度优先遍历</h3><figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//查找第v0 行从pos开始的 有效 结点</span></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">FindNextLJD</span><span class="params">(Graph*g , <span class="keyword">int</span> v0, <span class="keyword">int</span> pos)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="keyword">int</span> i;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">for</span> (i = pos; i &lt; g-&gt;VexNum; i++)</span><br><span class="line">    &#123;</span><br><span class="line">        <span class="keyword">if</span> (g-&gt;A[v0][i] != VERY_BIG)</span><br><span class="line">        &#123;</span><br><span class="line">            <span class="keyword">return</span> i;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">return</span> <span class="number">-1</span>;</span><br><span class="line"></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">int</span> visited[MAXN] = &#123;<span class="number">0</span>&#125;;</span><br><span class="line"><span class="comment">//从图中下标为v0的那个顶点出发，按照DFS(深度优先)的去访问它能够访问的</span></span><br><span class="line"><span class="comment">//所有邻接点。</span></span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">DFS</span><span class="params">(Graph* g,  <span class="keyword">int</span> v0)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="comment">//(1)访问v0,并标记</span></span><br><span class="line">    <span class="built_in">printf</span>(<span class="string">&quot;%c--&quot;</span>, g-&gt;V[v0]);</span><br><span class="line">    visited[v0] = <span class="number">1</span>;</span><br><span class="line"></span><br><span class="line">    <span class="comment">//(2)</span></span><br><span class="line">    <span class="keyword">int</span> vi; <span class="comment">//表示 v0的下一个邻接点</span></span><br><span class="line">    <span class="keyword">for</span> (vi = FindNextLJD(g,v0,<span class="number">0</span>); vi != <span class="number">-1</span> ;   vi = FindNextLJD(g,v0, vi+<span class="number">1</span>))  </span><br><span class="line">    <span class="comment">//第一次循环的时候从0开始，下一次从vi的下一个开始查找</span></span><br><span class="line">    &#123;</span><br><span class="line">        <span class="keyword">if</span> (visited[vi] == <span class="number">0</span>)</span><br><span class="line">        &#123;</span><br><span class="line">            DFS(g, vi);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">//为了适配非连通的情况</span></span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">DFSTraver</span><span class="params">(Graph *g)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="keyword">int</span> i;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">if</span> (g == <span class="literal">NULL</span>)</span><br><span class="line">    &#123;</span><br><span class="line">        <span class="keyword">return</span>;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="comment">//先初始化的辅助数组</span></span><br><span class="line">    <span class="keyword">for</span> (i = <span class="number">0</span>; i &lt; g-&gt;VexNum; i++)</span><br><span class="line">    &#123;</span><br><span class="line">        visited[i] = <span class="number">0</span>;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">    <span class="keyword">for</span> (i = <span class="number">0</span>; i &lt; g-&gt;VexNum; i++)</span><br><span class="line">    &#123;</span><br><span class="line">        <span class="keyword">if</span> (visited[i] == <span class="number">0</span>)</span><br><span class="line">        &#123;</span><br><span class="line">            DFS(g, i);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>3、图的广度优先遍历</p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//广度优先搜索</span></span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">BFS</span><span class="params">(Graph* g,  <span class="keyword">int</span> v0)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="keyword">int</span> Queue[<span class="number">100</span>]=&#123;<span class="number">0</span>&#125;;<span class="comment">//队列</span></span><br><span class="line">    <span class="keyword">int</span> front = <span class="number">0</span>;</span><br><span class="line">    <span class="keyword">int</span> rear = <span class="number">0</span>;</span><br><span class="line"></span><br><span class="line">    Queue[rear++] = v0;  <span class="comment">//第一个结点入队</span></span><br><span class="line">    <span class="keyword">if</span>(rear == <span class="number">100</span>)</span><br><span class="line">    &#123;</span><br><span class="line">        rear = <span class="number">0</span>;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">while</span>(rear != front)  <span class="comment">//如果队列不为空</span></span><br><span class="line">    &#123;</span><br><span class="line">        <span class="keyword">int</span> vi;</span><br><span class="line">        visited2[Queue[front]] = <span class="number">1</span>;</span><br><span class="line">        </span><br><span class="line">        <span class="comment">//下一个邻接点入队</span></span><br><span class="line">        <span class="keyword">for</span> (vi = FindNextLJD(g,Queue[front],<span class="number">0</span>); vi != <span class="number">-1</span> ; vi = FindNextLJD(g,Queue[front], vi+<span class="number">1</span>))</span><br><span class="line">        &#123;</span><br><span class="line">            <span class="keyword">if</span>(visited2[vi] == <span class="number">0</span>)</span><br><span class="line">            &#123;</span><br><span class="line">                Queue[rear++] = vi;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        <span class="built_in">printf</span>(<span class="string">&quot;%c &quot;</span>,g-&gt;V[Queue[front++]]);  <span class="comment">//出队</span></span><br><span class="line"></span><br><span class="line">        <span class="keyword">if</span>(rear == <span class="number">100</span>)</span><br><span class="line">        &#123;</span><br><span class="line">            rear = <span class="number">0</span>;</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://example.com/2021/07/09/%E6%90%9C%E7%B4%A2%E7%AE%97%E6%B3%952/" data-id="ckqw4pwb00000gcvobcd0fasu" class="article-share-link">
+        分享
+      </a>
+      
+<ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E5%8A%9B%E6%89%A3%E7%AE%97%E6%B3%95-C/" rel="tag">力扣算法-C++</a></li></ul>
+
+    </footer>
+
+  </div>
+
+  
+  
+<nav class="article-nav">
+  
+  <a href="/2021/07/09/2%E3%80%81%E8%BF%90%E7%AE%97%E7%AC%A6%E5%92%8C%E8%A1%A8%E8%BE%BE%E5%BC%8F/" class="article-nav-link">
+    <strong class="article-nav-caption">前一篇</strong>
+    <div class="article-nav-title">
+      
+      (no title)
+      
+    </div>
+  </a>
+  
+  
+  <a href="/2021/07/08/Yu/" class="article-nav-link">
+    <strong class="article-nav-caption">后一篇</strong>
+    <div class="article-nav-title">Yu</div>
+  </a>
+  
+</nav>
+
+  
+
+  
+  
+  
+  
+
+</article>
+</section>
+    <footer class="footer">
+  <div class="outer">
+    <div class="float-right">
+      <ul class="list-inline">
+  
+  <li><i class="fe fe-smile-alt"></i> <span id="busuanzi_value_site_uv"></span></li>
+  
+  <li><i class="fe fe-bookmark"></i> <span id="busuanzi_value_page_pv"></span></li>
+  
+</ul>
+    </div>
+    <ul class="list-inline">
+      <li>lvsss &copy; 2021</li>
+      
+        <li>7</li>
+      
+      <li>Powered by <a href="http://hexo.io/" target="_blank">Hexo</a></li>
+      <li>theme  <a target="_blank" rel="noopener" href="https://github.com/zhwangart/hexo-theme-ocean">Ocean</a></li>
+    </ul>
+    <div class="float-right">
+      <span id="timeDate">载入天数...</span><span id="times">载入时分秒...</span>
+<script>
+    var now = new Date(); 
+    function createtime() { 
+        var grt= new Date("05/1/2021 15:49:00");//此处修改你的建站时间或者网站上线时间 
+        now.setTime(now.getTime()+250); 
+        days = (now - grt ) / 1000 / 60 / 60 / 24; dnum = Math.floor(days); 
+        hours = (now - grt ) / 1000 / 60 / 60 - (24 * dnum); hnum = Math.floor(hours); 
+        if(String(hnum).length ==1 ){hnum = "0" + hnum;} minutes = (now - grt ) / 1000 /60 - (24 * 60 * dnum) - (60 * hnum); 
+        mnum = Math.floor(minutes); if(String(mnum).length ==1 ){mnum = "0" + mnum;} 
+        seconds = (now - grt ) / 1000 - (24 * 60 * 60 * dnum) - (60 * 60 * hnum) - (60 * mnum); 
+        snum = Math.round(seconds); if(String(snum).length ==1 ){snum = "0" + snum;} 
+        document.getElementById("timeDate").innerHTML = "本站已安全运行 "+dnum+" 天 "; 
+        document.getElementById("times").innerHTML = hnum + " 小时 " + mnum + " 分 " + snum + " 秒"; 
+    } 
+	setInterval("createtime()",250);
+</script>
+    </div>
+  </div>
+</footer>
+  </main>
+  <aside class="sidebar">
+    <button class="navbar-toggle"></button>
+<nav class="navbar">
+  
+  <div class="logo">
+    <a href="/"><img src="/images/hexo.svg" alt="lvsss"></a>
+  </div>
+  
+  <ul class="nav nav-main">
+    
+    <li class="nav-item">
+      <a class="nav-item-link" href="/">Home</a>
+    </li>
+    
+    <li class="nav-item">
+      <a class="nav-item-link" href="/archives">Archives</a>
+    </li>
+    
+    <li class="nav-item">
+      <a class="nav-item-link" href="/gallery">Gallery</a>
+    </li>
+    
+    <li class="nav-item">
+      <a class="nav-item-link" href="/about">About</a>
+    </li>
+    
+    <li class="nav-item">
+      <a class="nav-item-link nav-item-search" title="搜索">
+        <i class="fe fe-search"></i>
+        搜索
+      </a>
+    </li>
+  </ul>
+</nav>
+<nav class="navbar navbar-bottom">
+  <ul class="nav">
+    <li class="nav-item">
+      <div class="totop" id="totop">
+  <i class="fe fe-rocket"></i>
+</div>
+    </li>
+    <li class="nav-item">
+      
+      <a class="nav-item-link" target="_blank" href="/atom.xml" title="RSS Feed">
+        <i class="fe fe-feed"></i>
+      </a>
+      
+    </li>
+  </ul>
+</nav>
+<div class="search-form-wrap">
+  <div class="local-search local-search-plugin">
+  <input type="search" id="local-search-input" class="local-search-input" placeholder="Search...">
+  <div id="local-search-result" class="local-search-result"></div>
+</div>
+</div>
+  </aside>
+  
+<script src="/js/jquery-2.0.3.min.js"></script>
+
+
+<script src="/js/jquery.justifiedGallery.min.js"></script>
+
+
+<script src="/js/lazyload.min.js"></script>
+
+
+<script src="/js/busuanzi-2.3.pure.min.js"></script>
+
+
+
+<script src="/fancybox/jquery.fancybox.min.js"></script>
+
+
+
+
+<script src="/js/copybtn.js"></script>
+
+
+
+
+
+<script src="/js/tocbot.min.js"></script>
+
+<script>
+  // Tocbot_v4.7.0  http://tscanlin.github.io/tocbot/
+  tocbot.init({
+    tocSelector: '.tocbot',
+    contentSelector: '.article-entry',
+    headingSelector: 'h1, h2, h3, h4, h5, h6',
+    hasInnerContainers: true,
+    scrollSmooth: true,
+    positionFixedSelector: '.tocbot',
+    positionFixedClass: 'is-position-fixed',
+    fixedSidebarOffset: 'auto',
+  });
+</script>
+
+
+
+<script src="/js/ocean.js"></script>
+
+
+
+<script src="/live2dw/lib/L2Dwidget.min.js?094cbace49a39548bed64abff5988b05"></script><script>L2Dwidget.init({"model":{"scale":1,"hHeadPos":0.5,"vHeadPos":0.618,"jsonPath":"/live2dw/assets/haruto.model.json"},"display":{"superSample":2,"width":150,"height":300,"position":"left","hOffset":0,"vOffset":-20},"mobile":{"show":true},"react":{"opacityDefault":0.5,"opacityOnHover":0.2},"log":false,"pluginJsPath":"lib/","pluginModelPath":"assets/","pluginRootPath":"live2dw/","tagMode":false});</script></body>
+
+</html>
