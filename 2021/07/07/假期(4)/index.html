@@ -101,6 +101,16 @@
 <p>所有的左旋右旋操作都在插入时进行操作流程。</p>
 <p>递归插入 - &gt;  递归设置高度值 -&gt; 根据平衡因子来判断左右旋的操作</p>
 <p>tips:左右旋时要实时更新高度数值,先更新原来根节点的高度数值，然后更新新的根节点的高度数值</p>
+<h3 id="7、最短路径"><a href="#7、最短路径" class="headerlink" title="7、最短路径"></a>7、最短路径</h3><p>三个辅助数组</p>
+<ol>
+<li><p>数组s[n]  标记数组。  s[i] =1  源点v到vi的最短距离是否求出   s[0]  表示没有求出</p>
+</li>
+<li><p>Dist[n]   最短距离</p>
+</li>
+<li><p>向量Path[n]  保存最短路径</p>
+<p>两个步骤：找到最小值   -&gt; 更新  -&gt;找到最小值</p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">while</span>(--n)</span><br><span class="line">&#123;</span><br><span class="line">    <span class="keyword">int</span> w;</span><br><span class="line">    <span class="keyword">int</span> i;</span><br><span class="line">    <span class="keyword">int</span> Min = VERY_BIG;</span><br><span class="line">    <span class="keyword">for</span>(i=<span class="number">0</span>;i&lt;Vexnum;i++)     <span class="comment">//找到最小值</span></span><br><span class="line">    &#123;</span><br><span class="line">        <span class="keyword">if</span>(S[i] == <span class="number">0</span> &amp;&amp; Dist[i]&lt;Min)</span><br><span class="line">        &#123;</span><br><span class="line">            Min = Dist[i];</span><br><span class="line">            w = i; </span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">    <span class="keyword">for</span>(i=<span class="number">0</span>;i&lt;Vexnum;i++)</span><br><span class="line">    &#123;</span><br><span class="line">        <span class="keyword">if</span>(Dist[w] + g-&gt;A[w][i] &lt; Dist[i])</span><br><span class="line">        &#123;</span><br><span class="line">            Dist[i] = Dist[w] + g-&gt;A[w][i];</span><br><span class="line">            <span class="built_in">strcpy</span>(Path[i],Path[w]);</span><br><span class="line">            <span class="keyword">int</span> l = <span class="built_in">strlen</span>(Path[w]);</span><br><span class="line">            Path[i][l] = g-&gt;V[i];</span><br><span class="line">            Path[i][l+<span class="number">1</span>] = <span class="string">&#x27;\0&#x27;</span>;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></li>
+</ol>
 
       
     </div>
