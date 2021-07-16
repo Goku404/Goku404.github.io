@@ -16,11 +16,95 @@
       </tags>
   </entry>
   <entry>
+    <title>GEC6818</title>
+    <url>/2021/07/16/GEC6818/</url>
+    <content><![CDATA[<h2 id="GEC6818-7-16"><a href="#GEC6818-7-16" class="headerlink" title="GEC6818_7_16"></a>GEC6818_7_16</h2><p>又GEC6818</p>
+<span id="more"></span>
+
+<h3 id="一、交叉编译"><a href="#一、交叉编译" class="headerlink" title="一、交叉编译"></a>一、交叉编译</h3><h3 id="1、Linux-子系统安装交叉编译器"><a href="#1、Linux-子系统安装交叉编译器" class="headerlink" title="1、Linux 子系统安装交叉编译器"></a>1、Linux 子系统安装交叉编译器</h3><p>(1) 把交叉编译工具链的压缩包，拷贝到你的linux系统</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">gcc-linaro-5.5.0-2017.10-x86_64_arm-linux-gnueabi.tar.xz</span><br></pre></td></tr></table></figure>
+
+<p>(2) 在linux系统下，把交叉编译工具包，解压到一个合适的目录下(不能是共享目录)</p>
+<p>如:</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">sudo mkdir -p &#x2F;usr&#x2F;local&#x2F;arm</span><br><span class="line">sudo tar xvf gcc-linaro-5.5.0-2017.10-x86_64_arm-linux-gnueabi.tar.xz -C &#x2F;usr&#x2F;local&#x2F;arm</span><br></pre></td></tr></table></figure>
+
+<p>=&gt;上面两步骤做完后，就可以”交叉编译”了，如：</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">&#x2F;usr&#x2F;local&#x2F;arm&#x2F;gcc-linaro-5.5.0-2017.10-x86_64_arm-linux-gnueabi&#x2F;bin&#x2F;arm-linux-gnueabi-gcc test.c -o sb</span><br></pre></td></tr></table></figure>
+
+<p>(3) 修改环境变量PATH</p>
+<p>交叉编译的命令的路径太长了，SO,我们需要把交叉编译的那个路径，加到环境变量PATH中去</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">export PATH&#x3D;&#x2F;usr&#x2F;local&#x2F;arm&#x2F;gcc-linaro-5.5.0-2017.10-x86_64_arm-linux-gnueabi&#x2F;bin:$PATH</span><br></pre></td></tr></table></figure>
+
+<p>如果在终端运行上面那条命令，仅改变当前终端的那个环境变量，什么意思呢？</p>
+<p>在其他终端或终端重启之后，PATH会恢复原来的值。我们希望每次一开机，每个用户都是上面的那个值，怎么办呢?</p>
+<p>/etc/profile 这个文件是系统启动后，每个用户首先会执行的。</p>
+<p> 如果把环境变量的值，在这个文件中，修改，那么系统中所有的用户都共享的.</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">sudo vim &#x2F;etc&#x2F;profile</span><br><span class="line">export PATH&#x3D;&#x2F;usr&#x2F;local&#x2F;arm&#x2F;gcc-linaro-5.5.0-2017.10-x86_64_arm-linux-gnueabi&#x2F;bin:$PATH</span><br></pre></td></tr></table></figure>
+
+<p>​     把上面这条指令加入到 /etc/profile的最后一行</p>
+<blockquote>
+<p>串口工具：serials to USB :  ch340 USB转串口驱动</p>
+</blockquote>
+<h3 id="二、U盘传输"><a href="#二、U盘传输" class="headerlink" title="二、U盘传输"></a>二、U盘传输</h3><p><a href="https://jingyan.baidu.com/article/cbf0e500a9731e2eab289371.html">如何使用fdisk进行分区-百度经验 (baidu.com)</a></p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">(1) 建立分区表</span><br><span class="line">        &quot;分区就是你分几个盘&quot;</span><br><span class="line">        fdisk</span><br><span class="line">        如:</span><br><span class="line">            fdisk  &#x2F;dev&#x2F;sda</span><br><span class="line">(2) 格式化</span><br><span class="line">        把“文件系统的元数据”写入到分区的前面</span><br><span class="line">        如:</span><br><span class="line">            mkfs.vfat &#x2F;dev&#x2F;sda1</span><br><span class="line">(3) 挂载</span><br><span class="line">        把U盘(硬盘)分区的文件系统  挂载到操作系统的某个路径下面去。</span><br><span class="line">        如:</span><br><span class="line">            mount -t vfat  &#x2F;dev&#x2F;sda1   &#x2F;mnt</span><br><span class="line">(4) xie载(“弹出”)</span><br><span class="line">        umount &#x2F;dev&#x2F;sda1</span><br><span class="line">        or</span><br><span class="line">        umount &#x2F;mnt</span><br></pre></td></tr></table></figure>
+
+
+
+<h3 id="三、网络工具"><a href="#三、网络工具" class="headerlink" title="三、网络工具"></a>三、网络工具</h3><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">(1) 配置虚拟机ubuntu的ip地址</span><br><span class="line">        把虚拟机的网络配置为“桥接模式”：让虚拟机系统有一个独立的IP</span><br><span class="line"></span><br><span class="line">        然后再到ubuntu里面的系统，设置网络IP</span><br><span class="line">            静态IP: &lt;&lt;&lt;&lt;&lt;</span><br><span class="line">            动态IP： DHCP</span><br><span class="line">        练习:</span><br><span class="line">            如何判断一台机子网络是否与另外一台机子在物理上是呢?</span><br><span class="line">                ping 另外一台机子的ip或域名</span><br><span class="line">            如:</span><br><span class="line">                ping 192.168.2.1</span><br><span class="line">                ping www.baidu.com</span><br><span class="line"></span><br><span class="line">    (2) 开发板网络配置</span><br><span class="line">        开发板上面没有图形化的网络配置工具，只有命令行。</span><br><span class="line"></span><br><span class="line">        配置网络的命令</span><br><span class="line">            ifconfig</span><br><span class="line">        配置IP</span><br><span class="line">            ifconfig eth0 192.168.2.253 netmask 255.255.255.0 up</span><br><span class="line">        </span><br><span class="line">        配置网卡的MAC地址(物理地址)</span><br><span class="line">            ifconfig eth0 hw ether 12:E1:DE:08:06:F4</span><br><span class="line"></span><br><span class="line">        每次开机的时候，你都需要配置你开发板的网络:</span><br><span class="line">            ifconfig eth0 down</span><br><span class="line">            ifconfig eth0 hw ether 12:E1:DE:08:06:F4</span><br><span class="line">            ifconfig eth0 192.168.2.253 netmask 255.255.2550 up </span><br><span class="line"></span><br><span class="line">        如果，你每次开机都需要手动运行上面那三条命令，是不是显得很LOW。</span><br><span class="line">        开发板上面的Linux系统，每次开机的时候，都会执行一个脚本(启动脚本)</span><br><span class="line">            &#x2F;etc&#x2F;init.d&#x2F;rcS</span><br><span class="line">        这个脚本，它会把 &#x2F;etc&#x2F;init.d&#x2F;这个目录下面的 所有的</span><br><span class="line">            Sxxxx.sh 文件执行一遍</span><br><span class="line">        SO,你如果有些命令或配置想要开机就自动执行，</span><br><span class="line">        你就可以写一个Sxxxx.sh 脚本，放在开发板的 &#x2F;etc&#x2F;init.d这个目录下面。</span><br><span class="line">        如:</span><br><span class="line">        Start.sh</span><br><span class="line"></span><br><span class="line">        &#96;&#96;&#96;sh</span><br><span class="line">        #!&#x2F;bin&#x2F;sh</span><br><span class="line">        ifconfig eth0 down</span><br><span class="line">        ifconfig eth0 hw ether 12:E1:DE:08:06:F4</span><br><span class="line">        ifconfig eth0 192.168.2.253 netmask 255.255.2550 up </span><br><span class="line"></span><br><span class="line">        telnetd &amp;</span><br></pre></td></tr></table></figure>
+
+<pre><code>    chmod +x Start.sh
+
+(3) 用tftp协议来在PC机和开发板之间传输文件
+    tftp是用UDP协议做的一个网络传输文件的应用层协议。
+
+    PC &lt;-------------&gt; ARM开发板
+    tftpd               tftp
+    Server              Client
+
+    (3.1) ubuntu tftpd服务器的配置
+        安装tftpd:
+            sudo apt-get install tftpd-hpa
+        启动:
+            sudo service tftpd-hpa start
+        重启:
+            sudo service tftpd-hpa restart
+        停止:
+            sudo service tftpd-hpa stop
+
+        配置tftpd的服务
+            tftpd的配置文件在 /etc/default/tftpd-hpa
+           
+            TFTP_USERNAME=&quot;tftp&quot;
+            TFTP_DIRECTORY=&quot;/home/china/tftpboot&quot;
+            TFTP_ADDRESS=&quot;0.0.0.0:69&quot;
+            TFTP_OPTIONS=&quot;-l -c -s&quot;
+
+    (3.2) tftp 客户端(开发板)下载和上传命令
+        下载：
+            tftp -g -r sb.txt  192.168.2.251
+                -g get 获取，下载
+                -r remote 指定远程服务器上的文件名(要下载的文件)
+        上传:
+            tftp -p -l you_are_sb.txt 192.168.2.251
+                -p put 上传，推送
+                -l local指定本地文件名(要上传的文件)
+</code></pre>
+<pre><code>
+</code></pre>
+]]></content>
+      <categories>
+        <category>GEC6818</category>
+      </categories>
+      <tags>
+        <tag>GEC6818</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>Linux那些命令</title>
     <url>/2021/07/14/Linux%E9%82%A3%E4%BA%9B%E5%91%BD%E4%BB%A4/</url>
     <content><![CDATA[<h1 id="Linux那些命令-1"><a href="#Linux那些命令-1" class="headerlink" title="Linux那些命令(1)"></a>Linux那些命令(1)</h1><span id="more"></span>
 
-<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">tar -zcvf ***.tar.gz filelist     //打包</span><br><span class="line">tar -xvf ***.tar.gz -C 目标文件   //解压</span><br><span class="line">find ./  -regex &quot; .*\.[ch]&quot;     //查找该目录下的所有.c和.h文件</span><br><span class="line">find ./  -regex &quot;.*\.[ch]&quot; -exec tar -zcvf hello.tar.gz &#123;&#125; +   //打包所有.c和.h文件</span><br></pre></td></tr></table></figure>
+<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">tar -zcvf ***.tar.gz filelist     //打包</span><br><span class="line">tar -xvf ***.tar.gz -C 目标文件   //解压</span><br><span class="line">find ./  -regex &quot;.*\.[ch]&quot;     //查找该目录下的所有.c和.h文件</span><br><span class="line">find ./  -regex &quot;.*\.[ch]&quot; -exec tar -zcvf hello.tar.gz &#123;&#125; +   //打包所有.c和.h文件</span><br></pre></td></tr></table></figure>
 
 ]]></content>
       <tags>
@@ -29,7 +113,7 @@
   </entry>
   <entry>
     <title>假期(5)</title>
-    <url>/2021/07/13/%E5%81%87%E6%9C%9F-5/</url>
+    <url>/2021/07/13/%E5%81%87%E6%9C%9F(5)/</url>
     <content><![CDATA[]]></content>
       <tags>
         <tag>假期</tag>

@@ -1,0 +1,339 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+  
+  
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <title>
+    GEC6818 |
+    
+    lvsss</title>
+  
+  <link rel="shortcut icon" href="/favicon.ico">
+  
+  
+<link rel="stylesheet" href="/css/style.css">
+
+  
+  
+<link rel="stylesheet" href="/fancybox/jquery.fancybox.min.css">
+
+  
+  
+<script src="/js/pace.min.js"></script>
+
+<meta name="generator" content="Hexo 5.4.0"><link rel="alternate" href="/atom.xml" title="lvsss" type="application/atom+xml">
+</head>
+
+<body>
+  <main class="content">
+    <section class="outer">
+  <article id="post-GEC6818" class="article article-type-post" itemscope
+  itemprop="blogPost" data-scroll-reveal>
+
+  <div class="article-inner">
+    
+    <header class="article-header">
+      
+
+<h1 class="article-title" itemprop="name">
+  GEC6818
+</h1>
+
+
+
+    </header>
+    
+
+    
+    <div class="article-meta">
+      <a href="/2021/07/16/GEC6818/" class="article-date">
+  <time datetime="2021-07-16T10:11:00.000Z" itemprop="datePublished">2021-07-16</time>
+</a>
+      
+<div class="article-category">
+  <a class="article-category-link" href="/categories/GEC6818/">GEC6818</a>
+</div>
+
+    </div>
+    
+
+    
+    
+<div class="tocbot"></div>
+
+    
+
+    <div class="article-entry" itemprop="articleBody">
+      
+      
+<div class="article-gallery">
+  <div class="article-gallery-photos">
+    
+    
+    <img src="https://pic.imgdb.cn/item/60f1600c5132923bf834aaba.png" itemprop="image">
+    
+    
+  </div>
+</div>
+
+      
+      <h2 id="GEC6818-7-16"><a href="#GEC6818-7-16" class="headerlink" title="GEC6818_7_16"></a>GEC6818_7_16</h2><p>又GEC6818</p>
+<span id="more"></span>
+
+<h3 id="一、交叉编译"><a href="#一、交叉编译" class="headerlink" title="一、交叉编译"></a>一、交叉编译</h3><h3 id="1、Linux-子系统安装交叉编译器"><a href="#1、Linux-子系统安装交叉编译器" class="headerlink" title="1、Linux 子系统安装交叉编译器"></a>1、Linux 子系统安装交叉编译器</h3><p>(1) 把交叉编译工具链的压缩包，拷贝到你的linux系统</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">gcc-linaro-5.5.0-2017.10-x86_64_arm-linux-gnueabi.tar.xz</span><br></pre></td></tr></table></figure>
+
+<p>(2) 在linux系统下，把交叉编译工具包，解压到一个合适的目录下(不能是共享目录)</p>
+<p>如:</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">sudo mkdir -p &#x2F;usr&#x2F;local&#x2F;arm</span><br><span class="line">sudo tar xvf gcc-linaro-5.5.0-2017.10-x86_64_arm-linux-gnueabi.tar.xz -C &#x2F;usr&#x2F;local&#x2F;arm</span><br></pre></td></tr></table></figure>
+
+<p>=&gt;上面两步骤做完后，就可以”交叉编译”了，如：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&#x2F;usr&#x2F;local&#x2F;arm&#x2F;gcc-linaro-5.5.0-2017.10-x86_64_arm-linux-gnueabi&#x2F;bin&#x2F;arm-linux-gnueabi-gcc test.c -o sb</span><br></pre></td></tr></table></figure>
+
+<p>(3) 修改环境变量PATH</p>
+<p>交叉编译的命令的路径太长了，SO,我们需要把交叉编译的那个路径，加到环境变量PATH中去</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">export PATH&#x3D;&#x2F;usr&#x2F;local&#x2F;arm&#x2F;gcc-linaro-5.5.0-2017.10-x86_64_arm-linux-gnueabi&#x2F;bin:$PATH</span><br></pre></td></tr></table></figure>
+
+<p>如果在终端运行上面那条命令，仅改变当前终端的那个环境变量，什么意思呢？</p>
+<p>在其他终端或终端重启之后，PATH会恢复原来的值。我们希望每次一开机，每个用户都是上面的那个值，怎么办呢?</p>
+<p>/etc/profile 这个文件是系统启动后，每个用户首先会执行的。</p>
+<p> 如果把环境变量的值，在这个文件中，修改，那么系统中所有的用户都共享的.</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">sudo vim &#x2F;etc&#x2F;profile</span><br><span class="line">export PATH&#x3D;&#x2F;usr&#x2F;local&#x2F;arm&#x2F;gcc-linaro-5.5.0-2017.10-x86_64_arm-linux-gnueabi&#x2F;bin:$PATH</span><br></pre></td></tr></table></figure>
+
+<p>​     把上面这条指令加入到 /etc/profile的最后一行</p>
+<blockquote>
+<p>串口工具：serials to USB :  ch340 USB转串口驱动</p>
+</blockquote>
+<h3 id="二、U盘传输"><a href="#二、U盘传输" class="headerlink" title="二、U盘传输"></a>二、U盘传输</h3><p><a target="_blank" rel="noopener" href="https://jingyan.baidu.com/article/cbf0e500a9731e2eab289371.html">如何使用fdisk进行分区-百度经验 (baidu.com)</a></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line">(1) 建立分区表</span><br><span class="line">        &quot;分区就是你分几个盘&quot;</span><br><span class="line">        fdisk</span><br><span class="line">        如:</span><br><span class="line">            fdisk  &#x2F;dev&#x2F;sda</span><br><span class="line">(2) 格式化</span><br><span class="line">        把“文件系统的元数据”写入到分区的前面</span><br><span class="line">        如:</span><br><span class="line">            mkfs.vfat &#x2F;dev&#x2F;sda1</span><br><span class="line">(3) 挂载</span><br><span class="line">        把U盘(硬盘)分区的文件系统  挂载到操作系统的某个路径下面去。</span><br><span class="line">        如:</span><br><span class="line">            mount -t vfat  &#x2F;dev&#x2F;sda1   &#x2F;mnt</span><br><span class="line">(4) xie载(“弹出”)</span><br><span class="line">        umount &#x2F;dev&#x2F;sda1</span><br><span class="line">        or</span><br><span class="line">        umount &#x2F;mnt</span><br></pre></td></tr></table></figure>
+
+
+
+<h3 id="三、网络工具"><a href="#三、网络工具" class="headerlink" title="三、网络工具"></a>三、网络工具</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br></pre></td><td class="code"><pre><span class="line">(1) 配置虚拟机ubuntu的ip地址</span><br><span class="line">        把虚拟机的网络配置为“桥接模式”：让虚拟机系统有一个独立的IP</span><br><span class="line"></span><br><span class="line">        然后再到ubuntu里面的系统，设置网络IP</span><br><span class="line">            静态IP: &lt;&lt;&lt;&lt;&lt;</span><br><span class="line">            动态IP： DHCP</span><br><span class="line">        练习:</span><br><span class="line">            如何判断一台机子网络是否与另外一台机子在物理上是呢?</span><br><span class="line">                ping 另外一台机子的ip或域名</span><br><span class="line">            如:</span><br><span class="line">                ping 192.168.2.1</span><br><span class="line">                ping www.baidu.com</span><br><span class="line"></span><br><span class="line">    (2) 开发板网络配置</span><br><span class="line">        开发板上面没有图形化的网络配置工具，只有命令行。</span><br><span class="line"></span><br><span class="line">        配置网络的命令</span><br><span class="line">            ifconfig</span><br><span class="line">        配置IP</span><br><span class="line">            ifconfig eth0 192.168.2.253 netmask 255.255.255.0 up</span><br><span class="line">        </span><br><span class="line">        配置网卡的MAC地址(物理地址)</span><br><span class="line">            ifconfig eth0 hw ether 12:E1:DE:08:06:F4</span><br><span class="line"></span><br><span class="line">        每次开机的时候，你都需要配置你开发板的网络:</span><br><span class="line">            ifconfig eth0 down</span><br><span class="line">            ifconfig eth0 hw ether 12:E1:DE:08:06:F4</span><br><span class="line">            ifconfig eth0 192.168.2.253 netmask 255.255.2550 up </span><br><span class="line"></span><br><span class="line">        如果，你每次开机都需要手动运行上面那三条命令，是不是显得很LOW。</span><br><span class="line">        开发板上面的Linux系统，每次开机的时候，都会执行一个脚本(启动脚本)</span><br><span class="line">            &#x2F;etc&#x2F;init.d&#x2F;rcS</span><br><span class="line">        这个脚本，它会把 &#x2F;etc&#x2F;init.d&#x2F;这个目录下面的 所有的</span><br><span class="line">            Sxxxx.sh 文件执行一遍</span><br><span class="line">        SO,你如果有些命令或配置想要开机就自动执行，</span><br><span class="line">        你就可以写一个Sxxxx.sh 脚本，放在开发板的 &#x2F;etc&#x2F;init.d这个目录下面。</span><br><span class="line">        如:</span><br><span class="line">        Start.sh</span><br><span class="line"></span><br><span class="line">        &#96;&#96;&#96;sh</span><br><span class="line">        #!&#x2F;bin&#x2F;sh</span><br><span class="line">        ifconfig eth0 down</span><br><span class="line">        ifconfig eth0 hw ether 12:E1:DE:08:06:F4</span><br><span class="line">        ifconfig eth0 192.168.2.253 netmask 255.255.2550 up </span><br><span class="line"></span><br><span class="line">        telnetd &amp;</span><br></pre></td></tr></table></figure>
+
+<pre><code>    chmod +x Start.sh
+
+(3) 用tftp协议来在PC机和开发板之间传输文件
+    tftp是用UDP协议做的一个网络传输文件的应用层协议。
+
+    PC &lt;-------------&gt; ARM开发板
+    tftpd               tftp
+    Server              Client
+
+    (3.1) ubuntu tftpd服务器的配置
+        安装tftpd:
+            sudo apt-get install tftpd-hpa
+        启动:
+            sudo service tftpd-hpa start
+        重启:
+            sudo service tftpd-hpa restart
+        停止:
+            sudo service tftpd-hpa stop
+
+        配置tftpd的服务
+            tftpd的配置文件在 /etc/default/tftpd-hpa
+           
+            TFTP_USERNAME=&quot;tftp&quot;
+            TFTP_DIRECTORY=&quot;/home/china/tftpboot&quot;
+            TFTP_ADDRESS=&quot;0.0.0.0:69&quot;
+            TFTP_OPTIONS=&quot;-l -c -s&quot;
+
+    (3.2) tftp 客户端(开发板)下载和上传命令
+        下载：
+            tftp -g -r sb.txt  192.168.2.251
+                -g get 获取，下载
+                -r remote 指定远程服务器上的文件名(要下载的文件)
+        上传:
+            tftp -p -l you_are_sb.txt 192.168.2.251
+                -p put 上传，推送
+                -l local指定本地文件名(要上传的文件)
+</code></pre>
+<pre><code>
+</code></pre>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://example.com/2021/07/16/GEC6818/" data-id="ckr67cu6100009svob2cp8si0" class="article-share-link">
+        分享
+      </a>
+      
+<ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/GEC6818/" rel="tag">GEC6818</a></li></ul>
+
+    </footer>
+
+  </div>
+
+  
+  
+<nav class="article-nav">
+  
+  
+  <a href="/2021/07/14/Linux%E9%82%A3%E4%BA%9B%E5%91%BD%E4%BB%A4/" class="article-nav-link">
+    <strong class="article-nav-caption">后一篇</strong>
+    <div class="article-nav-title">Linux那些命令</div>
+  </a>
+  
+</nav>
+
+  
+
+  
+  
+  
+  
+
+</article>
+</section>
+    <footer class="footer">
+  <div class="outer">
+    <div class="float-right">
+      <ul class="list-inline">
+  
+  <li><i class="fe fe-smile-alt"></i> <span id="busuanzi_value_site_uv"></span></li>
+  
+  <li><i class="fe fe-bookmark"></i> <span id="busuanzi_value_page_pv"></span></li>
+  
+</ul>
+    </div>
+    <ul class="list-inline">
+      <li>lvsss &copy; 2021</li>
+      
+        <li>7</li>
+      
+      <li>Powered by <a href="http://hexo.io/" target="_blank">Hexo</a></li>
+      <li>theme  <a target="_blank" rel="noopener" href="https://github.com/zhwangart/hexo-theme-ocean">Ocean</a></li>
+    </ul>
+    <div class="float-right">
+      <span id="timeDate">载入天数...</span><span id="times">载入时分秒...</span>
+<script>
+    var now = new Date(); 
+    function createtime() { 
+        var grt= new Date("05/1/2021 15:49:00");//此处修改你的建站时间或者网站上线时间 
+        now.setTime(now.getTime()+250); 
+        days = (now - grt ) / 1000 / 60 / 60 / 24; dnum = Math.floor(days); 
+        hours = (now - grt ) / 1000 / 60 / 60 - (24 * dnum); hnum = Math.floor(hours); 
+        if(String(hnum).length ==1 ){hnum = "0" + hnum;} minutes = (now - grt ) / 1000 /60 - (24 * 60 * dnum) - (60 * hnum); 
+        mnum = Math.floor(minutes); if(String(mnum).length ==1 ){mnum = "0" + mnum;} 
+        seconds = (now - grt ) / 1000 - (24 * 60 * 60 * dnum) - (60 * 60 * hnum) - (60 * mnum); 
+        snum = Math.round(seconds); if(String(snum).length ==1 ){snum = "0" + snum;} 
+        document.getElementById("timeDate").innerHTML = "本站已安全运行 "+dnum+" 天 "; 
+        document.getElementById("times").innerHTML = hnum + " 小时 " + mnum + " 分 " + snum + " 秒"; 
+    } 
+	setInterval("createtime()",250);
+</script>
+    </div>
+  </div>
+</footer>
+  </main>
+  <aside class="sidebar">
+    <button class="navbar-toggle"></button>
+<nav class="navbar">
+  
+  <div class="logo">
+    <a href="/"><img src="/images/hexo.svg" alt="lvsss"></a>
+  </div>
+  
+  <ul class="nav nav-main">
+    
+    <li class="nav-item">
+      <a class="nav-item-link" href="/">Home</a>
+    </li>
+    
+    <li class="nav-item">
+      <a class="nav-item-link" href="/archives">Archives</a>
+    </li>
+    
+    <li class="nav-item">
+      <a class="nav-item-link" href="/gallery">Gallery</a>
+    </li>
+    
+    <li class="nav-item">
+      <a class="nav-item-link" href="/about">About</a>
+    </li>
+    
+    <li class="nav-item">
+      <a class="nav-item-link nav-item-search" title="搜索">
+        <i class="fe fe-search"></i>
+        搜索
+      </a>
+    </li>
+  </ul>
+</nav>
+<nav class="navbar navbar-bottom">
+  <ul class="nav">
+    <li class="nav-item">
+      <div class="totop" id="totop">
+  <i class="fe fe-rocket"></i>
+</div>
+    </li>
+    <li class="nav-item">
+      
+      <a class="nav-item-link" target="_blank" href="/atom.xml" title="RSS Feed">
+        <i class="fe fe-feed"></i>
+      </a>
+      
+    </li>
+  </ul>
+</nav>
+<div class="search-form-wrap">
+  <div class="local-search local-search-plugin">
+  <input type="search" id="local-search-input" class="local-search-input" placeholder="Search...">
+  <div id="local-search-result" class="local-search-result"></div>
+</div>
+</div>
+  </aside>
+  
+<script src="/js/jquery-2.0.3.min.js"></script>
+
+
+<script src="/js/jquery.justifiedGallery.min.js"></script>
+
+
+<script src="/js/lazyload.min.js"></script>
+
+
+<script src="/js/busuanzi-2.3.pure.min.js"></script>
+
+
+
+<script src="/fancybox/jquery.fancybox.min.js"></script>
+
+
+
+
+<script src="/js/copybtn.js"></script>
+
+
+
+
+
+<script src="/js/tocbot.min.js"></script>
+
+<script>
+  // Tocbot_v4.7.0  http://tscanlin.github.io/tocbot/
+  tocbot.init({
+    tocSelector: '.tocbot',
+    contentSelector: '.article-entry',
+    headingSelector: 'h1, h2, h3, h4, h5, h6',
+    hasInnerContainers: true,
+    scrollSmooth: true,
+    positionFixedSelector: '.tocbot',
+    positionFixedClass: 'is-position-fixed',
+    fixedSidebarOffset: 'auto',
+  });
+</script>
+
+
+
+<script src="/js/ocean.js"></script>
+
+
+
+<script src="/live2dw/lib/L2Dwidget.min.js?094cbace49a39548bed64abff5988b05"></script><script>L2Dwidget.init({"model":{"scale":1,"hHeadPos":0.5,"vHeadPos":0.618,"jsonPath":"/live2dw/assets/haruto.model.json"},"display":{"superSample":2,"width":150,"height":300,"position":"left","hOffset":0,"vOffset":-20},"mobile":{"show":true},"react":{"opacityDefault":0.5,"opacityOnHover":0.2},"log":false,"pluginJsPath":"lib/","pluginModelPath":"assets/","pluginRootPath":"live2dw/","tagMode":false});</script></body>
+
+</html>
