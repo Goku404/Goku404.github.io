@@ -16,11 +16,27 @@
       </tags>
   </entry>
   <entry>
+    <title>标准IO和系统IO</title>
+    <url>/2021/07/21/%E6%A0%87%E5%87%86IO%E5%92%8C%E7%B3%BB%E7%BB%9FIO/</url>
+    <content><![CDATA[<h1 id="系统IO和文件IO那些事"><a href="#系统IO和文件IO那些事" class="headerlink" title="系统IO和文件IO那些事"></a>系统IO和文件IO那些事</h1><span id="more"></span>
+
+<blockquote>
+<p><em>碎碎念</em>：(文章封面)安装好了Kali Linux,虽然不知道怎么用</p>
+</blockquote>
+]]></content>
+      <tags>
+        <tag>假期</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>GEC6818</title>
     <url>/2021/07/16/GEC6818/</url>
     <content><![CDATA[<h2 id="GEC6818-7-16"><a href="#GEC6818-7-16" class="headerlink" title="GEC6818_7_16"></a>GEC6818_7_16</h2><p>又GEC6818</p>
 <span id="more"></span>
 
+<blockquote>
+<p><em>碎碎念</em>：(文章封面) 为 vscode 的美化，安装background插件和***代码发光插件</p>
+</blockquote>
 <h3 id="一、交叉编译"><a href="#一、交叉编译" class="headerlink" title="一、交叉编译"></a>一、交叉编译</h3><h3 id="1、Linux-子系统安装交叉编译器"><a href="#1、Linux-子系统安装交叉编译器" class="headerlink" title="1、Linux 子系统安装交叉编译器"></a>1、Linux 子系统安装交叉编译器</h3><p>(1) 把交叉编译工具链的压缩包，拷贝到你的linux系统</p>
 <figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">gcc-linaro-5.5.0-2017.10-x86_64_arm-linux-gnueabi.tar.xz</span><br></pre></td></tr></table></figure>
 
@@ -349,6 +365,9 @@
     <url>/2021/07/07/%E5%81%87%E6%9C%9F(4)/</url>
     <content><![CDATA[<h2 id="这孩子打小就聪明"><a href="#这孩子打小就聪明" class="headerlink" title="这孩子打小就聪明"></a>这孩子打小就聪明</h2><span id="more"></span>
 
+<blockquote>
+<p><em>碎碎念</em>：(文章封面) 为电脑桌面，永远的龙珠 (动漫)</p>
+</blockquote>
 <p>关于二叉树的递归问题</p>
 <h3 id="1、求出二叉树的高度"><a href="#1、求出二叉树的高度" class="headerlink" title="1、求出二叉树的高度"></a>1、求出二叉树的高度</h3><p>递归思路：设置一个宏，比较两个数的最大值   返回左子树函数调用和右子树函数调用加1</p>
 <figure class="highlight c"><table><tr><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">define</span> MAX(a,b) ((a)&gt;(b) ?(a):(b))</span></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">level</span><span class="params">(Bitree *t)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="keyword">if</span>(t == <span class="literal">NULL</span>)</span><br><span class="line">    &#123;</span><br><span class="line">        <span class="keyword">return</span> <span class="literal">NULL</span>;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> MAX(level(t-&gt;lchild),level(t-&gt;rchild))+<span class="number">1</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>

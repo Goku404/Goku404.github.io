@@ -79,6 +79,9 @@
       
       <h2 id="这孩子打小就聪明"><a href="#这孩子打小就聪明" class="headerlink" title="这孩子打小就聪明"></a>这孩子打小就聪明</h2><span id="more"></span>
 
+<blockquote>
+<p><em>碎碎念</em>：(文章封面) 为电脑桌面，永远的龙珠 (动漫)</p>
+</blockquote>
 <p>关于二叉树的递归问题</p>
 <h3 id="1、求出二叉树的高度"><a href="#1、求出二叉树的高度" class="headerlink" title="1、求出二叉树的高度"></a>1、求出二叉树的高度</h3><p>递归思路：设置一个宏，比较两个数的最大值   返回左子树函数调用和右子树函数调用加1</p>
 <figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">define</span> MAX(a,b) ((a)&gt;(b) ?(a):(b))</span></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">level</span><span class="params">(Bitree *t)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="keyword">if</span>(t == <span class="literal">NULL</span>)</span><br><span class="line">    &#123;</span><br><span class="line">        <span class="keyword">return</span> <span class="literal">NULL</span>;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> MAX(level(t-&gt;lchild),level(t-&gt;rchild))+<span class="number">1</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
