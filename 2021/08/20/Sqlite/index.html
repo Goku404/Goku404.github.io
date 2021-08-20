@@ -1,0 +1,448 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+  
+  
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <title>
+    Sqlite |
+    
+    lvsss</title>
+  
+  <link rel="shortcut icon" href="/favicon.ico">
+  
+  
+<link rel="stylesheet" href="/css/style.css">
+
+  
+  
+<link rel="stylesheet" href="/fancybox/jquery.fancybox.min.css">
+
+  
+  
+<script src="/js/pace.min.js"></script>
+
+<meta name="generator" content="Hexo 5.4.0"><link rel="alternate" href="/atom.xml" title="lvsss" type="application/atom+xml">
+</head>
+
+<body>
+  <main class="content">
+    <section class="outer">
+  <article id="post-Sqlite" class="article article-type-post" itemscope
+  itemprop="blogPost" data-scroll-reveal>
+
+  <div class="article-inner">
+    
+    <header class="article-header">
+      
+
+<h1 class="article-title" itemprop="name">
+  Sqlite
+</h1>
+
+
+
+    </header>
+    
+
+    
+    <div class="article-meta">
+      <a href="/2021/08/20/Sqlite/" class="article-date">
+  <time datetime="2021-08-20T12:02:05.000Z" itemprop="datePublished">2021-08-20</time>
+</a>
+      
+    </div>
+    
+
+    
+    
+<div class="tocbot"></div>
+
+    
+
+    <div class="article-entry" itemprop="articleBody">
+      
+      
+<div class="article-gallery">
+  <div class="article-gallery-photos">
+    
+    
+    <img src="https://pic.imgdb.cn/item/611a51a75132923bf87afe6d.png" itemprop="image">
+    
+    
+  </div>
+</div>
+
+      
+      <h1 id="Sqlite接口-C-C"><a href="#Sqlite接口-C-C" class="headerlink" title="Sqlite接口(C/C++)"></a>Sqlite接口(C/C++)</h1><span id="more"></span>
+
+
+
+<h1 id="1-sqlite是个什么东西呢"><a href="#1-sqlite是个什么东西呢" class="headerlink" title="1. sqlite是个什么东西呢?"></a>1. sqlite是个什么东西呢?</h1><blockquote>
+<p>sqlite是一个轻量级的关系型数据库管理系统，它在嵌入式设备上用的非常广泛。<br>sqlite不是一种C/S模式，是一个本地数据库管理系统。<br>sqlite提供C/C++的访问接口</p>
+</blockquote>
+<p>C/S模式的数据库操作</p>
+<p><img src="https://pic.imgdb.cn/item/611f9f614907e2d39cd283c6.png"></p>
+<h1 id="2-移植sqlite3到开发板"><a href="#2-移植sqlite3到开发板" class="headerlink" title="2. 移植sqlite3到开发板"></a>2. 移植sqlite3到开发板</h1><p> 请参考《附件2.sqlite3移植.md》</p>
+<p>自定义安装： 1、configure  设置安装路径和编译器</p>
+<p>2、make install    3、 移植相关的库文件到开发板</p>
+<p><code>./configure  CC=arm-linux-gcc --prefix=/usr/local/arm/arm_libs --host=arm-linux --build=i686-pc-linux-gnu </code></p>
+<h1 id="3-sqlite3-C-C-API函数接口"><a href="#3-sqlite3-C-C-API函数接口" class="headerlink" title="3. sqlite3 C/C++ API函数接口"></a>3. sqlite3 C/C++ API函数接口</h1><p>sqlite3 接口的核心元素:</p>
+<ul>
+<li>两个对象</li>
+<li>八个函数</li>
+</ul>
+<h2 id="3-1-两个对象"><a href="#3-1-两个对象" class="headerlink" title="3.1 两个对象"></a>3.1 两个对象</h2><p>(1) sqlite3</p>
+<blockquote>
+<p>the database connection object 数据库连接对象<br>数据库连接句柄/数据库的“文件描述符”<br>操作SQLITE数据库的通道。<br>sqlite3代表您打开的那个sqlite3的数据库文件，后续对该数据库的所有操作都需要通过该对象。</p>
+</blockquote>
+<p>(2) sqlite3_stmt</p>
+<blockquote>
+<p>the prepared statement object SQL语句对象<br>所有关系型数据库的操作，都是通过SQL语句来实现的。<br>关系型数据库一种标准操作语言：SQL<br>在sqlite3的数据库，SQL语句的执行必须要通过sqlite3_stmt这个对象</p>
+</blockquote>
+<h2 id="3-2-八个函数"><a href="#3-2-八个函数" class="headerlink" title="3.2 八个函数"></a>3.2 八个函数</h2><ul>
+<li>sqlite3_open: 打开或创建一个sqlite3的数据库，返回一个sqlite3的数据库连接对象</li>
+<li>sqlite3_prepare_v2: 创建一个SQL语句对象 </li>
+<li>sqlite3_bind_* : 给SQL语句对象绑定参数。一系列的函数</li>
+<li>sqlite3_step : 执行SQL语句对象</li>
+<li>sqlite3_reset : 复位SQL语句对象。“把刚才绑定的参数，给清掉，方便再重新绑定”</li>
+<li>sqlite3_finalize: 销毁SQL语句对象</li>
+<li>sqlite3_close: 关闭一个sqlite3的数据库连接对象</li>
+<li>sqlite3_exec       //一步到位的函数</li>
+</ul>
+<p>在C/C++中操作sqlite3数据库的流程，如下：<br><img src="https://pic.imgdb.cn/item/611f9df44907e2d39ccff69e.png"></p>
+<h1 id="4-具体的API函数解析"><a href="#4-具体的API函数解析" class="headerlink" title="4. 具体的API函数解析"></a>4. 具体的API函数解析</h1><h2 id="4-1-sqlite3-open"><a href="#4-1-sqlite3-open" class="headerlink" title="4.1 sqlite3_open"></a>4.1 sqlite3_open</h2><p> 打开一个sqlite3的数据库连接<br> 在sqlite3数据库管理系统中，用结构体sqlite3来表示一个打开的数据库对象，<br> 后续对该数据库的操作都需要通过它。</p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">sqlite3_open</span><span class="params">(</span></span></span><br><span class="line"><span class="function"><span class="params">    <span class="keyword">const</span> <span class="keyword">char</span> *filename,   <span class="comment">/* Database filename (UTF-8) */</span></span></span></span><br><span class="line"><span class="function"><span class="params">    sqlite3 **ppDb          <span class="comment">/* OUT: SQLite db handle */</span></span></span></span><br><span class="line"><span class="function"><span class="params">)</span></span>;</span><br><span class="line">    filename: 要打开或创建的数据库的文件名(带路径)</span><br><span class="line">    ppDb: 二级指针，用来保存打开的数据库连接对象</span><br><span class="line">返回值：</span><br><span class="line">    成功返回SQLITE_OK</span><br><span class="line">    失败返回其他值</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<p>例子：<br>    sqlite3 *pDb = NULL;<br>    ret = sqlite3_open(“test.db”, &amp;pDb);<br>    if (ret != SQLITE_OK)<br>    {<br>        //<br>        return -1;<br>    }<br>    pDb指向一个”test.db”这个数据库的连接对象啦</p>
+<h2 id="4-2-splite3-close"><a href="#4-2-splite3-close" class="headerlink" title="4.2 splite3_close"></a>4.2 splite3_close</h2><p>关闭一个sqlite数据库连接</p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">sqlite3_close</span><span class="params">(sqlite3*)</span></span>;</span><br><span class="line">    返回值：</span><br><span class="line">        成功返回一个SQLITE_OK</span><br><span class="line">        失败返回其他值</span><br></pre></td></tr></table></figure>
+
+<h2 id="4-3-sql语句对象"><a href="#4-3-sql语句对象" class="headerlink" title="4.3 sql语句对象"></a>4.3 sql语句对象</h2><p> sqlite3_stmt 这个结构体用来描述一个SQL语句对象。</p>
+<blockquote>
+<p>“特定SQL语句的模板：里面允许带参数”<br>如: INSERT INTO STU_INFO(SID,SNAME) VALUES(@arg1, @arg2)<br>我们的应用都是通过SQL语句对象去发送SQL指令给数据库管理系统(DBMS)<br> sqlite3_prepare_v2: 编译SQL语句，并创建一个SQLy语句对象。</p>
+</blockquote>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">sqlite3_prepare_v2</span><span class="params">(</span></span></span><br><span class="line"><span class="function"><span class="params">    sqlite3 *db,            <span class="comment">/* Database handle */</span></span></span></span><br><span class="line"><span class="function"><span class="params">    <span class="keyword">const</span> <span class="keyword">char</span> *zSql,       <span class="comment">/* SQL statement, UTF-8 encoded */</span></span></span></span><br><span class="line"><span class="function"><span class="params">                <span class="comment">//指向原始的SQL语句字符串(要编译的sql语句，多条语句用 ;号隔开)</span></span></span></span><br><span class="line"><span class="function"><span class="params">                <span class="comment">//zSql中可以包括变量名</span></span></span></span><br><span class="line"><span class="function"><span class="params">    <span class="keyword">int</span> nByte,              <span class="comment">/* Maximum length of zSql in bytes. */</span></span></span></span><br><span class="line"><span class="function"><span class="params">             <span class="comment">//指向编译的zSql语句到哪个位置</span></span></span></span><br><span class="line"><span class="function"><span class="params">             <span class="comment">// &lt;  0 :编译zSql指向的SQL语句到第一个\0为止</span></span></span></span><br><span class="line"><span class="function"><span class="params">             <span class="comment">// &gt;  0 :编译zSql指向的SQL语句到前面的nByte个字节</span></span></span></span><br><span class="line"><span class="function"><span class="params">             <span class="comment">// =  0 : 什么也不编译</span></span></span></span><br><span class="line"><span class="function"><span class="params"></span></span></span><br><span class="line"><span class="function"><span class="params">    sqlite3_stmt **ppStmt,  <span class="comment">/* OUT: Statement handle */</span></span></span></span><br><span class="line"><span class="function"><span class="params">            *ppStmt 用来保存编译好的sql语句对象</span></span></span><br><span class="line"><span class="function"><span class="params">    <span class="keyword">const</span> <span class="keyword">char</span> **pzTail     <span class="comment">/* OUT: Pointer to unused portion of zSql */</span></span></span></span><br><span class="line"><span class="function"><span class="params">            *pzTail 如果不为空，则 *pzTail指向zSql中编译的第一个完整的sql语句后面的那个字符</span></span></span><br><span class="line"><span class="function"><span class="params">)</span></span>;</span><br><span class="line">返回值：</span><br><span class="line">    成功返回SQLITE_OK</span><br><span class="line">    失败返回其他值</span><br></pre></td></tr></table></figure>
+
+<p>   zSql指向原始的要编译的SQL语句,分两种情况：</p>
+<ul>
+<li><p>不包括参数(变量)</p>
+<blockquote>
+<p>如:<br>CREATE TABLE STU_INFO(<br>SID CHAR(4) PRIMARY KEY,<br>SNAME VARCHAR(255) NOT NULL,<br>);</p>
+</blockquote>
+<blockquote>
+<p>INSERT INTO STU_INFO(SID,SNAME) VALUES(‘1000’, ‘zhou’);</p>
+</blockquote>
+</li>
+<li><p>包括参数(parameters): SQL语句中含有变量<br>paramters: 编译的SQL语句可以包含“变量/参数”，其值可以在运行期间改变，但SQL语句对象不<br>需要重新编译，通过特定的参数接口函数来指定这些变量的值。</p>
+<blockquote>
+<p>INSERT INTO STU_INFO(SID,SNAME) VALUES(变量名1, 变量名2, …);<br>有如下几种方式指定变量名:</p>
+<ul>
+<li>?NNN        A question mark followed by a number NNN holds a spot for the NNN-th parameter. NNN must be between 1 and SQLITE_MAX_VARIABLE_NUMBER.<br>?后面接一个数字(&lt; 1000)，表示SQL语句对象中第 NNN 个参数</li>
+<li>:AAAA   命名参数，参数名为AAAA, AAAA是您取的一个变量的名字</li>
+<li>@AAAA   命名参数，参数名为AAAA, AAAA是您取的一个变量的名字</li>
+<li>$AAAA   命名参数，参数名为AAAA, AAAA是您取的一个变量的名字<pre><code>参数名中可以包含一个或多个:: 和 ()
+</code></pre>
+</li>
+</ul>
+</blockquote>
+</li>
+</ul>
+<pre><code>&gt; 如: INSERT INTO STU_INFO(SID, SNAME) VALUES(@num, @name);
+</code></pre>
+<h2 id="4-4-绑定参数"><a href="#4-4-绑定参数" class="headerlink" title="4.4 绑定参数"></a>4.4 绑定参数</h2><blockquote>
+<p>INSERT INFO STU_INFO(SID,SNAME) VALUES(@num, @name);<br>(1) 获取参数的索引<br>SQL语句对象在编译后，所有的参数或变量，都是通过参数的索引(编号)去引用或指定。</p>
+</blockquote>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">    sqlite3_bind_parameter_index用来获取一个SQL语句对象中指定参数的索引的</span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">sqlite3_bind_parameter_index</span><span class="params">(sqlite3_stmt* pStmt, <span class="keyword">const</span> <span class="keyword">char</span> *zName)</span></span>;</span><br><span class="line">    pStmt: SQL语句对象</span><br><span class="line">    zName: SQL语句对象中参数的名字</span><br><span class="line">    返回值：</span><br><span class="line">        成功返回 zName 这个参数的索引值(&gt; <span class="number">0</span>)</span><br><span class="line">        假如没有匹配到参数名，则返回<span class="number">0</span></span><br></pre></td></tr></table></figure>
+
+<p>(2) 给参数赋值：绑定参数</p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">sqlite3_bind_double</span><span class="params">(sqlite3_stmt*, <span class="keyword">int</span>, <span class="keyword">double</span>)</span></span>;</span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">sqlite3_bind_int</span><span class="params">(sqlite3_stmt*, <span class="keyword">int</span>, <span class="keyword">int</span>)</span></span>;</span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">sqlite3_bind_int64</span><span class="params">(sqlite3_stmt*, <span class="keyword">int</span>, sqlite3_int64)</span></span>;</span><br><span class="line">        第一个参数为 SQL语句对象(要绑定参数的SQL语句对象)</span><br><span class="line">        第二个参数为 要绑定的参数的索引</span><br><span class="line">        第三个参数为 绑定的值</span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">sqlite3_bind_null</span><span class="params">(sqlite3_stmt*, <span class="keyword">int</span>)</span></span>;</span><br><span class="line">        第一个参数为 SQL语句对象(要绑定参数的SQL语句对象)</span><br><span class="line">        第二个参数为 要绑定的参数的索引</span><br><span class="line"></span><br><span class="line"><span class="comment">//text 要绑定的参数的类型为  char/varchar 字符串</span></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">sqlite3_bind_text</span><span class="params">(sqlite3_stmt* p,<span class="keyword">int</span> index ,</span></span></span><br><span class="line"><span class="function"><span class="params">        <span class="keyword">const</span> <span class="keyword">char</span>* str ,<span class="keyword">int</span> len ,<span class="keyword">void</span>(*pfunc)(<span class="keyword">void</span>*))</span></span>;</span><br><span class="line">        p: 第一个参数为 SQL语句对象</span><br><span class="line">        index: 第二个参数为 要绑定的参数的索引值</span><br><span class="line">        str: 要赋值的字符串的值</span><br><span class="line">        len: 字符串的长度</span><br><span class="line">        pfunc: 函数指针，指向的函数用来释放字符串的空间，可以为<span class="literal">NULL</span></span><br><span class="line"></span><br><span class="line">返回值：</span><br><span class="line">    成功返回 SQLITE_OK</span><br><span class="line">    失败返回其他值</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<h2 id="4-5-执行SQL语句对象"><a href="#4-5-执行SQL语句对象" class="headerlink" title="4.5 执行SQL语句对象"></a>4.5 执行SQL语句对象</h2><figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">sqlite3_step</span><span class="params">(sqlite3_stmt*)</span></span>;</span><br><span class="line">    sqlite3_step用来执行一个SQL语句对象</span><br><span class="line">    返回值：</span><br><span class="line">        SQLITE_BUSY : 没获取到锁，语句没有执行</span><br><span class="line">        SQLITE_DONE: SQL语句执行完成</span><br><span class="line">        SQLITE_ERROR: 出错啦</span><br><span class="line">        SQLITE_MISUSE: 使用方法不当</span><br><span class="line">        SQLITE_ROW: </span><br><span class="line">            当sql语句为select时，执行后，完整的结果是一个表，它是一行一行返回的，</span><br><span class="line">            调用一次sqlite3_step就会返回一行</span><br><span class="line">            如果返回值为 SQLITE_ROW表示还有返回结果(然后调用者需要调用 sqlite3_column_*去解析那一行</span><br><span class="line">            的值)，然后再调用sqlite3_step ...</span><br><span class="line">            直到sqlite3_step返回值为SQLITE_DONE</span><br></pre></td></tr></table></figure>
+
+<h2 id="4-6-复位SQL语句对象，以便下一次绑定参数"><a href="#4-6-复位SQL语句对象，以便下一次绑定参数" class="headerlink" title="4.6 复位SQL语句对象，以便下一次绑定参数"></a>4.6 复位SQL语句对象，以便下一次绑定参数</h2><figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">sqlite3_reset</span><span class="params">(sqlite3_stmt *pStmt)</span></span>;</span><br></pre></td></tr></table></figure>
+
+<h2 id="4-7-销毁一个SQL语句对象"><a href="#4-7-销毁一个SQL语句对象" class="headerlink" title="4.7 销毁一个SQL语句对象"></a>4.7 销毁一个SQL语句对象</h2><figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//sqlite3_finalize用来销毁pStmt指定的SQL语句对象</span></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">sqlite3_finalize</span><span class="params">(sqlite3_stmt *pStmt)</span></span>;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<h2 id="4-7-sqlite3-exec-函数"><a href="#4-7-sqlite3-exec-函数" class="headerlink" title="4.7 sqlite3_exec()   函数"></a>4.7 sqlite3_exec()   函数</h2><h1 id="5-select查询语句"><a href="#5-select查询语句" class="headerlink" title="5. select查询语句"></a>5. select查询语句</h1><blockquote>
+<p> SQL语句中，除了”select”,其他语句(如: CREATE TABLE, UPDATE, INSERT INTO, DELETE,…)结果要么成功，要以失败。<br> select如果成功，还有一个“结果集(表)”要返回<br> sqlite3_step 用来执行SQL语句对象，这个函数的返回值类型是int,只能暗示成功与否,并不能返回一个“结果集”<br> so, 查询语句select的结果是如何来返回的呢？</p>
+</blockquote>
+<p>在SQL语句中，SELECT的返回的结果集是一个“表”，结构类似如下:</p>
+<table>
+<thead>
+<tr>
+<th>C1</th>
+<th>C2</th>
+<th>C3</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>a</td>
+<td>b</td>
+<td>c</td>
+</tr>
+<tr>
+<td>e</td>
+<td>f</td>
+<td>g</td>
+</tr>
+</tbody></table>
+<p>每次在调用 sqlite3_step时，如果它的返回值为： SQLITE_ROW 表示有一行记录要返回</p>
+<table>
+<thead>
+<tr>
+<th>C1</th>
+<th>C2</th>
+<th>C3</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>a</td>
+<td>b</td>
+<td>c</td>
+</tr>
+</tbody></table>
+<p>再次调用 sqlite3_step时，如果它的返回值为： SQLITE_ROW 表示又有一行的记录要返回</p>
+<table>
+<thead>
+<tr>
+<th>C1</th>
+<th>C2</th>
+<th>C3</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>e</td>
+<td>f</td>
+<td>g</td>
+</tr>
+</tbody></table>
+<p>…,直到调用 sqlite3_step它的返回值为： SQLITE_DONE时，表示执行完成啦。</p>
+<p>这个“一行记录”，我们如何去获取呢？</p>
+<ul>
+<li><p>获取记录中有多少列 sqlite3_column_count</p>
+<blockquote>
+<p>int sqlite3_column_count(sqlite3_stmt *pStmt);</p>
+</blockquote>
+</li>
+<li><p>获取记录中每一列的列名 sqlite3_column_name</p>
+<blockquote>
+<p>const char <em>sqlite3_column_name(sqlite3_stmt</em>, int N);  //N表示第几列(从0开始)</p>
+</blockquote>
+</li>
+<li><p>获取记录中每一列的值</p>
+<ul>
+<li>sqlite3_column_type 获取指定列的类型</li>
+</ul>
+<blockquote>
+<p>int sqlite3_column_type(sqlite3_stmt*, int iCol);<br>返回值为： The sqlite3_column_type() routine returns the datatype code for the initial data type of the result column. The returned value is one of SQLITE_INTEGER, SQLITE_FLOAT, SQLITE_TEXT, SQLITE_BLOB, or SQLITE_NULL</p>
+</blockquote>
+<ul>
+<li><p>获取指定列的值</p>
+<ul>
+<li><p>sqlite3_column_double</p>
+<blockquote>
+<p>double sqlite3_column_double(sqlite3_stmt*, int iCol);</p>
+</blockquote>
+</li>
+<li><p>sqlite3_column_int</p>
+<blockquote>
+<p>int sqlite3_column_int(sqlite3_stmt*, int iCol);</p>
+</blockquote>
+</li>
+<li><p>sqlite3_column_text</p>
+<blockquote>
+<p>const unsigned char <em>sqlite3_column_text(sqlite3_stmt</em>, int iCol);</p>
+</blockquote>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://example.com/2021/08/20/Sqlite/" data-id="ckskg3n8k0000m0voffwtga63" class="article-share-link">
+        分享
+      </a>
+      
+<ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E6%95%B0%E6%8D%AE%E5%BA%93/" rel="tag">数据库</a></li></ul>
+
+    </footer>
+
+  </div>
+
+  
+  
+<nav class="article-nav">
+  
+  
+  <a href="/2021/08/17/%E7%BD%91%E7%BB%9C%E7%BC%96%E7%A8%8B-2/" class="article-nav-link">
+    <strong class="article-nav-caption">后一篇</strong>
+    <div class="article-nav-title">网络编程(2)</div>
+  </a>
+  
+</nav>
+
+  
+
+  
+  
+  
+  
+
+</article>
+</section>
+    <footer class="footer">
+  <div class="outer">
+    <div class="float-right">
+      <ul class="list-inline">
+  
+  <li><i class="fe fe-smile-alt"></i> <span id="busuanzi_value_site_uv"></span></li>
+  
+  <li><i class="fe fe-bookmark"></i> <span id="busuanzi_value_page_pv"></span></li>
+  
+</ul>
+    </div>
+    <ul class="list-inline">
+      <li>lvsss &copy; 2021</li>
+      
+        <li>7</li>
+      
+      <li>Powered by <a href="http://hexo.io/" target="_blank">Hexo</a></li>
+      <li>theme  <a target="_blank" rel="noopener" href="https://github.com/zhwangart/hexo-theme-ocean">Ocean</a></li>
+    </ul>
+    <div class="float-right">
+      <span id="timeDate">载入天数...</span><span id="times">载入时分秒...</span>
+<script>
+    var now = new Date(); 
+    function createtime() { 
+        var grt= new Date("05/1/2021 15:49:00");//此处修改你的建站时间或者网站上线时间 
+        now.setTime(now.getTime()+250); 
+        days = (now - grt ) / 1000 / 60 / 60 / 24; dnum = Math.floor(days); 
+        hours = (now - grt ) / 1000 / 60 / 60 - (24 * dnum); hnum = Math.floor(hours); 
+        if(String(hnum).length ==1 ){hnum = "0" + hnum;} minutes = (now - grt ) / 1000 /60 - (24 * 60 * dnum) - (60 * hnum); 
+        mnum = Math.floor(minutes); if(String(mnum).length ==1 ){mnum = "0" + mnum;} 
+        seconds = (now - grt ) / 1000 - (24 * 60 * 60 * dnum) - (60 * 60 * hnum) - (60 * mnum); 
+        snum = Math.round(seconds); if(String(snum).length ==1 ){snum = "0" + snum;} 
+        document.getElementById("timeDate").innerHTML = "本站已安全运行 "+dnum+" 天 "; 
+        document.getElementById("times").innerHTML = hnum + " 小时 " + mnum + " 分 " + snum + " 秒"; 
+    } 
+	setInterval("createtime()",250);
+</script>
+    </div>
+  </div>
+</footer>
+  </main>
+  <aside class="sidebar">
+    <button class="navbar-toggle"></button>
+<nav class="navbar">
+  
+  <div class="logo">
+    <a href="/"><img src="/images/hexo.svg" alt="lvsss"></a>
+  </div>
+  
+  <ul class="nav nav-main">
+    
+    <li class="nav-item">
+      <a class="nav-item-link" href="/">Home</a>
+    </li>
+    
+    <li class="nav-item">
+      <a class="nav-item-link" href="/archives">Archives</a>
+    </li>
+    
+    <li class="nav-item">
+      <a class="nav-item-link" href="/gallery">Gallery</a>
+    </li>
+    
+    <li class="nav-item">
+      <a class="nav-item-link" href="/about">About</a>
+    </li>
+    
+    <li class="nav-item">
+      <a class="nav-item-link nav-item-search" title="搜索">
+        <i class="fe fe-search"></i>
+        搜索
+      </a>
+    </li>
+  </ul>
+</nav>
+<nav class="navbar navbar-bottom">
+  <ul class="nav">
+    <li class="nav-item">
+      <div class="totop" id="totop">
+  <i class="fe fe-rocket"></i>
+</div>
+    </li>
+    <li class="nav-item">
+      
+      <a class="nav-item-link" target="_blank" href="/atom.xml" title="RSS Feed">
+        <i class="fe fe-feed"></i>
+      </a>
+      
+    </li>
+  </ul>
+</nav>
+<div class="search-form-wrap">
+  <div class="local-search local-search-plugin">
+  <input type="search" id="local-search-input" class="local-search-input" placeholder="Search...">
+  <div id="local-search-result" class="local-search-result"></div>
+</div>
+</div>
+  </aside>
+  
+<script src="/js/jquery-2.0.3.min.js"></script>
+
+
+<script src="/js/jquery.justifiedGallery.min.js"></script>
+
+
+<script src="/js/lazyload.min.js"></script>
+
+
+<script src="/js/busuanzi-2.3.pure.min.js"></script>
+
+
+
+<script src="/fancybox/jquery.fancybox.min.js"></script>
+
+
+
+
+<script src="/js/copybtn.js"></script>
+
+
+
+
+
+<script src="/js/tocbot.min.js"></script>
+
+<script>
+  // Tocbot_v4.7.0  http://tscanlin.github.io/tocbot/
+  tocbot.init({
+    tocSelector: '.tocbot',
+    contentSelector: '.article-entry',
+    headingSelector: 'h1, h2, h3, h4, h5, h6',
+    hasInnerContainers: true,
+    scrollSmooth: true,
+    positionFixedSelector: '.tocbot',
+    positionFixedClass: 'is-position-fixed',
+    fixedSidebarOffset: 'auto',
+  });
+</script>
+
+
+
+<script src="/js/ocean.js"></script>
+
+
+
+<script src="/live2dw/lib/L2Dwidget.min.js?094cbace49a39548bed64abff5988b05"></script><script>L2Dwidget.init({"model":{"scale":1,"hHeadPos":0.5,"vHeadPos":0.618,"jsonPath":"/live2dw/assets/haruto.model.json"},"display":{"superSample":2,"width":150,"height":300,"position":"left","hOffset":0,"vOffset":-20},"mobile":{"show":true},"react":{"opacityDefault":0.5,"opacityOnHover":0.2},"log":false,"pluginJsPath":"lib/","pluginModelPath":"assets/","pluginRootPath":"live2dw/","tagMode":false});</script></body>
+
+</html>
