@@ -18,7 +18,9 @@
   <entry>
     <title>C++新特性</title>
     <url>/2021/09/12/C-%E6%96%B0%E7%89%B9%E6%80%A7/</url>
-    <content><![CDATA[<h1 id="C-新特性"><a href="#C-新特性" class="headerlink" title="C++ 新特性"></a>C++ 新特性</h1><h2 id="1、区间迭代的方法"><a href="#1、区间迭代的方法" class="headerlink" title="1、区间迭代的方法"></a>1、区间迭代的方法</h2><figure class="highlight c++"><table><tr><td class="code"><pre><span class="line">vector&lt;<span class="keyword">int</span>&gt; num = &#123;<span class="number">0</span>,<span class="number">1</span>,<span class="number">2</span>,<span class="number">3</span>,<span class="number">4</span>,<span class="number">5</span>,<span class="number">6</span>&#125;;</span><br><span class="line"><span class="keyword">for</span>(<span class="keyword">auto</span> i : num)</span><br><span class="line">&#123;</span><br><span class="line">    cout&lt;&lt;i&lt;&lt;endl;				<span class="comment">//遍历整个vector</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+    <content><![CDATA[<h1 id="C-新特性"><a href="#C-新特性" class="headerlink" title="C++ 新特性"></a>C++ 新特性</h1><span id="more"></span>
+
+<h2 id="1、区间迭代的方法"><a href="#1、区间迭代的方法" class="headerlink" title="1、区间迭代的方法"></a>1、区间迭代的方法</h2><figure class="highlight c++"><table><tr><td class="code"><pre><span class="line">vector&lt;<span class="keyword">int</span>&gt; num = &#123;<span class="number">0</span>,<span class="number">1</span>,<span class="number">2</span>,<span class="number">3</span>,<span class="number">4</span>,<span class="number">5</span>,<span class="number">6</span>&#125;;</span><br><span class="line"><span class="keyword">for</span>(<span class="keyword">auto</span> i : num)</span><br><span class="line">&#123;</span><br><span class="line">    cout&lt;&lt;i&lt;&lt;endl;				<span class="comment">//遍历整个vector</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
 <h2 id="2、override"><a href="#2、override" class="headerlink" title="2、override"></a>2、override</h2><blockquote>
 <p>修饰派生类函数，使其精准重载基类的虚函数</p>
