@@ -263,6 +263,49 @@
 </ul>
 </li>
 </ul>
+<h2 id="6-“一步到位”函数"><a href="#6-“一步到位”函数" class="headerlink" title="**6. “一步到位”函数 **"></a>**6. “一步到位”函数 **</h2><p>sqlite3_exec</p>
+<p>```c</p>
+<p>  int sqlite3_exec(</p>
+<p>​    sqlite3*,                 /* An open database */</p>
+<p>​    const char <em>sql,              /</em> SQL to be evaluated */</p>
+<p>​    int (<em>callback)(void</em>,int,char**,char**), /* Callback function */</p>
+<p>​    void <em>,                  /</em> 1st argument to callback */</p>
+<p>​    char *<em>errmsg               /</em> Error msg written here */</p>
+<p>  );</p>
+<p>​    第一个参数为： sqlite3数据库连接对象</p>
+<p>​    第二个参数为: 要支持的SQL原始语句(不能带参数)</p>
+<p>​    第三个参数为: 函数指针，指向一个函数</p>
+<p>​          (1) 当SQL语句是非SELECT语句时，第三个参数为NULL</p>
+<p>​          (2) 当SQL语句是 SELECT语句时，第三个参数为“回调函数”</p>
+<p>​            当sqlite3_exec内部，返回“一条记录”时，就用调用你的“回调函数”一次</p>
+<p>​            如果SELECT的结果集，有多条记录，你的“回调函数”就会调用多次</p>
+<p>​    第四个参数为： void*,将作为你的“回调函数”的第一个参数</p>
+<p>​    第五个参数为： *errmsg 指向的空间用来保存出错字符串的</p>
+<p>  返回值：</p>
+<p>​    成功返回 SQLITE_OK</p>
+<p>​    失败返回 其他值</p>
+<p>```</p>
+<p>sqlite3_exec第三个参数，需要指定一个“回调函数”，这个“回调函数”，起什么作用呢?</p>
+<p>&gt; 当sqlite3_exec执行的是SELECT这样的查询语句时,</p>
+<p>&gt; 数据库返回给他的结果是一个“多条记录的一个表”,</p>
+<p>&gt; 但是“多条记录”的处理，需要调用者(you)去处理</p>
+<p>&gt; 所以，在你调用sqlite3_exec时，需要指定这样一个“回调函数”,并且</p>
+<p>&gt; 当sqlite3_exec内部，查询到一条记录，就会调用一次你的“回调函数”</p>
+<p>&gt; 如果查询到n条记录，就会调用n次你的“回调函数”</p>
+<p>那么这个“回调函数”的原型是什么样子的呢?</p>
+<p>int your_handle_func(void* data, int col_num, char* values[], char * colNames[])</p>
+<p>{</p>
+<p>}</p>
+<p>第一个参数：你指定的任意的指针</p>
+<p>第二个参数: 表示“记录”中有多少列</p>
+<p>第三个参数：字符串的数组 char* values[]</p>
+<p>​      包含这条记录每个列的值， values[0] ，，，，</p>
+<p>第四个参数：字符串的数组 char* colNames[]</p>
+<p>​      包含这条记录每个列的名字， colNames[0] ,,,,</p>
+<p>返回值：</p>
+<p>  成功返回0</p>
+<p>  失败返回其他值</p>
+<p> 只要在你的回调函数返回0时，sqlite3_exec才会继续</p>
 
       
     </div>
@@ -280,6 +323,15 @@
   
   
 <nav class="article-nav">
+  
+  <a href="/2021/08/30/C++/" class="article-nav-link">
+    <strong class="article-nav-caption">前一篇</strong>
+    <div class="article-nav-title">
+      
+      C++
+      
+    </div>
+  </a>
   
   
   <a href="/2021/08/17/%E7%BD%91%E7%BB%9C%E7%BC%96%E7%A8%8B-2/" class="article-nav-link">

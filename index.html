@@ -124,6 +124,218 @@
 
 </article>
     
+    <article id="post-C-新特性" class="article article-type-post" itemscope
+  itemprop="blogPost" data-scroll-reveal>
+
+  <div class="article-inner">
+    
+    <header class="article-header">
+      
+
+<h2 itemprop="name">
+  <a class="article-title" href="/2021/09/12/C-%E6%96%B0%E7%89%B9%E6%80%A7/">C++新特性</a>
+</h2>
+
+
+
+    </header>
+    
+
+    
+    <div class="article-meta">
+      <a href="/2021/09/12/C-%E6%96%B0%E7%89%B9%E6%80%A7/" class="article-date">
+  <time datetime="2021-09-12T12:45:13.000Z" itemprop="datePublished">2021-09-12</time>
+</a>
+      
+    </div>
+    
+
+    
+
+    <div class="article-entry" itemprop="articleBody">
+      
+      
+      
+      <h1 id="C-新特性"><a href="#C-新特性" class="headerlink" title="C++ 新特性"></a>C++ 新特性</h1><h2 id="1、区间迭代的方法"><a href="#1、区间迭代的方法" class="headerlink" title="1、区间迭代的方法"></a>1、区间迭代的方法</h2><figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">vector&lt;<span class="keyword">int</span>&gt; num = &#123;<span class="number">0</span>,<span class="number">1</span>,<span class="number">2</span>,<span class="number">3</span>,<span class="number">4</span>,<span class="number">5</span>,<span class="number">6</span>&#125;;</span><br><span class="line"><span class="keyword">for</span>(<span class="keyword">auto</span> i : num)</span><br><span class="line">&#123;</span><br><span class="line">    cout&lt;&lt;i&lt;&lt;endl;				<span class="comment">//遍历整个vector</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h2 id="2、override"><a href="#2、override" class="headerlink" title="2、override"></a>2、override</h2><blockquote>
+<p>修饰派生类函数，使其精准重载基类的虚函数</p>
+</blockquote>
+<h2 id="3、Lambda表达式"><a href="#3、Lambda表达式" class="headerlink" title="3、Lambda表达式"></a>3、Lambda表达式</h2><p>[外表变量方位方式说明符] (参数)  mutable noexcept/throw() -&gt; { 函数体 }</p>
+<h2 id="4、placement-new-按指定地址new构造"><a href="#4、placement-new-按指定地址new构造" class="headerlink" title="4、placement new (按指定地址new构造)"></a>4、placement new (按指定地址new构造)</h2><p>实例:  <code>A*p=new(men)A;   //men是栈空间的临时地址</code></p>
+<h2 id="5、decltype-exp-推导表达式的值"><a href="#5、decltype-exp-推导表达式的值" class="headerlink" title="5、decltype(exp) 推导表达式的值"></a>5、decltype(exp) 推导表达式的值</h2><figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">auto add(T x,V y) -&gt; decltype(x+y)        //auto 和 decltype组合拳</span><br><span class="line">&#123;&#125;</span><br></pre></td></tr></table></figure>
+
+<h2 id="6、constexpr-常量判断关键字"><a href="#6、constexpr-常量判断关键字" class="headerlink" title="6、constexpr 常量判断关键字"></a>6、constexpr 常量判断关键字</h2><p>数组初始化时，[ ] 内必须为常量 </p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">constexpr</span> <span class="keyword">int</span> num = <span class="number">1</span>+<span class="number">2</span>+<span class="number">3</span>;  <span class="comment">// 用 int num =... 为只可读变量，不能初始化数组。结果在编译期间就已经算出</span></span><br><span class="line"><span class="keyword">int</span> url[num] = &#123;<span class="number">1</span>,<span class="number">2</span>,<span class="number">3</span>,<span class="number">4</span>,<span class="number">5</span>,<span class="number">6</span>&#125;;</span><br></pre></td></tr></table></figure>
+
+<p>const 和 constexpr 区别: const 声明为可读变量，而constexpr声明为常量</p>
+<h2 id="7、右值引用-“-amp-amp-”"><a href="#7、右值引用-“-amp-amp-”" class="headerlink" title="7、右值引用 “&amp;&amp;”"></a>7、右值引用 “&amp;&amp;”</h2><figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> <span class="keyword">int</span> &amp;c = <span class="number">10</span>;                 <span class="comment">//常量由常引用指定</span></span><br><span class="line"><span class="comment">/*右值没有名称，寻址困难，需要用到引用别名，右值引用不能初始化为左值，右值引用可以修改右值*/</span></span><br><span class="line"><span class="keyword">int</span> &amp;&amp; a =<span class="number">10</span>;</span><br><span class="line">a = <span class="number">100</span>;     <span class="comment">//可以修改</span></span><br></pre></td></tr></table></figure>
+
+<h2 id="8、移动构造函数"><a href="#8、移动构造函数" class="headerlink" title="8、移动构造函数"></a>8、移动构造函数</h2><h3 id="1-深拷贝构造函数实例"><a href="#1-深拷贝构造函数实例" class="headerlink" title="(1) 深拷贝构造函数实例"></a>(1) 深拷贝构造函数实例</h3><p>遇到指针时的深拷贝构造函数</p>
+<p><img src="https://pic.imgdb.cn/item/613dfb6e44eaada73995ae4f.png"></p>
+<h3 id="2-实例执行步骤"><a href="#2-实例执行步骤" class="headerlink" title="(2)实例执行步骤"></a>(2)实例执行步骤</h3><p>执行 get_demo() 函数内部的 demo() 语句，即调用 demo 类的默认构造函数生成一个匿名对象；</p>
+<p>执行 return demo() 语句，会调用拷贝构造函数复制一份之前生成的匿名对象，并将其作为 get_demo() 函数的返回值（函数体执行完毕之前，匿名对象会被析构销毁）；</p>
+<p>执行 a = get_demo() 语句，再调用一次拷贝构造函数，将之前拷贝得到的临时对象复制给 a（此行代码执行完毕，get_demo() 函数返回的对象会被析构）；</p>
+<p>程序执行结束前，会自行调用 demo 类的析构函数销毁 a。</p>
+<h3 id="3-添加移动构造函数"><a href="#3-添加移动构造函数" class="headerlink" title="(3)添加移动构造函数"></a>(3)添加移动构造函数</h3><p><img src="https://pic.imgdb.cn/item/613dfc1f44eaada73997281b.png"></p>
+<blockquote>
+<p>可以看到，在之前 demo 类的基础上，我们又手动为其添加了一个构造函数。和其它构造函数不同，此构造函数使用右值引用形式的参数，又称为移动构造函数。并且在此构造函数中，num 指针变量采用的是浅拷贝的复制方式，同时在函数内部重置了 d.num，有效避免了“同一块对空间被释放多次”情况的发生</p>
+</blockquote>
+<h3 id="4-结果比较"><a href="#4-结果比较" class="headerlink" title="(4)结果比较"></a>(4)结果比较</h3><p>深拷贝构造函数:</p>
+<p>construct!      &lt;– 执行 demo()</p>
+<p>copy construct!    &lt;– 执行 return demo()</p>
+<p>class destruct!    &lt;– 销毁 demo() 产生的匿名对象</p>
+<p>copy construct!    &lt;– 执行 a = get_demo()</p>
+<p>class destruct!    &lt;– 销毁 get_demo() 返回的临时对象</p>
+<p>class destruct!    &lt;– 销毁 a</p>
+<p>移动构造函数:</p>
+<p>construct!</p>
+<p>move construct!</p>
+<p>class destruct!</p>
+<p>move construct!</p>
+<p>class destruct!</p>
+<p>class destruct!</p>
+<blockquote>
+<p>程序运行时隐式构造的临时对象，无法获取其地址，所以采用右值引用的方法传递参数作为右值。</p>
+<p>在实际开发中，通常在类中自定义移动构造函数的同时，会再为其自定义一个适当的拷贝构造函数，由此当用户利用右值初始化类对象时，会调用移动构造函数；使用左值（非右值）初始化类对象时，会调用拷贝构造函数。</p>
+</blockquote>
+<h2 id="9、move-函数：将左值强制转换为右值"><a href="#9、move-函数：将左值强制转换为右值" class="headerlink" title="9、move()函数：将左值强制转换为右值"></a>9、move()函数：将左值强制转换为右值</h2><p>movedemo demo3 = std::move(demo);</p>
+<h2 id="10、智能指针"><a href="#10、智能指针" class="headerlink" title="10、智能指针"></a>10、智能指针</h2><h3 id="1、shared-ptr"><a href="#1、shared-ptr" class="headerlink" title="1、shared_ptr"></a>1、shared_ptr</h3><p>计数形式实现，当最后一个指针对象指向堆空间的对象被释放，堆空间也会被释放</p>
+<h4 id="1-创建"><a href="#1-创建" class="headerlink" title="(1)创建"></a>(1)创建</h4><p>1、shared_ptr<int>p1;      shared_ptr<int>p2(nullptr);    //构造空指针</p>
+<p>2、明确指向 shared_ptr<int>p3(new int(10));   指向10的内存空间</p>
+<p>也可以句式为: shared_ptr<int>p3 = make_shared<int>(10);</p>
+<ol start="3">
+<li>除此之外，shared_ptr<T> 模板还提供有相应的拷贝构造函数和移动构造函数，例如：</li>
+</ol>
+<p>//调用拷贝构造函数</p>
+<p>std::shared_ptr<int> p4(p3);//或者 std::shared_ptr<int> p4 = p3;</p>
+<p>//调用移动构造函数</p>
+<p>std::shared_ptr<int> p5(std::move(p4)); //或者 std::shared_ptr<int> p5 = std::move(p4);</p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://example.com/2021/09/12/C-%E6%96%B0%E7%89%B9%E6%80%A7/" data-id="cktibthdw0001dsvo5eco5lsf" class="article-share-link">
+        分享
+      </a>
+      
+<ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/C/" rel="tag">C++</a></li></ul>
+
+    </footer>
+
+  </div>
+
+  
+
+  
+
+</article>
+    
+    <article id="post-线程池" class="article article-type-post" itemscope
+  itemprop="blogPost" data-scroll-reveal>
+
+  <div class="article-inner">
+    
+    <header class="article-header">
+      
+
+<h2 itemprop="name">
+  <a class="article-title" href="/2021/09/05/%E7%BA%BF%E7%A8%8B%E6%B1%A0/">线程池</a>
+</h2>
+
+
+
+    </header>
+    
+
+    
+    <div class="article-meta">
+      <a href="/2021/09/05/%E7%BA%BF%E7%A8%8B%E6%B1%A0/" class="article-date">
+  <time datetime="2021-09-05T08:26:51.000Z" itemprop="datePublished">2021-09-05</time>
+</a>
+      
+    </div>
+    
+
+    
+
+    <div class="article-entry" itemprop="articleBody">
+      
+      
+      
+      <h1 id="线程池"><a href="#线程池" class="headerlink" title="线程池"></a>线程池</h1><p>1、</p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://example.com/2021/09/05/%E7%BA%BF%E7%A8%8B%E6%B1%A0/" data-id="cktibthee0003dsvodma9808v" class="article-share-link">
+        分享
+      </a>
+      
+<ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E7%BD%91%E7%BB%9C%E7%BC%96%E7%A8%8B/" rel="tag">网络编程</a></li></ul>
+
+    </footer>
+
+  </div>
+
+  
+
+  
+
+</article>
+    
+    <article id="post-C++" class="article article-type-post" itemscope
+  itemprop="blogPost" data-scroll-reveal>
+
+  <div class="article-inner">
+    
+    <header class="article-header">
+      
+
+<h2 itemprop="name">
+  <a class="article-title" href="/2021/08/30/C++/">C++</a>
+</h2>
+
+
+
+    </header>
+    
+
+    
+    <div class="article-meta">
+      <a href="/2021/08/30/C++/" class="article-date">
+  <time datetime="2021-08-30T09:20:55.000Z" itemprop="datePublished">2021-08-30</time>
+</a>
+      
+    </div>
+    
+
+    
+
+    <div class="article-entry" itemprop="articleBody">
+      
+      
+      
+      <h1 id="C"><a href="#C" class="headerlink" title="C++"></a>C++</h1>
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://example.com/2021/08/30/C++/" data-id="cktibthdv0000dsvo88ua3hu2" class="article-share-link">
+        分享
+      </a>
+      
+<ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/C/" rel="tag">C++</a></li></ul>
+
+    </footer>
+
+  </div>
+
+  
+
+  
+
+</article>
+    
     <article id="post-Sqlite" class="article article-type-post" itemscope
   itemprop="blogPost" data-scroll-reveal>
 
@@ -351,7 +563,9 @@
       
       
       
-      <h1 id="1、Linux-程序设计"><a href="#1、Linux-程序设计" class="headerlink" title="1、Linux 程序设计"></a>1、Linux 程序设计</h1>
+      <h1 id="二维数组和二级指针"><a href="#二维数组和二级指针" class="headerlink" title="二维数组和二级指针"></a>二维数组和二级指针</h1><p>char a[3] [4] 传参为 char (*s)[4]</p>
+<p>char *a[]  传参为 char ** s</p>
+
       
     </div>
     <footer class="article-footer">
@@ -502,172 +716,6 @@
       </a>
       
 <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/GEC6818/" rel="tag">GEC6818</a></li></ul>
-
-    </footer>
-
-  </div>
-
-  
-
-  
-
-</article>
-    
-    <article id="post-Linux那些命令" class="article article-type-post" itemscope
-  itemprop="blogPost" data-scroll-reveal>
-
-  <div class="article-inner">
-    
-    <header class="article-header">
-      
-
-<h2 itemprop="name">
-  <a class="article-title" href="/2021/07/14/Linux%E9%82%A3%E4%BA%9B%E5%91%BD%E4%BB%A4/">Linux那些命令</a>
-</h2>
-
-
-
-    </header>
-    
-
-    
-    <div class="article-meta">
-      <a href="/2021/07/14/Linux%E9%82%A3%E4%BA%9B%E5%91%BD%E4%BB%A4/" class="article-date">
-  <time datetime="2021-07-14T03:23:58.000Z" itemprop="datePublished">2021-07-14</time>
-</a>
-      
-    </div>
-    
-
-    
-
-    <div class="article-entry" itemprop="articleBody">
-      
-      
-      
-      <h1 id="Linux那些命令-1"><a href="#Linux那些命令-1" class="headerlink" title="Linux那些命令(1)"></a>Linux那些命令(1)</h1>
-      
-      <a class="article-more-link" href="/2021/07/14/Linux%E9%82%A3%E4%BA%9B%E5%91%BD%E4%BB%A4/">
-        Read More...
-      </a>
-      
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="http://example.com/2021/07/14/Linux%E9%82%A3%E4%BA%9B%E5%91%BD%E4%BB%A4/" data-id="cksg0ja8e00050cvo2jiu1ta7" class="article-share-link">
-        分享
-      </a>
-      
-<ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Linux%E5%B8%B8%E7%94%A8%E5%91%BD%E4%BB%A4/" rel="tag">Linux常用命令</a></li></ul>
-
-    </footer>
-
-  </div>
-
-  
-
-  
-
-</article>
-    
-    <article id="post-假期(5)" class="article article-type-post" itemscope
-  itemprop="blogPost" data-scroll-reveal>
-
-  <div class="article-inner">
-    
-    <header class="article-header">
-      
-
-<h2 itemprop="name">
-  <a class="article-title" href="/2021/07/13/%E5%81%87%E6%9C%9F(5)/">假期(5)</a>
-</h2>
-
-
-
-    </header>
-    
-
-    
-    <div class="article-meta">
-      <a href="/2021/07/13/%E5%81%87%E6%9C%9F(5)/" class="article-date">
-  <time datetime="2021-07-13T08:16:27.000Z" itemprop="datePublished">2021-07-13</time>
-</a>
-      
-    </div>
-    
-
-    
-
-    <div class="article-entry" itemprop="articleBody">
-      
-      
-      
-      
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="http://example.com/2021/07/13/%E5%81%87%E6%9C%9F(5)/" data-id="cksg0ja9q000u0cvo8zfn9jc9" class="article-share-link">
-        分享
-      </a>
-      
-<ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E5%81%87%E6%9C%9F/" rel="tag">假期</a></li></ul>
-
-    </footer>
-
-  </div>
-
-  
-
-  
-
-</article>
-    
-    <article id="post-排序" class="article article-type-post" itemscope
-  itemprop="blogPost" data-scroll-reveal>
-
-  <div class="article-inner">
-    
-    <header class="article-header">
-      
-
-<h2 itemprop="name">
-  <a class="article-title" href="/2021/07/12/%E6%8E%92%E5%BA%8F/">排序</a>
-</h2>
-
-
-
-    </header>
-    
-
-    
-    <div class="article-meta">
-      <a href="/2021/07/12/%E6%8E%92%E5%BA%8F/" class="article-date">
-  <time datetime="2021-07-12T13:00:35.000Z" itemprop="datePublished">2021-07-12</time>
-</a>
-      
-    </div>
-    
-
-    
-
-    <div class="article-entry" itemprop="articleBody">
-      
-      
-      
-      <h1 id="排序"><a href="#排序" class="headerlink" title="排序"></a>排序</h1>
-      
-      <a class="article-more-link" href="/2021/07/12/%E6%8E%92%E5%BA%8F/">
-        Read More...
-      </a>
-      
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="http://example.com/2021/07/12/%E6%8E%92%E5%BA%8F/" data-id="cksg0ja9o000s0cvo119n5r3t" class="article-share-link">
-        分享
-      </a>
-      
-<ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E6%8E%92%E5%BA%8F/" rel="tag">排序</a></li></ul>
 
     </footer>
 
