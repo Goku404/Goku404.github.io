@@ -1,0 +1,276 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+  
+  
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <title>
+    STL随笔 |
+    
+    lvsss</title>
+  
+  <link rel="shortcut icon" href="/favicon.ico">
+  
+  
+<link rel="stylesheet" href="/css/style.css">
+
+  
+  
+<link rel="stylesheet" href="/fancybox/jquery.fancybox.min.css">
+
+  
+  
+<script src="/js/pace.min.js"></script>
+
+<meta name="generator" content="Hexo 5.4.0"><link rel="alternate" href="/atom.xml" title="lvsss" type="application/atom+xml">
+</head>
+
+<body>
+  <main class="content">
+    <section class="outer">
+  <article id="post-STL随笔" class="article article-type-post" itemscope
+  itemprop="blogPost" data-scroll-reveal>
+
+  <div class="article-inner">
+    
+    <header class="article-header">
+      
+
+<h1 class="article-title" itemprop="name">
+  STL随笔
+</h1>
+
+
+
+    </header>
+    
+
+    
+    <div class="article-meta">
+      <a href="/2021/09/26/STL%E9%9A%8F%E7%AC%94/" class="article-date">
+  <time datetime="2021-09-26T13:55:48.000Z" itemprop="datePublished">2021-09-26</time>
+</a>
+      
+    </div>
+    
+
+    
+    
+<div class="tocbot"></div>
+
+    
+
+    <div class="article-entry" itemprop="articleBody">
+      
+      
+<div class="article-gallery">
+  <div class="article-gallery-photos">
+    
+    
+    <img src="https://pic.imgdb.cn/item/61507c612ab3f51d917211c5.png" itemprop="image">
+    
+    
+  </div>
+</div>
+
+      
+      <h1 id="STL随笔"><a href="#STL随笔" class="headerlink" title="STL随笔"></a>STL随笔</h1><blockquote>
+<p>9-26  晒  🤟🤟🤟</p>
+</blockquote>
+<span id="more"></span>
+
+<h2 id="STL六大组件"><a href="#STL六大组件" class="headerlink" title="STL六大组件"></a>STL六大组件</h2><p>(1) 容器（<em>Containers</em>）：各种数据结构，如：<em>vector</em>、<em>list</em>、<em>deque</em>、<em>set</em>、<em>map</em>。用来存放数据。从实现的角度来看，<em>STL</em>容器是一种<em>class template</em>。</p>
+<p>(2)算法（<em>algorithms</em>）：各种常用算法，如：<em>sort</em>、<em>search</em>、<em>copy</em>、<em>erase</em>。从实现的角度来看，<em>STL</em>算法是一种 <em>function template</em>。</p>
+<p>(3)迭代器（<em>iterators</em>）：容器与算法之间的胶合剂，是所谓的“泛型指针”。共有五种类型，以及其他衍生变化。从实现的角度来看，迭代器是一种将 <em>operator**、</em>operator-&gt;<em>、</em>operator++<em>、</em>operator- -* 等指针相关操作进行重载的<em>class template</em>。所有<em>STL</em>容器都有自己专属的迭代器，只有容器本身才知道如何遍历自己的元素。原生指针*(native pointer)*也是一种迭代器。</p>
+<p>(4)仿函数（<em>functors</em>）：行为类似函数，可作为算法的某种策略（<em>policy</em>）。从实现的角度来看，仿函数是一种重载了<em>operator</em>（）的<em>class</em>或<em>class template</em>。一般的函数指针也可视为狭义的仿函数</p>
+<p>(5)配接器（<em>adapters</em>）；一种用来修饰容器、仿函数、迭代器接口的东西。例如：<em>STL</em>提供的<em>queue</em> 和 <em>stack</em>，虽然看似容器，但其实只能算是一种容器配接器，因为它们的底部完全借助<em>deque</em>，所有操作都由底层的<em>deque</em>供应。改变 <em>functors</em>接口者，称为<em>function adapter</em>；改变 <em>container</em> 接口者，称为<em>container adapter</em>；改变<em>iterator</em>接口者，称为<em>iterator adapter</em>。</p>
+<p>(6)配置器（<em>allocators</em>）：负责空间配置与管理。从实现的角度来看，配置器是一个实现了动态空间配置、空间管理、空间释放的<em>class template</em>。</p>
+<p><a target="_blank" rel="noopener" href="https://simba.blog.csdn.net/article/details/9410459?utm_medium=distribute.pc_relevant_t0.none-task-blog-2~default~searchFromBaidu~default-1.searchformbaiduhighlight&depth_1-utm_source=distribute.pc_relevant_t0.none-task-blog-2~default~searchFromBaidu~default-1.searchformbaiduhighlight">从零开始学C++之STL（一）：STL六大组件简介_Meditation-CSDN博客</a></p>
+<h3 id="1-迭代器（iterators）"><a href="#1-迭代器（iterators）" class="headerlink" title="(1)迭代器（iterators）"></a>(1)迭代器（iterators）</h3><p>迭代器源码模板传送门</p>
+<p><a target="_blank" rel="noopener" href="http://42.193.228.118/?p=400">C++之写迭代器 – Lvsss</a></p>
+<h3 id="2-配接器-adapters"><a href="#2-配接器-adapters" class="headerlink" title="(2)配接器(adapters)"></a>(2)配接器(adapters)</h3><h3 id="3-配接器-adapters"><a href="#3-配接器-adapters" class="headerlink" title="(3)配接器(adapters)"></a>(3)配接器(adapters)</h3>
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://example.com/2021/09/26/STL%E9%9A%8F%E7%AC%94/" data-id="cku1bkywv00003ovo1v9y1dup" class="article-share-link">
+        分享
+      </a>
+      
+<ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E9%9A%8F%E7%AC%94/" rel="tag">随笔</a></li></ul>
+
+    </footer>
+
+  </div>
+
+  
+  
+<nav class="article-nav">
+  
+  
+  <a href="/2021/09/25/Leetcode%E9%9A%8F%E7%AC%94/" class="article-nav-link">
+    <strong class="article-nav-caption">后一篇</strong>
+    <div class="article-nav-title">Leetcode随笔</div>
+  </a>
+  
+</nav>
+
+  
+
+  
+  
+  
+  
+
+</article>
+</section>
+    <footer class="footer">
+  <div class="outer">
+    <div class="float-right">
+      <ul class="list-inline">
+  
+  <li><i class="fe fe-smile-alt"></i> <span id="busuanzi_value_site_uv"></span></li>
+  
+  <li><i class="fe fe-bookmark"></i> <span id="busuanzi_value_page_pv"></span></li>
+  
+</ul>
+    </div>
+    <ul class="list-inline">
+      <li>lvsss &copy; 2021</li>
+      
+        <li>7</li>
+      
+      <li>Powered by <a href="http://hexo.io/" target="_blank">Hexo</a></li>
+      <li>theme  <a target="_blank" rel="noopener" href="https://github.com/zhwangart/hexo-theme-ocean">Ocean</a></li>
+    </ul>
+    <div class="float-right">
+      <span id="timeDate">载入天数...</span><span id="times">载入时分秒...</span>
+<script>
+    var now = new Date(); 
+    function createtime() { 
+        var grt= new Date("05/1/2021 15:49:00");//此处修改你的建站时间或者网站上线时间 
+        now.setTime(now.getTime()+250); 
+        days = (now - grt ) / 1000 / 60 / 60 / 24; dnum = Math.floor(days); 
+        hours = (now - grt ) / 1000 / 60 / 60 - (24 * dnum); hnum = Math.floor(hours); 
+        if(String(hnum).length ==1 ){hnum = "0" + hnum;} minutes = (now - grt ) / 1000 /60 - (24 * 60 * dnum) - (60 * hnum); 
+        mnum = Math.floor(minutes); if(String(mnum).length ==1 ){mnum = "0" + mnum;} 
+        seconds = (now - grt ) / 1000 - (24 * 60 * 60 * dnum) - (60 * 60 * hnum) - (60 * mnum); 
+        snum = Math.round(seconds); if(String(snum).length ==1 ){snum = "0" + snum;} 
+        document.getElementById("timeDate").innerHTML = "本站已安全运行 "+dnum+" 天 "; 
+        document.getElementById("times").innerHTML = hnum + " 小时 " + mnum + " 分 " + snum + " 秒"; 
+    } 
+	setInterval("createtime()",250);
+</script>
+    </div>
+  </div>
+</footer>
+  </main>
+  <aside class="sidebar">
+    <button class="navbar-toggle"></button>
+<nav class="navbar">
+  
+  <div class="logo">
+    <a href="/"><img src="/images/hexo.svg" alt="lvsss"></a>
+  </div>
+  
+  <ul class="nav nav-main">
+    
+    <li class="nav-item">
+      <a class="nav-item-link" href="/">Home</a>
+    </li>
+    
+    <li class="nav-item">
+      <a class="nav-item-link" href="/archives">Archives</a>
+    </li>
+    
+    <li class="nav-item">
+      <a class="nav-item-link" href="/gallery">Gallery</a>
+    </li>
+    
+    <li class="nav-item">
+      <a class="nav-item-link" href="/about">About</a>
+    </li>
+    
+    <li class="nav-item">
+      <a class="nav-item-link nav-item-search" title="搜索">
+        <i class="fe fe-search"></i>
+        搜索
+      </a>
+    </li>
+  </ul>
+</nav>
+<nav class="navbar navbar-bottom">
+  <ul class="nav">
+    <li class="nav-item">
+      <div class="totop" id="totop">
+  <i class="fe fe-rocket"></i>
+</div>
+    </li>
+    <li class="nav-item">
+      
+      <a class="nav-item-link" target="_blank" href="/atom.xml" title="RSS Feed">
+        <i class="fe fe-feed"></i>
+      </a>
+      
+    </li>
+  </ul>
+</nav>
+<div class="search-form-wrap">
+  <div class="local-search local-search-plugin">
+  <input type="search" id="local-search-input" class="local-search-input" placeholder="Search...">
+  <div id="local-search-result" class="local-search-result"></div>
+</div>
+</div>
+  </aside>
+  
+<script src="/js/jquery-2.0.3.min.js"></script>
+
+
+<script src="/js/jquery.justifiedGallery.min.js"></script>
+
+
+<script src="/js/lazyload.min.js"></script>
+
+
+<script src="/js/busuanzi-2.3.pure.min.js"></script>
+
+
+
+<script src="/fancybox/jquery.fancybox.min.js"></script>
+
+
+
+
+<script src="/js/copybtn.js"></script>
+
+
+
+
+
+<script src="/js/tocbot.min.js"></script>
+
+<script>
+  // Tocbot_v4.7.0  http://tscanlin.github.io/tocbot/
+  tocbot.init({
+    tocSelector: '.tocbot',
+    contentSelector: '.article-entry',
+    headingSelector: 'h1, h2, h3, h4, h5, h6',
+    hasInnerContainers: true,
+    scrollSmooth: true,
+    positionFixedSelector: '.tocbot',
+    positionFixedClass: 'is-position-fixed',
+    fixedSidebarOffset: 'auto',
+  });
+</script>
+
+
+
+<script src="/js/ocean.js"></script>
+
+
+
+<script src="/live2dw/lib/L2Dwidget.min.js?094cbace49a39548bed64abff5988b05"></script><script>L2Dwidget.init({"model":{"scale":1,"hHeadPos":0.5,"vHeadPos":0.618,"jsonPath":"/live2dw/assets/haruto.model.json"},"display":{"superSample":2,"width":150,"height":300,"position":"left","hOffset":0,"vOffset":-20},"mobile":{"show":true},"react":{"opacityDefault":0.5,"opacityOnHover":0.2},"log":false,"pluginJsPath":"lib/","pluginModelPath":"assets/","pluginRootPath":"live2dw/","tagMode":false});</script></body>
+
+</html>
