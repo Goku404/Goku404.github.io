@@ -1,0 +1,337 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+  
+  
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <title>
+    国庆随笔 |
+    
+    lvsss</title>
+  
+  <link rel="shortcut icon" href="/favicon.ico">
+  
+  
+<link rel="stylesheet" href="/css/style.css">
+
+  
+  
+<link rel="stylesheet" href="/fancybox/jquery.fancybox.min.css">
+
+  
+  
+<script src="/js/pace.min.js"></script>
+
+<meta name="generator" content="Hexo 5.4.0"><link rel="alternate" href="/atom.xml" title="lvsss" type="application/atom+xml">
+</head>
+
+<body>
+  <main class="content">
+    <section class="outer">
+  <article id="post-国庆随笔" class="article article-type-post" itemscope
+  itemprop="blogPost" data-scroll-reveal>
+
+  <div class="article-inner">
+    
+    <header class="article-header">
+      
+
+<h1 class="article-title" itemprop="name">
+  国庆随笔
+</h1>
+
+
+
+    </header>
+    
+
+    
+    <div class="article-meta">
+      <a href="/2021/10/07/%E5%9B%BD%E5%BA%86%E9%9A%8F%E7%AC%94/" class="article-date">
+  <time datetime="2021-10-07T02:37:08.000Z" itemprop="datePublished">2021-10-07</time>
+</a>
+      
+    </div>
+    
+
+    
+    
+<div class="tocbot"></div>
+
+    
+
+    <div class="article-entry" itemprop="articleBody">
+      
+      
+<div class="article-gallery">
+  <div class="article-gallery-photos">
+    
+    
+    <img src="https://pic.imgdb.cn/item/615e5db02ab3f51d9129b0e9.jpg" itemprop="image">
+    
+    
+  </div>
+</div>
+
+      
+      <h1 id="国庆随笔-10-7"><a href="#国庆随笔-10-7" class="headerlink" title="国庆随笔  10-7"></a>国庆随笔  10-7</h1><span id="more"></span>
+
+<h2 id="线程通信问题"><a href="#线程通信问题" class="headerlink" title="线程通信问题"></a>线程通信问题</h2><blockquote>
+<p>线程通信:互斥锁，条件变量，信号量，读写锁</p>
+</blockquote>
+<h3 id="1-互斥锁"><a href="#1-互斥锁" class="headerlink" title="1.互斥锁"></a>1.互斥锁</h3><p>互斥锁也是信号量，只是线程互斥锁存在于进程地址空间 (信号量存在于内核) ，用于线程间同步与互斥时，线程互斥锁效率比信号量高。</p>
+<h3 id="2-条件变量"><a href="#2-条件变量" class="headerlink" title="2.条件变量"></a>2.条件变量</h3><p>条件变量主要为了解决线程间的同步问题  例如：生产者 – 消费者 模型。  /* 注意的是:有条件变量存在的时候，一定要有互斥锁存在来解决共享资源访问的问题 */</p>
+<p>(1) 初始化条件变量    (2)等待一个条件变量，等待所代表的那个事件  有两种方式：限时等待和死等</p>
+<p>(3)唤醒条件变量    从等待队列里面唤醒一个线程</p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;stdio.h&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;stdlib.h&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;pthread.h&gt;</span></span></span><br><span class="line"></span><br><span class="line"><span class="keyword">int</span> data = <span class="number">0</span>; <span class="comment">//共享资源</span></span><br><span class="line"><span class="keyword">pthread_mutex_t</span> m; <span class="comment">//线程互斥锁，用来保护共享资源data 的</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">pthread_cond_t</span> c; <span class="comment">//条件变量，c表示一个条件/事件　：　data &gt;= 100000000</span></span><br><span class="line"></span><br><span class="line"><span class="comment">// t1线程函数</span></span><br><span class="line"><span class="function"><span class="keyword">void</span>* <span class="title">routine_t1</span><span class="params">(<span class="keyword">void</span>* data)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">	<span class="keyword">int</span> *p1 = (<span class="keyword">int</span>*)data;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">	<span class="keyword">while</span> (<span class="number">1</span>)</span><br><span class="line">	&#123;</span><br><span class="line">		<span class="comment">// P(m)</span></span><br><span class="line">		pthread_mutex_lock(&amp;m);</span><br><span class="line"></span><br><span class="line">	</span><br><span class="line">		<span class="keyword">if</span> (data &lt; <span class="number">100000000</span>)</span><br><span class="line">		&#123;</span><br><span class="line">			<span class="comment">// wait 一个条件变量</span></span><br><span class="line">			pthread_cond_wait(&amp;c, &amp;m); <span class="comment">// mc</span></span><br><span class="line">			</span><br><span class="line">		&#125;</span><br><span class="line"></span><br><span class="line">		<span class="comment">//被条件唤醒后，仍然需要判断　条件/事件　是否成立</span></span><br><span class="line">		<span class="comment">// why? 事件有可能会被其他“跑得快的线程”消耗掉!!!!</span></span><br><span class="line">		<span class="keyword">if</span> (data &gt;= <span class="number">100000000</span>)</span><br><span class="line">		&#123;</span><br><span class="line">			data = <span class="number">0</span>;</span><br><span class="line">		&#125;</span><br><span class="line">		<span class="comment">//v(m)</span></span><br><span class="line">		pthread_mutex_unlock(&amp;m);</span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">//主线程</span></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">	<span class="keyword">pthread_t</span> t1;</span><br><span class="line">	<span class="keyword">int</span> ret ;</span><br><span class="line"></span><br><span class="line">	<span class="keyword">int</span> *p = <span class="built_in">malloc</span>(<span class="keyword">sizeof</span>(<span class="keyword">int</span>));</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">	<span class="comment">//初始化我们的互斥锁</span></span><br><span class="line">	pthread_mutex_init(&amp;m, <span class="literal">NULL</span>);</span><br><span class="line"></span><br><span class="line">	<span class="comment">//初始化我们的条件变量</span></span><br><span class="line">	pthread_cond_init(&amp;c, <span class="literal">NULL</span>);</span><br><span class="line"></span><br><span class="line">	ret = pthread_create(</span><br><span class="line">					&amp;t1,  <span class="comment">//用来保存线程id的</span></span><br><span class="line">					<span class="literal">NULL</span>, <span class="comment">//线程属性，　NULL,表示采用默认属性</span></span><br><span class="line">					routine_t1, <span class="comment">//线程函数</span></span><br><span class="line">					(<span class="keyword">void</span>*)p <span class="comment">//线程函数的参数</span></span><br><span class="line">					);</span><br><span class="line">	<span class="keyword">if</span> (ret != <span class="number">0</span>)</span><br><span class="line">	&#123;</span><br><span class="line">		perror(<span class="string">&quot;pthread_create error&quot;</span>);</span><br><span class="line">		<span class="keyword">return</span> <span class="number">-1</span>;</span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">	<span class="keyword">while</span> (<span class="number">1</span>)</span><br><span class="line">	&#123;</span><br><span class="line"></span><br><span class="line">		<span class="comment">//P(m)</span></span><br><span class="line">		pthread_mutex_lock(&amp;m);</span><br><span class="line"></span><br><span class="line">		data++;</span><br><span class="line"></span><br><span class="line">		</span><br><span class="line">		<span class="keyword">if</span> (data &gt;= <span class="number">100000000</span>) <span class="comment">//事件/条件产生啦</span></span><br><span class="line">		&#123;</span><br><span class="line">			<span class="comment">// 唤醒条件变量上的线程</span></span><br><span class="line">			pthread_cond_signal(&amp;c);</span><br><span class="line">			</span><br><span class="line">		&#125;</span><br><span class="line"></span><br><span class="line">		<span class="comment">//v(m)</span></span><br><span class="line">		pthread_mutex_unlock(&amp;m);</span><br><span class="line">	</span><br><span class="line">	&#125;</span><br><span class="line">	pthread_join(t1, <span class="literal">NULL</span>);</span><br><span class="line"></span><br><span class="line">&#125;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<p>主线程负责唤醒条件变量，从线程负责等待条件变量，属于被唤醒</p>
+<h2 id="可重入概念"><a href="#可重入概念" class="headerlink" title="可重入概念"></a>可重入概念</h2><blockquote>
+<p>你的这个函数是 可重入的吗？<br>你的这个代码块是 可重入的吗？</p>
+</blockquote>
+<p>那么“可重入”到底是一个什么概念呢？</p>
+<blockquote>
+<p>可重入就是可以重复进入？？？<br>不是的。</p>
+</blockquote>
+<p>主要是用于多任务环境(并发)，一个可重入的函数简单来说是：<br>  可以被中断而不出错的函数。<br>也就是说，可以在这个函数执行的任何时刻中断它，转入OS调度去执行另外一段<br>代码，而返回控制时不会出现错误。<br>而不可重入的函数由于使用了一些系统资源，比如说全局变量，中断向量或其他的共享的硬件资源等， 所以它如果被中断的话，可能会出现问题，这类函数是不能运行在多任务的环境下。</p>
+<p>那些函数是不可重入的呢？<br>  用了共享资源(全局变量、static变量、硬件)并且没有加锁.</p>
+<p>哪些函数是可重入的呢?</p>
+<ul>
+<li>没有使用共享资源的函数</li>
+<li>使用了共享资源但是加了锁的。</li>
+</ul>
+<h2 id="读写锁"><a href="#读写锁" class="headerlink" title="读写锁"></a>读写锁</h2><p>读写锁也称 “共享 - 排他锁”  读写锁有3种状态，因此相对于互斥锁有更高的并发性，比较适合读者比写者频繁的情况</p>
+<p>用法:当读写锁是写加锁状态时，所有试图对读写锁加锁的线程都会被挂起；当读写锁是读加锁状态时，所有以读模式对它枷锁的线程能够允许被访问，但如果线程试图以写模式对它加锁，则会被挂起。</p>
+<p>读写锁相关的函数</p>
+<table>
+<thead>
+<tr>
+<th align="center">名称</th>
+<th align="center">说明</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="center">pthread_rwlock_init</td>
+<td align="center">初始化读写锁</td>
+</tr>
+<tr>
+<td align="center">pthread_rwlock_destory</td>
+<td align="center">销毁读写锁</td>
+</tr>
+<tr>
+<td align="center">pthread_rwlock_rdlock</td>
+<td align="center">对读写锁加读锁</td>
+</tr>
+<tr>
+<td align="center">pthread_rwlock_wrlock</td>
+<td align="center">对读写锁加写锁</td>
+</tr>
+<tr>
+<td align="center">pthread_rwlock_tryrdlock</td>
+<td align="center">尝试加读锁</td>
+</tr>
+<tr>
+<td align="center">pthread_rwlock_trywrlock</td>
+<td align="center">尝试加写锁</td>
+</tr>
+<tr>
+<td align="center">pthread_rwlock_unlock</td>
+<td align="center">对读写锁解锁</td>
+</tr>
+</tbody></table>
+<p>写线程函数访问临界资源以前 加写锁，访问后解读写锁 。  读线程函数访问前加 读锁，访问后解读写锁</p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://example.com/2021/10/07/%E5%9B%BD%E5%BA%86%E9%9A%8F%E7%AC%94/" data-id="ckugcliaa0000ewvofog16bou" class="article-share-link">
+        分享
+      </a>
+      
+<ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E9%9A%8F%E7%AC%94/" rel="tag">随笔</a></li></ul>
+
+    </footer>
+
+  </div>
+
+  
+  
+<nav class="article-nav">
+  
+  <a href="/2022/01/30/%E8%87%B4%E9%85%92%E9%AC%BC%E5%A9%95/" class="article-nav-link">
+    <strong class="article-nav-caption">前一篇</strong>
+    <div class="article-nav-title">
+      
+      致酒鬼婕
+      
+    </div>
+  </a>
+  
+  
+  <a href="/2021/09/26/STL%E9%9A%8F%E7%AC%94/" class="article-nav-link">
+    <strong class="article-nav-caption">后一篇</strong>
+    <div class="article-nav-title">STL随笔</div>
+  </a>
+  
+</nav>
+
+  
+
+  
+  
+  
+  
+
+</article>
+</section>
+    <footer class="footer">
+  <div class="outer">
+    <div class="float-right">
+      <ul class="list-inline">
+  
+  <li><i class="fe fe-smile-alt"></i> <span id="busuanzi_value_site_uv"></span></li>
+  
+  <li><i class="fe fe-bookmark"></i> <span id="busuanzi_value_page_pv"></span></li>
+  
+</ul>
+    </div>
+    <ul class="list-inline">
+      <li>lvsss &copy; 2022</li>
+      
+        <li>7</li>
+      
+      <li>Powered by <a href="http://hexo.io/" target="_blank">Hexo</a></li>
+      <li>theme  <a target="_blank" rel="noopener" href="https://github.com/zhwangart/hexo-theme-ocean">Ocean</a></li>
+    </ul>
+    <div class="float-right">
+      <span id="timeDate">载入天数...</span><span id="times">载入时分秒...</span>
+<script>
+    var now = new Date(); 
+    function createtime() { 
+        var grt= new Date("05/1/2021 15:49:00");//此处修改你的建站时间或者网站上线时间 
+        now.setTime(now.getTime()+250); 
+        days = (now - grt ) / 1000 / 60 / 60 / 24; dnum = Math.floor(days); 
+        hours = (now - grt ) / 1000 / 60 / 60 - (24 * dnum); hnum = Math.floor(hours); 
+        if(String(hnum).length ==1 ){hnum = "0" + hnum;} minutes = (now - grt ) / 1000 /60 - (24 * 60 * dnum) - (60 * hnum); 
+        mnum = Math.floor(minutes); if(String(mnum).length ==1 ){mnum = "0" + mnum;} 
+        seconds = (now - grt ) / 1000 - (24 * 60 * 60 * dnum) - (60 * 60 * hnum) - (60 * mnum); 
+        snum = Math.round(seconds); if(String(snum).length ==1 ){snum = "0" + snum;} 
+        document.getElementById("timeDate").innerHTML = "本站已安全运行 "+dnum+" 天 "; 
+        document.getElementById("times").innerHTML = hnum + " 小时 " + mnum + " 分 " + snum + " 秒"; 
+    } 
+	setInterval("createtime()",250);
+</script>
+    </div>
+  </div>
+</footer>
+  </main>
+  <aside class="sidebar">
+    <button class="navbar-toggle"></button>
+<nav class="navbar">
+  
+  <div class="logo">
+    <a href="/"><img src="/images/hexo.svg" alt="lvsss"></a>
+  </div>
+  
+  <ul class="nav nav-main">
+    
+    <li class="nav-item">
+      <a class="nav-item-link" href="/">Home</a>
+    </li>
+    
+    <li class="nav-item">
+      <a class="nav-item-link" href="/archives">Archives</a>
+    </li>
+    
+    <li class="nav-item">
+      <a class="nav-item-link" href="/gallery">Gallery</a>
+    </li>
+    
+    <li class="nav-item">
+      <a class="nav-item-link" href="/about">About</a>
+    </li>
+    
+    <li class="nav-item">
+      <a class="nav-item-link nav-item-search" title="搜索">
+        <i class="fe fe-search"></i>
+        搜索
+      </a>
+    </li>
+  </ul>
+</nav>
+<nav class="navbar navbar-bottom">
+  <ul class="nav">
+    <li class="nav-item">
+      <div class="totop" id="totop">
+  <i class="fe fe-rocket"></i>
+</div>
+    </li>
+    <li class="nav-item">
+      
+      <a class="nav-item-link" target="_blank" href="/atom.xml" title="RSS Feed">
+        <i class="fe fe-feed"></i>
+      </a>
+      
+    </li>
+  </ul>
+</nav>
+<div class="search-form-wrap">
+  <div class="local-search local-search-plugin">
+  <input type="search" id="local-search-input" class="local-search-input" placeholder="Search...">
+  <div id="local-search-result" class="local-search-result"></div>
+</div>
+</div>
+  </aside>
+  
+<script src="/js/jquery-2.0.3.min.js"></script>
+
+
+<script src="/js/jquery.justifiedGallery.min.js"></script>
+
+
+<script src="/js/lazyload.min.js"></script>
+
+
+<script src="/js/busuanzi-2.3.pure.min.js"></script>
+
+
+
+<script src="/fancybox/jquery.fancybox.min.js"></script>
+
+
+
+
+<script src="/js/copybtn.js"></script>
+
+
+
+
+
+<script src="/js/tocbot.min.js"></script>
+
+<script>
+  // Tocbot_v4.7.0  http://tscanlin.github.io/tocbot/
+  tocbot.init({
+    tocSelector: '.tocbot',
+    contentSelector: '.article-entry',
+    headingSelector: 'h1, h2, h3, h4, h5, h6',
+    hasInnerContainers: true,
+    scrollSmooth: true,
+    positionFixedSelector: '.tocbot',
+    positionFixedClass: 'is-position-fixed',
+    fixedSidebarOffset: 'auto',
+  });
+</script>
+
+
+
+<script src="/js/ocean.js"></script>
+
+
+
+<script src="/live2dw/lib/L2Dwidget.min.js?094cbace49a39548bed64abff5988b05"></script><script>L2Dwidget.init({"model":{"scale":1,"hHeadPos":0.5,"vHeadPos":0.618,"jsonPath":"/live2dw/assets/haruto.model.json"},"display":{"superSample":2,"width":150,"height":300,"position":"left","hOffset":0,"vOffset":-20},"mobile":{"show":true},"react":{"opacityDefault":0.5,"opacityOnHover":0.2},"log":false,"pluginJsPath":"lib/","pluginModelPath":"assets/","pluginRootPath":"live2dw/","tagMode":false});</script></body>
+
+</html>
