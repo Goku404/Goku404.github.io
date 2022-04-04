@@ -18,6 +18,76 @@
       </tags>
   </entry>
   <entry>
+    <title>Springboot-SpringBoot框架搭建</title>
+    <url>/2022/04/04/Springboot-SpringBoot%E6%A1%86%E6%9E%B6%E6%90%AD%E5%BB%BA/</url>
+    <content><![CDATA[<p><img src="https://pic.imgdb.cn/item/624a96d9239250f7c5f9905e.png"></p>
+<span id="more"></span>
+
+<h1 id="清明假期"><a href="#清明假期" class="headerlink" title="清明假期"></a>清明假期</h1><blockquote>
+<p>SpringBoot项目 集成了maven 项目 </p>
+<p>maven就是管理jar包的工具  在pom.xml文件中添加相关依赖，然后load一下就会从网上下载相关的jar包</p>
+<p>艹你@@的数据库  mysql ,跟我有仇是吧，每次都搞几个小时，回回都是你是吧 哪个死人给设计成这个吊样</p>
+</blockquote>
+<h2 id="1-微信小程序前端和后端SpringBoot的对接"><a href="#1-微信小程序前端和后端SpringBoot的对接" class="headerlink" title="1.微信小程序前端和后端SpringBoot的对接"></a>1.微信小程序前端和后端SpringBoot的对接</h2><h3 id="1-新建maven项目，把SpringBoot跑起来先"><a href="#1-新建maven项目，把SpringBoot跑起来先" class="headerlink" title="(1)新建maven项目，把SpringBoot跑起来先"></a>(1)新建maven项目，把SpringBoot跑起来先</h3><p><img src="https://pic.imgdb.cn/item/624ad995239250f7c58a4280.png"></p>
+<p>​                                                                            maven 项目工作目录  .java文件为运行应用程序</p>
+<p><u>需要添加相关依赖，新建SpringBoot项目不需要手动添加到pom.xml里面来让maven 加载</u></p>
+<p><img src="https://pic.imgdb.cn/item/624adc85239250f7c5909cbf.png"></p>
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="meta">@RequestMapping(&quot;/api/test&quot;)</span></span><br><span class="line"><span class="comment">//所有的文件都要加 /api/test 前缀，url</span></span><br></pre></td></tr></table></figure>
+
+<h3 id="2-启动小问题"><a href="#2-启动小问题" class="headerlink" title="(2)启动小问题"></a>(2)启动小问题</h3><p>添加配置后，项目启动失败，原因是添加了数据库配置，但是数据库没有连接起来，所以需先屏蔽数据库服务</p>
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="meta">@SpringBootApplication(exclude = DataSourceAutoConfiguration.class)</span></span><br><span class="line"><span class="comment">//屏蔽数据库服务</span></span><br></pre></td></tr></table></figure>
+
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="comment">/********************************后端****************************************************/</span></span><br><span class="line"><span class="comment">//应用默认运行在8080端口</span></span><br><span class="line"><span class="meta">@RestController</span></span><br><span class="line"><span class="meta">@RequestMapping(&quot;/api/test&quot;)</span>  <span class="comment">//总站点</span></span><br><span class="line"></span><br><span class="line"><span class="comment">//hello站点提供返回 &quot;hello world&quot; 的服务</span></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">testController</span> </span>&#123;</span><br><span class="line">    <span class="meta">@GetMapping(&quot;/hello&quot;)</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> String <span class="title">func</span><span class="params">()</span></span></span><br><span class="line"><span class="function">    </span>&#123;</span><br><span class="line">        <span class="keyword">return</span> <span class="string">&quot;hello world!&quot;</span>;</span><br><span class="line">    &#125;</span><br><span class="line"><span class="comment">//upload站点提供接收前端的json值截取的整数值计算和，返回两个整数和供前端获取</span></span><br><span class="line">    <span class="meta">@PostMapping(&quot;upload&quot;)</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">int</span> <span class="title">getResult</span><span class="params">(<span class="meta">@RequestBody</span> JSONObject req)</span></span>&#123;</span><br><span class="line">        System.out.println(req);</span><br><span class="line">        <span class="keyword">int</span> a = req.getInteger(<span class="string">&quot;num1&quot;</span>);</span><br><span class="line">        <span class="keyword">int</span> b = req.getInteger(<span class="string">&quot;num2&quot;</span>);</span><br><span class="line">        System.out.println(a + <span class="string">&quot; &quot;</span> + b);</span><br><span class="line">        <span class="keyword">return</span>  a+b;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="comment">//后端处理数据到站点</span></span><br><span class="line"><span class="comment">//请求upload站点的服务 上传Json文件</span></span><br><span class="line">wx.request(&#123;</span><br><span class="line">            url:<span class="string">&#x27;http://127.0.0.1:8080/api/test/upload&#x27;</span>,</span><br><span class="line">            method:<span class="string">&#x27;POST&#x27;</span>,</span><br><span class="line"></span><br><span class="line">            data:&#123;</span><br><span class="line">                num1:<span class="number">15</span>,</span><br><span class="line">                num2:<span class="number">105</span></span><br><span class="line">            &#125;,</span><br><span class="line">		<span class="comment">//r是返回值</span></span><br><span class="line">            success(r)</span><br><span class="line">            &#123;</span><br><span class="line">                console.log(r.data)</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;)</span><br><span class="line"><span class="comment">//请求hello站点的服务，得到后端的返回值  输出&#x27;hello&#x27;</span></span><br><span class="line">    wx.request(&#123;</span><br><span class="line">            url:<span class="string">&#x27;http://127.0.0.1:8080/api/test/hello&#x27;</span>,</span><br><span class="line">            method:<span class="string">&#x27;GET&#x27;</span>,</span><br><span class="line">            success(r)</span><br><span class="line">            &#123;</span><br><span class="line">                console.log(r.data)</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;)</span><br></pre></td></tr></table></figure>
+
+<h3 id="（3）Navicat-远程连接数据库"><a href="#（3）Navicat-远程连接数据库" class="headerlink" title="（3）Navicat 远程连接数据库"></a>（3）Navicat 远程连接数据库</h3><blockquote>
+<p>艹你大爷的数据库，跟我有仇是吧，今天搞了几个小时</p>
+</blockquote>
+<p>远程连接，端口 3060开启，创建用户，给用户设置权限</p>
+<p><a href="https://zhuanlan.zhihu.com/p/414950791">如何连接远程服务器上的数据库 - 知乎 (zhihu.com)</a></p>
+<p>忘记密码了怎么搞</p>
+<p><a href="https://blog.csdn.net/m0_46278037/article/details/113923726">(10条消息) ERROR 1045 (28000): Access denied for user ‘root‘@‘localhost‘ (using password: NO)解决办法_BugMiaowu2021的博客-CSDN博客</a></p>
+<p>第一次进数据库有个临时密码，在哪找</p>
+<p>数据库日志文件中有临时密码的记录</p>
+<p><img src="https://pic.imgdb.cn/item/624b1d0b239250f7c52ba873.png"></p>
+<p><img src="https://pic.imgdb.cn/item/624b1d42239250f7c52c1e93.png"></p>
+]]></content>
+      <tags>
+        <tag>毕业设计</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>Springboot+微信小程序</title>
+    <url>/2022/04/04/Springboot-%E5%BE%AE%E4%BF%A1%E5%B0%8F%E7%A8%8B%E5%BA%8F/</url>
+    <content><![CDATA[<p><img src="https://pic.imgdb.cn/item/624a96d9239250f7c5f9905e.png"></p>
+<span id="more"></span>
+
+<h1 id="清明假期"><a href="#清明假期" class="headerlink" title="清明假期"></a>清明假期</h1><h2 id="1-微信开发者工具工作目录结构"><a href="#1-微信开发者工具工作目录结构" class="headerlink" title="1.微信开发者工具工作目录结构"></a>1.微信开发者工具工作目录结构</h2><p>页面工作区的 .js 文件处理页面逻辑</p>
+<p>.js 文件的 data 区域存放数据存储区变量</p>
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line">data: &#123;text:<span class="string">&#x27;hello&#x27;</span>&#125;,  <span class="comment">//存放text变量，值为hello</span></span><br><span class="line"><span class="comment">//onload 为生命周期函数，可以做一些初始化的工作</span></span><br><span class="line">onload</span><br><span class="line">&#123;</span><br><span class="line">    <span class="keyword">this</span>.setdata(&#123;</span><br><span class="line">        text:<span class="string">&#x27;1234&#x27;</span></span><br><span class="line">    &#125;)</span><br><span class="line">    console.log(<span class="keyword">this</span>.data.text)   <span class="comment">//中断打印text的值</span></span><br><span class="line">&#125;,</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<p><img src="https://pic.imgdb.cn/item/624a9bcf239250f7c50491c9.png"></p>
+<p>​                                                                              图 1     微信开发者工具工程目录</p>
+<p><em>如果在onload区域设置未知变量的话，也会添加进data区域</em></p>
+<p><u>.wxml文件通过标签的形式展现页面内容</u>     <u>.wxss文件设置样式</u></p>
+<p><img src="https://pic.imgdb.cn/item/624a9da1239250f7c508ae39.png"></p>
+<p>​                                                                                图2 css样式 通过 .container 的方式封装</p>
+<p><img src="https://pic.imgdb.cn/item/624a9e01239250f7c5097f86.png"></p>
+<p>​                                                                                     图3 xml文件标签 通过选择渲染css样式</p>
+<h2 id="2-data区域定义数组，并设置打印"><a href="#2-data区域定义数组，并设置打印" class="headerlink" title="2.data区域定义数组，并设置打印"></a>2.data区域定义数组，并设置打印</h2><figure class="highlight java"><table><tr><td class="code"><pre><span class="line">data:&#123;</span><br><span class="line">    arr:[]     <span class="comment">//定义一个数组</span></span><br><span class="line">&#125;,</span><br></pre></td></tr></table></figure>
+
+<p><img src="https://pic.imgdb.cn/item/624aa028239250f7c50e8fcc.png"></p>
+<p>​                                                                                             数组操作</p>
+<p><u>push的变量不限制类型，也可以push字符串变量</u></p>
+<p><img src="https://pic.imgdb.cn/item/624aa0c8239250f7c50ff43a.png"></p>
+<p>​                                                                                       数组展示</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">data:&#123;</span><br><span class="line">	test:&#123;&#125; &#x2F;&#x2F;定义json类型</span><br><span class="line">&#125;</span><br><span class="line">&#x2F;&#x2F;push json数据结构</span><br><span class="line"> arrtemp.push(&#123;</span><br><span class="line">                id:i,</span><br><span class="line">                name:&#39;hello&#39;</span><br><span class="line">            &#125;);</span><br><span class="line">         </span><br><span class="line">&#x2F;&#x2F;显示的时候</span><br><span class="line">&lt;view wx:for &#x3D; &quot;&#123;&#123;arr&#125;&#125;&quot;&gt;</span><br><span class="line">	&#123;&#123;items.id&#125;&#125;  &#123;&#123;items.name&#125;&#125;</span><br><span class="line">&lt;&#x2F;view&gt;</span><br><span class="line"></span><br><span class="line">&#x2F;&#x2F;初始化变量，存储Json</span><br><span class="line">for(var i&#x3D;0;i&lt;10;i++)</span><br><span class="line">&#123;</span><br><span class="line">	arrtemp.push(&#123;</span><br><span class="line">    id:i,</span><br><span class="line">    name:&#39;hello&#39;</span><br><span class="line">    &#125;);</span><br><span class="line"> &#125; </span><br><span class="line"> </span><br><span class="line"> &#x2F;&#x2F;弹窗</span><br><span class="line"> wx.showToast(&#123;</span><br><span class="line"> 	title:&#39;success!&#39;,</span><br><span class="line"> &#125;)</span><br><span class="line"> &#x2F;&#x2F;请求</span><br><span class="line"> wx.request(&#123;</span><br><span class="line"> 	url: &#39;url&#39;,</span><br><span class="line"> &#125;)</span><br></pre></td></tr></table></figure>
+
+]]></content>
+      <tags>
+        <tag>毕业设计</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>国庆随笔</title>
     <url>/2021/10/07/%E5%9B%BD%E5%BA%86%E9%9A%8F%E7%AC%94/</url>
     <content><![CDATA[<h1 id="国庆随笔-10-7"><a href="#国庆随笔-10-7" class="headerlink" title="国庆随笔  10-7"></a>国庆随笔  10-7</h1><span id="more"></span>

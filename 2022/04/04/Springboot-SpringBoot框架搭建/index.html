@@ -1,0 +1,282 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+  
+  
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <title>
+    Springboot-SpringBoot框架搭建 |
+    
+    lvsss</title>
+  
+  <link rel="shortcut icon" href="/favicon.ico">
+  
+  
+<link rel="stylesheet" href="/css/style.css">
+
+  
+  
+<link rel="stylesheet" href="/fancybox/jquery.fancybox.min.css">
+
+  
+  
+<script src="/js/pace.min.js"></script>
+
+<meta name="generator" content="Hexo 5.4.0"><link rel="alternate" href="/atom.xml" title="lvsss" type="application/atom+xml">
+</head>
+
+<body>
+  <main class="content">
+    <section class="outer">
+  <article id="post-Springboot-SpringBoot框架搭建" class="article article-type-post" itemscope
+  itemprop="blogPost" data-scroll-reveal>
+
+  <div class="article-inner">
+    
+    <header class="article-header">
+      
+
+<h1 class="article-title" itemprop="name">
+  Springboot-SpringBoot框架搭建
+</h1>
+
+
+
+    </header>
+    
+
+    
+    <div class="article-meta">
+      <a href="/2022/04/04/Springboot-SpringBoot%E6%A1%86%E6%9E%B6%E6%90%AD%E5%BB%BA/" class="article-date">
+  <time datetime="2022-04-04T11:03:32.000Z" itemprop="datePublished">2022-04-04</time>
+</a>
+      
+    </div>
+    
+
+    
+    
+<div class="tocbot"></div>
+
+    
+
+    <div class="article-entry" itemprop="articleBody">
+      
+      
+      
+      <p><img src="https://pic.imgdb.cn/item/624a96d9239250f7c5f9905e.png"></p>
+<span id="more"></span>
+
+<h1 id="清明假期"><a href="#清明假期" class="headerlink" title="清明假期"></a>清明假期</h1><blockquote>
+<p>SpringBoot项目 集成了maven 项目 </p>
+<p>maven就是管理jar包的工具  在pom.xml文件中添加相关依赖，然后load一下就会从网上下载相关的jar包</p>
+<p>艹你@@的数据库  mysql ,跟我有仇是吧，每次都搞几个小时，回回都是你是吧 哪个死人给设计成这个吊样</p>
+</blockquote>
+<h2 id="1-微信小程序前端和后端SpringBoot的对接"><a href="#1-微信小程序前端和后端SpringBoot的对接" class="headerlink" title="1.微信小程序前端和后端SpringBoot的对接"></a>1.微信小程序前端和后端SpringBoot的对接</h2><h3 id="1-新建maven项目，把SpringBoot跑起来先"><a href="#1-新建maven项目，把SpringBoot跑起来先" class="headerlink" title="(1)新建maven项目，把SpringBoot跑起来先"></a>(1)新建maven项目，把SpringBoot跑起来先</h3><p><img src="https://pic.imgdb.cn/item/624ad995239250f7c58a4280.png"></p>
+<p>​                                                                            maven 项目工作目录  .java文件为运行应用程序</p>
+<p><u>需要添加相关依赖，新建SpringBoot项目不需要手动添加到pom.xml里面来让maven 加载</u></p>
+<p><img src="https://pic.imgdb.cn/item/624adc85239250f7c5909cbf.png"></p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@RequestMapping(&quot;/api/test&quot;)</span></span><br><span class="line"><span class="comment">//所有的文件都要加 /api/test 前缀，url</span></span><br></pre></td></tr></table></figure>
+
+<h3 id="2-启动小问题"><a href="#2-启动小问题" class="headerlink" title="(2)启动小问题"></a>(2)启动小问题</h3><p>添加配置后，项目启动失败，原因是添加了数据库配置，但是数据库没有连接起来，所以需先屏蔽数据库服务</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@SpringBootApplication(exclude = DataSourceAutoConfiguration.class)</span></span><br><span class="line"><span class="comment">//屏蔽数据库服务</span></span><br></pre></td></tr></table></figure>
+
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/********************************后端****************************************************/</span></span><br><span class="line"><span class="comment">//应用默认运行在8080端口</span></span><br><span class="line"><span class="meta">@RestController</span></span><br><span class="line"><span class="meta">@RequestMapping(&quot;/api/test&quot;)</span>  <span class="comment">//总站点</span></span><br><span class="line"></span><br><span class="line"><span class="comment">//hello站点提供返回 &quot;hello world&quot; 的服务</span></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">testController</span> </span>&#123;</span><br><span class="line">    <span class="meta">@GetMapping(&quot;/hello&quot;)</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> String <span class="title">func</span><span class="params">()</span></span></span><br><span class="line"><span class="function">    </span>&#123;</span><br><span class="line">        <span class="keyword">return</span> <span class="string">&quot;hello world!&quot;</span>;</span><br><span class="line">    &#125;</span><br><span class="line"><span class="comment">//upload站点提供接收前端的json值截取的整数值计算和，返回两个整数和供前端获取</span></span><br><span class="line">    <span class="meta">@PostMapping(&quot;upload&quot;)</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">int</span> <span class="title">getResult</span><span class="params">(<span class="meta">@RequestBody</span> JSONObject req)</span></span>&#123;</span><br><span class="line">        System.out.println(req);</span><br><span class="line">        <span class="keyword">int</span> a = req.getInteger(<span class="string">&quot;num1&quot;</span>);</span><br><span class="line">        <span class="keyword">int</span> b = req.getInteger(<span class="string">&quot;num2&quot;</span>);</span><br><span class="line">        System.out.println(a + <span class="string">&quot; &quot;</span> + b);</span><br><span class="line">        <span class="keyword">return</span>  a+b;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="comment">//后端处理数据到站点</span></span><br><span class="line"><span class="comment">//请求upload站点的服务 上传Json文件</span></span><br><span class="line">wx.request(&#123;</span><br><span class="line">            url:<span class="string">&#x27;http://127.0.0.1:8080/api/test/upload&#x27;</span>,</span><br><span class="line">            method:<span class="string">&#x27;POST&#x27;</span>,</span><br><span class="line"></span><br><span class="line">            data:&#123;</span><br><span class="line">                num1:<span class="number">15</span>,</span><br><span class="line">                num2:<span class="number">105</span></span><br><span class="line">            &#125;,</span><br><span class="line">		<span class="comment">//r是返回值</span></span><br><span class="line">            success(r)</span><br><span class="line">            &#123;</span><br><span class="line">                console.log(r.data)</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;)</span><br><span class="line"><span class="comment">//请求hello站点的服务，得到后端的返回值  输出&#x27;hello&#x27;</span></span><br><span class="line">    wx.request(&#123;</span><br><span class="line">            url:<span class="string">&#x27;http://127.0.0.1:8080/api/test/hello&#x27;</span>,</span><br><span class="line">            method:<span class="string">&#x27;GET&#x27;</span>,</span><br><span class="line">            success(r)</span><br><span class="line">            &#123;</span><br><span class="line">                console.log(r.data)</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;)</span><br></pre></td></tr></table></figure>
+
+<h3 id="（3）Navicat-远程连接数据库"><a href="#（3）Navicat-远程连接数据库" class="headerlink" title="（3）Navicat 远程连接数据库"></a>（3）Navicat 远程连接数据库</h3><blockquote>
+<p>艹你大爷的数据库，跟我有仇是吧，今天搞了几个小时</p>
+</blockquote>
+<p>远程连接，端口 3060开启，创建用户，给用户设置权限</p>
+<p><a target="_blank" rel="noopener" href="https://zhuanlan.zhihu.com/p/414950791">如何连接远程服务器上的数据库 - 知乎 (zhihu.com)</a></p>
+<p>忘记密码了怎么搞</p>
+<p><a target="_blank" rel="noopener" href="https://blog.csdn.net/m0_46278037/article/details/113923726">(10条消息) ERROR 1045 (28000): Access denied for user ‘root‘@‘localhost‘ (using password: NO)解决办法_BugMiaowu2021的博客-CSDN博客</a></p>
+<p>第一次进数据库有个临时密码，在哪找</p>
+<p>数据库日志文件中有临时密码的记录</p>
+<p><img src="https://pic.imgdb.cn/item/624b1d0b239250f7c52ba873.png"></p>
+<p><img src="https://pic.imgdb.cn/item/624b1d42239250f7c52c1e93.png"></p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://example.com/2022/04/04/Springboot-SpringBoot%E6%A1%86%E6%9E%B6%E6%90%AD%E5%BB%BA/" data-id="cl1kxmtya0000kcvo0pux3ejd" class="article-share-link">
+        分享
+      </a>
+      
+<ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E6%AF%95%E4%B8%9A%E8%AE%BE%E8%AE%A1/" rel="tag">毕业设计</a></li></ul>
+
+    </footer>
+
+  </div>
+
+  
+  
+<nav class="article-nav">
+  
+  
+  <a href="/2022/04/04/Springboot-%E5%BE%AE%E4%BF%A1%E5%B0%8F%E7%A8%8B%E5%BA%8F/" class="article-nav-link">
+    <strong class="article-nav-caption">后一篇</strong>
+    <div class="article-nav-title">Springboot+微信小程序</div>
+  </a>
+  
+</nav>
+
+  
+
+  
+  
+  
+  
+
+</article>
+</section>
+    <footer class="footer">
+  <div class="outer">
+    <div class="float-right">
+      <ul class="list-inline">
+  
+  <li><i class="fe fe-smile-alt"></i> <span id="busuanzi_value_site_uv"></span></li>
+  
+  <li><i class="fe fe-bookmark"></i> <span id="busuanzi_value_page_pv"></span></li>
+  
+</ul>
+    </div>
+    <ul class="list-inline">
+      <li>lvsss &copy; 2022</li>
+      
+        <li>7</li>
+      
+      <li>Powered by <a href="http://hexo.io/" target="_blank">Hexo</a></li>
+      <li>theme  <a target="_blank" rel="noopener" href="https://github.com/zhwangart/hexo-theme-ocean">Ocean</a></li>
+    </ul>
+    <div class="float-right">
+      <span id="timeDate">载入天数...</span><span id="times">载入时分秒...</span>
+<script>
+    var now = new Date(); 
+    function createtime() { 
+        var grt= new Date("05/1/2021 15:49:00");//此处修改你的建站时间或者网站上线时间 
+        now.setTime(now.getTime()+250); 
+        days = (now - grt ) / 1000 / 60 / 60 / 24; dnum = Math.floor(days); 
+        hours = (now - grt ) / 1000 / 60 / 60 - (24 * dnum); hnum = Math.floor(hours); 
+        if(String(hnum).length ==1 ){hnum = "0" + hnum;} minutes = (now - grt ) / 1000 /60 - (24 * 60 * dnum) - (60 * hnum); 
+        mnum = Math.floor(minutes); if(String(mnum).length ==1 ){mnum = "0" + mnum;} 
+        seconds = (now - grt ) / 1000 - (24 * 60 * 60 * dnum) - (60 * 60 * hnum) - (60 * mnum); 
+        snum = Math.round(seconds); if(String(snum).length ==1 ){snum = "0" + snum;} 
+        document.getElementById("timeDate").innerHTML = "本站已安全运行 "+dnum+" 天 "; 
+        document.getElementById("times").innerHTML = hnum + " 小时 " + mnum + " 分 " + snum + " 秒"; 
+    } 
+	setInterval("createtime()",250);
+</script>
+    </div>
+  </div>
+</footer>
+  </main>
+  <aside class="sidebar">
+    <button class="navbar-toggle"></button>
+<nav class="navbar">
+  
+  <div class="logo">
+    <a href="/"><img src="/images/hexo.svg" alt="lvsss"></a>
+  </div>
+  
+  <ul class="nav nav-main">
+    
+    <li class="nav-item">
+      <a class="nav-item-link" href="/">Home</a>
+    </li>
+    
+    <li class="nav-item">
+      <a class="nav-item-link" href="/archives">Archives</a>
+    </li>
+    
+    <li class="nav-item">
+      <a class="nav-item-link" href="/gallery">Gallery</a>
+    </li>
+    
+    <li class="nav-item">
+      <a class="nav-item-link" href="/about">About</a>
+    </li>
+    
+    <li class="nav-item">
+      <a class="nav-item-link nav-item-search" title="搜索">
+        <i class="fe fe-search"></i>
+        搜索
+      </a>
+    </li>
+  </ul>
+</nav>
+<nav class="navbar navbar-bottom">
+  <ul class="nav">
+    <li class="nav-item">
+      <div class="totop" id="totop">
+  <i class="fe fe-rocket"></i>
+</div>
+    </li>
+    <li class="nav-item">
+      
+      <a class="nav-item-link" target="_blank" href="/atom.xml" title="RSS Feed">
+        <i class="fe fe-feed"></i>
+      </a>
+      
+    </li>
+  </ul>
+</nav>
+<div class="search-form-wrap">
+  <div class="local-search local-search-plugin">
+  <input type="search" id="local-search-input" class="local-search-input" placeholder="Search...">
+  <div id="local-search-result" class="local-search-result"></div>
+</div>
+</div>
+  </aside>
+  
+<script src="/js/jquery-2.0.3.min.js"></script>
+
+
+<script src="/js/jquery.justifiedGallery.min.js"></script>
+
+
+<script src="/js/lazyload.min.js"></script>
+
+
+<script src="/js/busuanzi-2.3.pure.min.js"></script>
+
+
+
+<script src="/fancybox/jquery.fancybox.min.js"></script>
+
+
+
+
+<script src="/js/copybtn.js"></script>
+
+
+
+
+
+<script src="/js/tocbot.min.js"></script>
+
+<script>
+  // Tocbot_v4.7.0  http://tscanlin.github.io/tocbot/
+  tocbot.init({
+    tocSelector: '.tocbot',
+    contentSelector: '.article-entry',
+    headingSelector: 'h1, h2, h3, h4, h5, h6',
+    hasInnerContainers: true,
+    scrollSmooth: true,
+    positionFixedSelector: '.tocbot',
+    positionFixedClass: 'is-position-fixed',
+    fixedSidebarOffset: 'auto',
+  });
+</script>
+
+
+
+<script src="/js/ocean.js"></script>
+
+
+
+<script src="/live2dw/lib/L2Dwidget.min.js?094cbace49a39548bed64abff5988b05"></script><script>L2Dwidget.init({"model":{"scale":1,"hHeadPos":0.5,"vHeadPos":0.618,"jsonPath":"/live2dw/assets/haruto.model.json"},"display":{"superSample":2,"width":150,"height":300,"position":"left","hOffset":0,"vOffset":-20},"mobile":{"show":true},"react":{"opacityDefault":0.5,"opacityOnHover":0.2},"log":false,"pluginJsPath":"lib/","pluginModelPath":"assets/","pluginRootPath":"live2dw/","tagMode":false});</script></body>
+
+</html>

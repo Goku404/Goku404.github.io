@@ -1,0 +1,285 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+  
+  
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <title>
+    Springboot+微信小程序 |
+    
+    lvsss</title>
+  
+  <link rel="shortcut icon" href="/favicon.ico">
+  
+  
+<link rel="stylesheet" href="/css/style.css">
+
+  
+  
+<link rel="stylesheet" href="/fancybox/jquery.fancybox.min.css">
+
+  
+  
+<script src="/js/pace.min.js"></script>
+
+<meta name="generator" content="Hexo 5.4.0"><link rel="alternate" href="/atom.xml" title="lvsss" type="application/atom+xml">
+</head>
+
+<body>
+  <main class="content">
+    <section class="outer">
+  <article id="post-Springboot-微信小程序" class="article article-type-post" itemscope
+  itemprop="blogPost" data-scroll-reveal>
+
+  <div class="article-inner">
+    
+    <header class="article-header">
+      
+
+<h1 class="article-title" itemprop="name">
+  Springboot+微信小程序
+</h1>
+
+
+
+    </header>
+    
+
+    
+    <div class="article-meta">
+      <a href="/2022/04/04/Springboot-%E5%BE%AE%E4%BF%A1%E5%B0%8F%E7%A8%8B%E5%BA%8F/" class="article-date">
+  <time datetime="2022-04-04T06:53:23.000Z" itemprop="datePublished">2022-04-04</time>
+</a>
+      
+    </div>
+    
+
+    
+    
+<div class="tocbot"></div>
+
+    
+
+    <div class="article-entry" itemprop="articleBody">
+      
+      
+      
+      <p><img src="https://pic.imgdb.cn/item/624a96d9239250f7c5f9905e.png"></p>
+<span id="more"></span>
+
+<h1 id="清明假期"><a href="#清明假期" class="headerlink" title="清明假期"></a>清明假期</h1><h2 id="1-微信开发者工具工作目录结构"><a href="#1-微信开发者工具工作目录结构" class="headerlink" title="1.微信开发者工具工作目录结构"></a>1.微信开发者工具工作目录结构</h2><p>页面工作区的 .js 文件处理页面逻辑</p>
+<p>.js 文件的 data 区域存放数据存储区变量</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">data: &#123;text:<span class="string">&#x27;hello&#x27;</span>&#125;,  <span class="comment">//存放text变量，值为hello</span></span><br><span class="line"><span class="comment">//onload 为生命周期函数，可以做一些初始化的工作</span></span><br><span class="line">onload</span><br><span class="line">&#123;</span><br><span class="line">    <span class="keyword">this</span>.setdata(&#123;</span><br><span class="line">        text:<span class="string">&#x27;1234&#x27;</span></span><br><span class="line">    &#125;)</span><br><span class="line">    console.log(<span class="keyword">this</span>.data.text)   <span class="comment">//中断打印text的值</span></span><br><span class="line">&#125;,</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<p><img src="https://pic.imgdb.cn/item/624a9bcf239250f7c50491c9.png"></p>
+<p>​                                                                              图 1     微信开发者工具工程目录</p>
+<p><em>如果在onload区域设置未知变量的话，也会添加进data区域</em></p>
+<p><u>.wxml文件通过标签的形式展现页面内容</u>     <u>.wxss文件设置样式</u></p>
+<p><img src="https://pic.imgdb.cn/item/624a9da1239250f7c508ae39.png"></p>
+<p>​                                                                                图2 css样式 通过 .container 的方式封装</p>
+<p><img src="https://pic.imgdb.cn/item/624a9e01239250f7c5097f86.png"></p>
+<p>​                                                                                     图3 xml文件标签 通过选择渲染css样式</p>
+<h2 id="2-data区域定义数组，并设置打印"><a href="#2-data区域定义数组，并设置打印" class="headerlink" title="2.data区域定义数组，并设置打印"></a>2.data区域定义数组，并设置打印</h2><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">data:&#123;</span><br><span class="line">    arr:[]     <span class="comment">//定义一个数组</span></span><br><span class="line">&#125;,</span><br></pre></td></tr></table></figure>
+
+<p><img src="https://pic.imgdb.cn/item/624aa028239250f7c50e8fcc.png"></p>
+<p>​                                                                                             数组操作</p>
+<p><u>push的变量不限制类型，也可以push字符串变量</u></p>
+<p><img src="https://pic.imgdb.cn/item/624aa0c8239250f7c50ff43a.png"></p>
+<p>​                                                                                       数组展示</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br></pre></td><td class="code"><pre><span class="line">data:&#123;</span><br><span class="line">	test:&#123;&#125; &#x2F;&#x2F;定义json类型</span><br><span class="line">&#125;</span><br><span class="line">&#x2F;&#x2F;push json数据结构</span><br><span class="line"> arrtemp.push(&#123;</span><br><span class="line">                id:i,</span><br><span class="line">                name:&#39;hello&#39;</span><br><span class="line">            &#125;);</span><br><span class="line">         </span><br><span class="line">&#x2F;&#x2F;显示的时候</span><br><span class="line">&lt;view wx:for &#x3D; &quot;&#123;&#123;arr&#125;&#125;&quot;&gt;</span><br><span class="line">	&#123;&#123;items.id&#125;&#125;  &#123;&#123;items.name&#125;&#125;</span><br><span class="line">&lt;&#x2F;view&gt;</span><br><span class="line"></span><br><span class="line">&#x2F;&#x2F;初始化变量，存储Json</span><br><span class="line">for(var i&#x3D;0;i&lt;10;i++)</span><br><span class="line">&#123;</span><br><span class="line">	arrtemp.push(&#123;</span><br><span class="line">    id:i,</span><br><span class="line">    name:&#39;hello&#39;</span><br><span class="line">    &#125;);</span><br><span class="line"> &#125; </span><br><span class="line"> </span><br><span class="line"> &#x2F;&#x2F;弹窗</span><br><span class="line"> wx.showToast(&#123;</span><br><span class="line"> 	title:&#39;success!&#39;,</span><br><span class="line"> &#125;)</span><br><span class="line"> &#x2F;&#x2F;请求</span><br><span class="line"> wx.request(&#123;</span><br><span class="line"> 	url: &#39;url&#39;,</span><br><span class="line"> &#125;)</span><br></pre></td></tr></table></figure>
+
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://example.com/2022/04/04/Springboot-%E5%BE%AE%E4%BF%A1%E5%B0%8F%E7%A8%8B%E5%BA%8F/" data-id="cl1kxmtz60001kcvohcbm10an" class="article-share-link">
+        分享
+      </a>
+      
+<ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E6%AF%95%E4%B8%9A%E8%AE%BE%E8%AE%A1/" rel="tag">毕业设计</a></li></ul>
+
+    </footer>
+
+  </div>
+
+  
+  
+<nav class="article-nav">
+  
+  <a href="/2022/04/04/Springboot-SpringBoot%E6%A1%86%E6%9E%B6%E6%90%AD%E5%BB%BA/" class="article-nav-link">
+    <strong class="article-nav-caption">前一篇</strong>
+    <div class="article-nav-title">
+      
+      Springboot-SpringBoot框架搭建
+      
+    </div>
+  </a>
+  
+  
+  <a href="/2021/10/07/%E5%9B%BD%E5%BA%86%E9%9A%8F%E7%AC%94/" class="article-nav-link">
+    <strong class="article-nav-caption">后一篇</strong>
+    <div class="article-nav-title">国庆随笔</div>
+  </a>
+  
+</nav>
+
+  
+
+  
+  
+  
+  
+
+</article>
+</section>
+    <footer class="footer">
+  <div class="outer">
+    <div class="float-right">
+      <ul class="list-inline">
+  
+  <li><i class="fe fe-smile-alt"></i> <span id="busuanzi_value_site_uv"></span></li>
+  
+  <li><i class="fe fe-bookmark"></i> <span id="busuanzi_value_page_pv"></span></li>
+  
+</ul>
+    </div>
+    <ul class="list-inline">
+      <li>lvsss &copy; 2022</li>
+      
+        <li>7</li>
+      
+      <li>Powered by <a href="http://hexo.io/" target="_blank">Hexo</a></li>
+      <li>theme  <a target="_blank" rel="noopener" href="https://github.com/zhwangart/hexo-theme-ocean">Ocean</a></li>
+    </ul>
+    <div class="float-right">
+      <span id="timeDate">载入天数...</span><span id="times">载入时分秒...</span>
+<script>
+    var now = new Date(); 
+    function createtime() { 
+        var grt= new Date("05/1/2021 15:49:00");//此处修改你的建站时间或者网站上线时间 
+        now.setTime(now.getTime()+250); 
+        days = (now - grt ) / 1000 / 60 / 60 / 24; dnum = Math.floor(days); 
+        hours = (now - grt ) / 1000 / 60 / 60 - (24 * dnum); hnum = Math.floor(hours); 
+        if(String(hnum).length ==1 ){hnum = "0" + hnum;} minutes = (now - grt ) / 1000 /60 - (24 * 60 * dnum) - (60 * hnum); 
+        mnum = Math.floor(minutes); if(String(mnum).length ==1 ){mnum = "0" + mnum;} 
+        seconds = (now - grt ) / 1000 - (24 * 60 * 60 * dnum) - (60 * 60 * hnum) - (60 * mnum); 
+        snum = Math.round(seconds); if(String(snum).length ==1 ){snum = "0" + snum;} 
+        document.getElementById("timeDate").innerHTML = "本站已安全运行 "+dnum+" 天 "; 
+        document.getElementById("times").innerHTML = hnum + " 小时 " + mnum + " 分 " + snum + " 秒"; 
+    } 
+	setInterval("createtime()",250);
+</script>
+    </div>
+  </div>
+</footer>
+  </main>
+  <aside class="sidebar">
+    <button class="navbar-toggle"></button>
+<nav class="navbar">
+  
+  <div class="logo">
+    <a href="/"><img src="/images/hexo.svg" alt="lvsss"></a>
+  </div>
+  
+  <ul class="nav nav-main">
+    
+    <li class="nav-item">
+      <a class="nav-item-link" href="/">Home</a>
+    </li>
+    
+    <li class="nav-item">
+      <a class="nav-item-link" href="/archives">Archives</a>
+    </li>
+    
+    <li class="nav-item">
+      <a class="nav-item-link" href="/gallery">Gallery</a>
+    </li>
+    
+    <li class="nav-item">
+      <a class="nav-item-link" href="/about">About</a>
+    </li>
+    
+    <li class="nav-item">
+      <a class="nav-item-link nav-item-search" title="搜索">
+        <i class="fe fe-search"></i>
+        搜索
+      </a>
+    </li>
+  </ul>
+</nav>
+<nav class="navbar navbar-bottom">
+  <ul class="nav">
+    <li class="nav-item">
+      <div class="totop" id="totop">
+  <i class="fe fe-rocket"></i>
+</div>
+    </li>
+    <li class="nav-item">
+      
+      <a class="nav-item-link" target="_blank" href="/atom.xml" title="RSS Feed">
+        <i class="fe fe-feed"></i>
+      </a>
+      
+    </li>
+  </ul>
+</nav>
+<div class="search-form-wrap">
+  <div class="local-search local-search-plugin">
+  <input type="search" id="local-search-input" class="local-search-input" placeholder="Search...">
+  <div id="local-search-result" class="local-search-result"></div>
+</div>
+</div>
+  </aside>
+  
+<script src="/js/jquery-2.0.3.min.js"></script>
+
+
+<script src="/js/jquery.justifiedGallery.min.js"></script>
+
+
+<script src="/js/lazyload.min.js"></script>
+
+
+<script src="/js/busuanzi-2.3.pure.min.js"></script>
+
+
+
+<script src="/fancybox/jquery.fancybox.min.js"></script>
+
+
+
+
+<script src="/js/copybtn.js"></script>
+
+
+
+
+
+<script src="/js/tocbot.min.js"></script>
+
+<script>
+  // Tocbot_v4.7.0  http://tscanlin.github.io/tocbot/
+  tocbot.init({
+    tocSelector: '.tocbot',
+    contentSelector: '.article-entry',
+    headingSelector: 'h1, h2, h3, h4, h5, h6',
+    hasInnerContainers: true,
+    scrollSmooth: true,
+    positionFixedSelector: '.tocbot',
+    positionFixedClass: 'is-position-fixed',
+    fixedSidebarOffset: 'auto',
+  });
+</script>
+
+
+
+<script src="/js/ocean.js"></script>
+
+
+
+<script src="/live2dw/lib/L2Dwidget.min.js?094cbace49a39548bed64abff5988b05"></script><script>L2Dwidget.init({"model":{"scale":1,"hHeadPos":0.5,"vHeadPos":0.618,"jsonPath":"/live2dw/assets/haruto.model.json"},"display":{"superSample":2,"width":150,"height":300,"position":"left","hOffset":0,"vOffset":-20},"mobile":{"show":true},"react":{"opacityDefault":0.5,"opacityOnHover":0.2},"log":false,"pluginJsPath":"lib/","pluginModelPath":"assets/","pluginRootPath":"live2dw/","tagMode":false});</script></body>
+
+</html>
